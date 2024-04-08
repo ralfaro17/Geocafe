@@ -1,0 +1,15 @@
+{
+  "js/media/models/ilumination.gltf": {
+    "file": "assets/ilumination-CvQu5lhi.gltf",
+    "src": "js/media/models/ilumination.gltf"
+  },
+  "js/script.js": {
+    "file": "assets/main-ByJlDeJa.js",
+    "name": "main",
+    "src": "js/script.js",
+    "isEntry": true,
+    "assets": [
+      "assets/ilumination-CvQu5lhi.gltf"
+    ]
+  }
+}

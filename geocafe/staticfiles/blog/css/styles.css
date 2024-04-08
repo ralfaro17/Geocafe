@@ -1,0 +1,8 @@
+body{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    flex-wrap: wrap;
+}
