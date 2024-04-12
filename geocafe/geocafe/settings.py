@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_vite',
     'blog',
+    'accounts',
+    'levels',
+    'competitive',
 ]
 
 MIDDLEWARE = [
