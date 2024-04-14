@@ -11,7 +11,7 @@ class CodeProblem(models.Model):
         return f"{self.name} {self.description} {self.difficulty}"
 
 class Comments(models.Model):
-    content = models.CharField(512)
+    content = models.CharField(max_length=512)
     problem = models.ForeignKey(CodeProblem, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.DateTimeField()

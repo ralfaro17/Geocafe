@@ -55,9 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_vite',
-    'blog',
     'accounts',
-    'levels',
+    'course',
     'competitive',
 ]
 
