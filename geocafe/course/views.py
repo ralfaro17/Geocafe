@@ -42,18 +42,19 @@ def register(request):
         email = request.POST["email"]
         first_name = request.POST["first_name"]
         last_name = request.POST["last_name"]
-        print({"username": username})
+        data = {
+            "username": username,
+            "password": password,
+            "confirm_password": confirm_password,
+            "email": email,
+            "first_name": first_name,
+            "last_name": last_name
+            } 
+
         if password != confirm_password:
             return render(request, "course/register.html", {
                 "error_message": "Passwords don't match",
-                "previous_data": {
-                    "username": username,
-                    "password": password,
-                    "confirm_password": confirm_password,
-                    "email": email,
-                    "first_name": first_name,
-                    "last_name": last_name
-                    } 
+                "previous_data": data
             })
         
         try:
@@ -61,7 +62,7 @@ def register(request):
         except Exception as e:
             return render(request, "course/register.html", {
                 "error_message": "Username already taken",
-                "previous_data": [username, password, confirm_password, email, first_name, last_name] 
+                "previous_data": data, 
             })
         login(request, user)
         return redirect(reverse("course:index"))
