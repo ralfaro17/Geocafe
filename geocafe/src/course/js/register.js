@@ -1,5 +1,10 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+// Import our custom CSS
+import '../../scss/styles.sass'
+
+// Import all of Bootstrap's JS
+import * as bootstrap from 'bootstrap'
 
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -2,7 +2,7 @@
 {% load static %}
 {% load django_vite %}
 
-{% block title %} Login {% endblock title %}
+{% block title %} Register {% endblock title %}
 
 {% block head %}
     {% vite_asset 'course/js/register.js' %}
@@ -42,7 +42,9 @@
             <label for="last-name-input">Last name</label>
             <input id="last-name-input" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Enter your last name">
         </div>
-        <button type="submit">Submit</button>
+        <button class="btn btn-success" type="submit">Submit</button>
     </form>
+
+        <p>Already have an account? <a href="{% url 'course:login' %}">Login Here</a></p>
 
 {% endblock body %}
