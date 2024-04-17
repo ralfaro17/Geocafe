@@ -1,0 +1,48 @@
+{% extends "course/base.html" %}
+{% load static %}
+{% load django_vite %}
+
+{% block title %} Login {% endblock title %}
+
+{% block head %}
+    {% vite_asset 'course/js/register.js' %}
+{% endblock head %}
+
+
+{% block body %}
+
+    <h1>Sign in</h1>
+
+    <h3>{{ error_message }}</h3>
+
+    <form action="{% url 'course:register' %}" method="POST" name="register-form">
+
+        {% csrf_token %}
+        <div class="form-div">
+            <label for="username-input">Nickname</label>
+            <input id="username-input" type="text" name="username" placeholder="Enter your nickname" value="{{ previous_data.username }}" required>            
+        </div>
+        <div class="form-div">
+            <label for="password-input">Password</label>
+            <input id="password-input" type="password" name="password" placeholder="Write a password" value="{{ previous_data.password }}" required>
+        </div>
+        <div class="form-div">
+            <label for="confirm-password-input">Confirm password</label>
+            <input id="confirm-password-input" type="password" name="confirm_password" placeholder="Rewrite your password" value="{{ previous_data.confirm_password }}" required>
+        </div>
+        <div class="form-div">
+            <label for="email-input">Email</label>
+            <input id="email-input" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
+        </div>
+        <div class="form-div">
+            <label for="first-name-input">First name</label>
+            <input id="first-name-input" type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="Enter your first name">
+        </div>
+        <div class="form-div">
+            <label for="last-name-input">Last name</label>
+            <input id="last-name-input" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Enter your last name">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock body %}

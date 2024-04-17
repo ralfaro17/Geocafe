@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>Course</h1>
+
+    {% if user.is_authenticated %}
+        <h5>Logged in</h5>
+        <a href="{% url 'course:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'course:login' %}">Login</a>
+        <a href="{% url 'course:register' %}">Register</a>
+        <h5>Not logged in</h5>
+    {% endif %}
 </body>
 </html>
