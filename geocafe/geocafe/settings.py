@@ -45,6 +45,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -71,6 +72,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'geocafe.urls'
 
+LOGIN_URL = 'course:login'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -93,6 +96,7 @@ WSGI_APPLICATION = 'geocafe.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# ! For if  you want to use PostgreSQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -100,7 +104,16 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
     }
-}
+} 
+
+
+# ! For if you want to use SQLite
+""" DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+} """
 
 
 # Password validation
