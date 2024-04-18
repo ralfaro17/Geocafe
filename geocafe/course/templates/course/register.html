@@ -6,43 +6,55 @@
 
 {% block head %}
     {% vite_asset 'course/js/register.js' %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock head %}
 
 
 {% block body %}
 
-    <h1>Sign in</h1>
+<div class="div-login">
+    <div class="login">
+        <h1>Sign in</h1>
+        <h3>{{ error_message }}</h3>
+        <form action="{% url 'course:register' %}" method="POST" name="register-form">
+            {% csrf_token %}
+            <div class="log-name">
+                <div class="form-div-log">
+                    <input id="first-name-input" class="input-res lato-bold" type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="Enter your first name">
+                </div>
+                <div class="form-div-log">
+                    <input id="last-name-input" class="input-res lato-bold" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Enter your last name">
+                </div>
+                <div class="form-div-log">
+                    <input id="username-input" class="input-res lato-bold" type="text" name="username" placeholder="Enter your nickname" value="{{ previous_data.username }}" required>            
+                </div>
+                
+            </div>
+            <div class="log-name-res">
+                <div class="form-div">
+                    <label for="email-input"class="label-res lato-bold" >Email</label>
+                    <input id="email-input" class="input" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
+                </div>
+                <div class="form-div">
+                    <label for="password-input"class="label-res lato-bold" >Password</label>
+                    <input id="password-input" class="input lato-bold" type="password" name="password" placeholder="Write a password" value="{{ previous_data.password }}" required>
+                </div>
+                <div class="form-div">
+                    <label for="confirm-password-input" class="label-res lato-bold">Confirm password</label>
+                    <input id="confirm-password-input" class="input input-confir lato-bold" type="password" name="confirm_password" placeholder="Rewrite your password" value="{{ previous_data.confirm_password }}" required>
+                </div>
 
-    <h3>{{ error_message }}</h3>
-
-    <form action="{% url 'course:register' %}" method="POST" name="register-form">
-
-        {% csrf_token %}
-        <div class="form-div">
-            <label for="username-input">Nickname</label>
-            <input id="username-input" type="text" name="username" placeholder="Enter your nickname" value="{{ previous_data.username }}" required>            
-        </div>
-        <div class="form-div">
-            <label for="password-input">Password</label>
-            <input id="password-input" type="password" name="password" placeholder="Write a password" value="{{ previous_data.password }}" required>
-        </div>
-        <div class="form-div">
-            <label for="confirm-password-input">Confirm password</label>
-            <input id="confirm-password-input" type="password" name="confirm_password" placeholder="Rewrite your password" value="{{ previous_data.confirm_password }}" required>
-        </div>
-        <div class="form-div">
-            <label for="email-input">Email</label>
-            <input id="email-input" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
-        </div>
-        <div class="form-div">
-            <label for="first-name-input">First name</label>
-            <input id="first-name-input" type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="Enter your first name">
-        </div>
-        <div class="form-div">
-            <label for="last-name-input">Last name</label>
-            <input id="last-name-input" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Enter your last name">
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+                
+            </div>
+            <div class="div-center">
+                <button class="btn btn-basic" type="submit">Submit</button>
+            </div>
+            
+        </form>
+        <p class="lato-light">Already have an account?<a href="{% url 'course:login' %}">Login Here</a></p>
+    </div>
+</div>
 
 {% endblock body %}
