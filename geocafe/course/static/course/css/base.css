@@ -8,14 +8,12 @@
   --MD_purple: #251633;
   --D_purple: #1e0d33;
   --D_brown: #3e250c;
-  --D_background: #1C1B20;
-  --D_background_dark:#131313;
+  --D_background: #222026;
   --L_gray: #dfdfdf;
   --H_yellow: #d2d37b;
   --Sb_yellow: #FEFFD6;
   --ML_gray: #d9d9d9;
   --C_brown:#584626 ;
-  --MD_brwon:#382614 ;
   --CD_brown:#3D332A;
   --CMD_brown:#3E2914;
   --L_brown:#76502F;
@@ -25,6 +23,7 @@
   --font-inika: "Inika", serif;
   --font-lato: "Lato", sans-serif;
 }
+
 
 .navbar.bg-color {
   background-color:var(--L_brown) ; /* Cvambiar a tu color deseado */
@@ -57,7 +56,6 @@
 }
 .bar-text{
     margin-left: 30px;
-    color: black;
 }
 .master{
     background-color: var(--C_brown);
@@ -282,7 +280,7 @@
     font-weight: 400;
     background-color:white;
     border-radius: 8px;
-    color: black !important;
+    color: black;
     width: 80%;
     border: none;
     padding-left: 20px;
@@ -300,126 +298,7 @@
 .label-res{
     padding-left: 15px;
     white-space: nowrap;
-    color: black;
-    
 }
-.label{
-  color: black;
-}
-/*///////////////////////////////////////////*/
-/*theme1= darkmode*/
-/*/////////////////////////////////////////*/
-
-body.darkmode{
-  background-color: var(--D_background)!important;
-  color: white;
-
-}
-.navbar.bg-color.darkmode {
-  background-color:var(--MD_brwon) ; /* Cvambiar a tu color deseado */
-  font-family: var(--font-lato) ;
-  color: white;
-
-}
-.nav-link.darkmode{
-  color: white;
-}
-.darkmode.bar{
-    font-family: var(--font-lato);
-    background-color: var(--H_yellow);
-}
-
-.darkmode.master{
-    background-color: var(--MD_brwon);
-}
-
-.darkmode.mcg{
-    font-family: var(--font-inter);
-    font-size: 32px;
-    font-weight: 400;
-  font-style: normal;
-    color: white;
-}
-.darkmode.starhere{
-    background-color: var(--H_yellow); 
-}
-.darkmode.starhere-text{
-    color: black;
-}
-.darkmode.learn{
-    background-color: var(--b-cyan);
-}
-.darkmode.learn-text{
-
-    font-family: var(--font-inter);
-    color: black;
-
-}
-.darkmode.attain-txt{
-    font-family: var(--font-lato);
-    background-color: var(--Sb_yellow);
-    color: black;
-
-}
-.darkmode.searching{
-    background-color: var(--CMD_brown);
-}
-.darkmode.searching-text{
-    color: white;
-    text-align: center;
-}
-.darkmode.btn.btn-basic{
-  border-radius: 8px;
-  background-color: white;
-}
-.darkmode.footer{
-  background-color: var(--MD_brwon);
-  height: 80px;
-}
-.darkmode.footer-text{
-    color: white;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.darkmode.login{
-    background-color: var(--D_background_dark);
-    border-radius: 15px;
-}
-.darkmode.form-div{
-    background-color: white;
-}
-.darkmode.input{
-    font-family: var(--font-lato);
-    font-weight: 400;
-    background-color:var(--Sb_yellow);
-    border-radius: 8px;
-    color: black;
-    width: 80%;
-    border: none;
-    padding-left: 20px;
-
-}
-.darkmode.input-log{
-    font-family: var(--font-lato);
-    background-color:var(--Sb_yellow);
-    color: black;
-}
-.form-div.darkmode{
-  background-color: var(--D_background);
-  color: white;
-}
-.input-res.darkmode{
-  background-color: var(--D_background);
-  color: white;
-}
-.label-res.darkmode{
-  color: white;
-}
-.label.darkmode{
-  color: white;
-}
-
-/*/////////////////////////////////////////*/
 .inter-header {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
