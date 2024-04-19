@@ -3,8 +3,7 @@
 
 {% block title %} Login {% endblock title %}
 {% block head %}
-
-{%endblock head%}
+{% endblock head %}
 
 {% block body %}
 <button class="btn btn-basic active" id="mode">Mode</button>
@@ -31,13 +30,5 @@
         <p class="lato-bold">Don't have an account? <a href="{% url 'course:register' %}">Sign up</a></p>
     </div>
 </div>
-<script>
-    const mode = document.getElementById('mode');
-    const dark = document.querySelectorAll('.theme');
-    mode.addEventListener('click', function() {
-        dark.forEach(function(elemento) {
-            elemento.classList.toggle('darkmode');
-        });
-    });
-</script>
+
 {% endblock body %}

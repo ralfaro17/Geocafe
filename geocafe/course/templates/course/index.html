@@ -7,15 +7,15 @@
 
 {% block body%}
 <div class="theme bar">
-    <a class="bar-text nav-link" href="#">Tips</a>
-    <a class="bar-text nav-link" href="#">resourse</a>
-    <a class="bar-text " href="#">Try using our built-in IDE!</a>
+    <a class="bar-text nav-link" href="">Tips</a>
+    <a class="bar-text nav-link" href="">resourse</a>
+    <a class="bar-text " href="">Try using our built-in IDE!</a>
 </div>
 
  <button class="btn btn-basic active" id="mode">Mode</button>
 <div class="theme master">
     <div class="mcg">
-        <h1>Mater</h1>
+        <h1>Master</h1>
         <h1>Computational</h1>
         <h1>Geometry</h1>
     </div>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="star-here">
-    <a class="starhere" href="#">
+    <a class="starhere" href="">
         <h1 class=" theme starhere-text"> Start Here!</h1> 
     </a>
 </div>
@@ -48,21 +48,13 @@
 </div>
 
 <div class="theme searching">
-    <h1 class=" searching-text">Searching for an specific theme? <a href="#">Click here</a> </h1>
+    <h1 class=" searching-text">Searching for an specific theme? <a href="">Click here</a> </h1>
 </div>
 
 <footer class="theme footer lato-bold">
-    <a class="footer-text" href="#">Contact us</a>
-    <a  class="footer-text" href="#">Geocafe Docs</a>
+    <a class="footer-text" href="">Contact us</a>
+    <a  class="footer-text" href="">Geocafe Docs</a>
 </footer>
+    
 
-<script>
-    const mode = document.getElementById('mode');
-    const dark = document.querySelectorAll('.theme');
-    mode.addEventListener('click', function() {
-        dark.forEach(function(elemento) {
-            elemento.classList.toggle('darkmode');
-        });
-    });
-</script>
 {% endblock body%}

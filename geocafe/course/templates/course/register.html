@@ -33,7 +33,7 @@
             <div class="log-name-res">
                 <div class="theme form-div">
                     <label for="email-input"class="theme label-res lato-bold" >Email</label>
-                    <input id="email-input" class="input" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
+                    <input id="email-input" class="input lato-bold" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
                 </div>
                 <div class="theme form-div">
                     <label for="password-input"class="theme label-res lato-bold" >Password</label>
@@ -54,13 +54,5 @@
         <p class="theme lato-light">Already have an account?<a href="{% url 'course:login' %}">Login Here</a></p>
     </div>
 </div>
-<script>
-    const mode = document.getElementById('mode');
-    const dark = document.querySelectorAll('.theme');
-    mode.addEventListener('click', function() {
-        dark.forEach(function(elemento) {
-            elemento.classList.toggle('darkmode');
-        });
-    });
-</script>
+
 {% endblock body %}
