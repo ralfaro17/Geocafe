@@ -10,7 +10,8 @@ export default defineConfig({
         outDir: resolve("./assets"),
         rollupOptions: {
             input: {
-                "main": './src/course/register.js',
+                "main": './src/course/js/register.js',
+                "styles": './src/course/js/styles.js',
             }
         }
     }
