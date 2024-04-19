@@ -1,5 +1,3 @@
-import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/sweetalert2.scss'
 
 document.addEventListener("DOMContentLoaded", () => {
     let form = document.querySelector("form");
@@ -12,11 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
             form.submit()
         }
         else{
-            Swal.fire({
-                icon: "error",
-                title: "Register error",
-                text: "Your passwords don't match",
-            });
+            
         }
     })
 })

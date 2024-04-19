@@ -1,8 +1,20 @@
 {
-  "js/script.js": {
-    "file": "assets/main-BneK29fn.js",
+  "course/js/register.js": {
+    "file": "assets/main-jpG6W9xB.js",
     "name": "main",
-    "src": "js/script.js",
-    "isEntry": true
+    "src": "course/js/register.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-DMXr2t6I.css"
+    ]
+  },
+  "course/js/styles.js": {
+    "file": "assets/styles-BKssym_T.js",
+    "name": "styles",
+    "src": "course/js/styles.js",
+    "isEntry": true,
+    "css": [
+      "assets/styles-DVJci_n-.css"
+    ]
   }
 }
