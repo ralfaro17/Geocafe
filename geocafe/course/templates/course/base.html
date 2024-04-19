@@ -14,7 +14,7 @@
   <body class="theme">
     <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
       <div class="container-fluid">
-        <a class="navbar-brand lato-bold div-center " href=""><img class="nav-img" src="{%static 'course/images/geocafe.png'%}" alt="GeoCafe"></a>
+        <a class="navbar-brand lato-bold div-center " href="/"><img class="nav-img" src="{%static 'course/images/geocafe.png'%}" alt="GeoCafe"></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -53,5 +53,6 @@
       </div>
     </nav>
     {% block body %} {% endblock body %}
+    <script src="{% static 'course/js/darkmode.js' %}"></script>
   </body>
 </html>
