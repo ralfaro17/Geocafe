@@ -8,53 +8,64 @@
 {%endblock head%}
 
 {% block body%}
+<div class="theme bar">
+    <a class="bar-text nav-link" href="#">Tips</a>
+    <a class="bar-text nav-link" href="#">resourse</a>
+    <a class="bar-text " href="#">Try using our built-in IDE!</a>
+</div>
 
-    <div class="bar">
-        <a class="bar-text nav-link" href="#">Tips</a>
-        <a class="bar-text nav-link" href="#">resourse</a>
-        <a class="bar-text " href="#">Try using our built-in IDE!</a>
+ <button class="btn btn-basic active" id="mode">Mode</button>
+<div class="theme master">
+    <div class="mcg">
+        <h1>Mater</h1>
+        <h1>Computational</h1>
+        <h1>Geometry</h1>
     </div>
+    <div class="img-mster">
+        <img class="img-master" src="https://st2.depositphotos.com/3725083/5484/i/450/depositphotos_54844903-stock-photo-3d-cube-on-white-background.jpg" alt="Cubo">
+    </div>
+</div>
 
-    <div class="master">
-        <div class="mcg">
-            <h1>Mater</h1>
-            <h1>Computational</h1>
-            <h1>Geometry</h1>
-        </div>
-        <div class="img-mster">
-            <img class="img-master" src="https://st2.depositphotos.com/3725083/5484/i/450/depositphotos_54844903-stock-photo-3d-cube-on-white-background.jpg" alt="Cubo">
-        </div>
-    </div>
-    <div class="star-here">
-        <a class="starhere" href="#">
-            <h1 class="starhere-text"> Start Here!</h1> 
-        </a>
-    </div>
-    <div class="learn">
-        <h1 class="learn-text">
-            Learn from scratch with our university endorsed agenda
+<div class="star-here">
+    <a class="starhere" href="#">
+        <h1 class=" theme starhere-text"> Start Here!</h1> 
+    </a>
+</div>
+
+<div class="learn">
+    <h1 class="theme learn-text">
+        Learn from scratch with our university endorsed agenda
+    </h1>
+</div>
+
+<div class="basic-a">
+    <div class=" theme attain-txt">
+        <h1>
+            Attain the basics used in different programing languages!
         </h1>
     </div>
-    <div class="basic-a">
-        <div class="attain-txt">
-            <h1>
-                Attain the basics used in different programing languages!
-            </h1>
-        </div>
-        <div class="img-tain">
-            <img class="img-attain" src="https://http2.mlstatic.com/D_NQ_NP_636119-MLA44029952524_112020-O.webp" alt="grano_cafe">
-        </div>
+    <div class="img-tain">
+        <img class="img-attain" src="https://http2.mlstatic.com/D_NQ_NP_636119-MLA44029952524_112020-O.webp" alt="grano_cafe">
     </div>
-    <div class="searching">
-        <h1 class="searching-text">Searching for an specific theme? <a href="#">Click here</a> </h1>
-        
+</div>
 
-    </div>
-    <footer class="footer lato-bold">
-      <a class="footer-text" href="#">Contact us</a>
-      <a  class="footer-text" href="#">Geocafe Docs</a>
-    </footer>
+<div class="theme searching">
+    <h1 class=" searching-text">Searching for an specific theme? <a href="#">Click here</a> </h1>
+</div>
 
-    
+<footer class="theme footer lato-bold">
+    <a class="footer-text" href="#">Contact us</a>
+    <a  class="footer-text" href="#">Geocafe Docs</a>
+</footer>
+
+<script>
+    const mode = document.getElementById('mode');
+    const dark = document.querySelectorAll('.theme');
+    mode.addEventListener('click', function() {
+        dark.forEach(function(elemento) {
+            elemento.classList.toggle('darkmode');
+        });
+    });
+</script>
 
 {% endblock body%}

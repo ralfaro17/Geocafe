@@ -9,22 +9,23 @@
 {%endblock head%}
 
 {% block body %}
+<button class="btn btn-basic active" id="mode">Mode</button>
 
-<div class="div-login">
-    <div class="login">
+<div class=" div-login">
+    <div class=" theme login">
         <h1 class="login-text lato-bold">Login</h1>
         <h3>{{ error_message }}</h3>
             <form  class="form" action="{% url 'course:login' %}" method="POST">
                 {% csrf_token %}
-                <div class="form-div">
-                    <label for="username-input" class="lato-bold label">Nickname</label>
-                    <input id="username-input" class="lato-bold input" type="text" placeholder="Enter your nickname" name="username" value="{{ previous_data.username }}" required>
+                <div class="theme form-div">
+                    <label for="username-input" class="theme lato-bold label">Nickname</label>
+                    <input id="username-input" class="theme lato-bold input" type="text" placeholder="Enter your nickname" name="username" value="{{ previous_data.username }}" required>
                 </div>
-                <div class="form-div">
-                    <label class="lato-bold label" for="password-input">Password</label>
-                    <input class="lato-bold input" id="password-input" type="password" placeholder="Write your password" name="password" value="{{ previous_data.password }}" required>
+                <div class="theme form-div">
+                    <label class="theme lato-bold label" for="password-input">Password</label>
+                    <input class="theme lato-bold input" id="password-input" type="password" placeholder="Write your password" name="password" value="{{ previous_data.password }}" required>
                 </div>
-                <div class="div-center">
+                <div class="theme div-center">
                 <button class="btn btn-basic " type="submit">Login</button>
                 </div>
                 
@@ -32,4 +33,13 @@
         <p class="lato-bold">Don't have an account? <a href="{% url 'course:register' %}">Sign up</a></p>
     </div>
 </div>
+<script>
+    const mode = document.getElementById('mode');
+    const dark = document.querySelectorAll('.theme');
+    mode.addEventListener('click', function() {
+        dark.forEach(function(elemento) {
+            elemento.classList.toggle('darkmode');
+        });
+    });
+</script>
 {% endblock body %}
