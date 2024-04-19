@@ -1,1 +1,381 @@
 /* ! write your styles for the base html here */
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+:root {
+  --G_purple: #4f4b6f;
+  --H_purple: #c2b4d2;
+  --L_purple: #8b76a4;
+  --LD_purple: #271e33;
+  --MD_purple: #251633;
+  --D_purple: #1e0d33;
+  --D_brown: #3e250c;
+  --D_background: #222026;
+  --L_gray: #dfdfdf;
+  --H_yellow: #d2d37b;
+  --Sb_yellow: #FEFFD6;
+  --ML_gray: #d9d9d9;
+  --C_brown:#584626 ;
+  --CD_brown:#3D332A;
+  --CMD_brown:#3E2914;
+  --L_brown:#76502F;
+  --b-cyan: #4F6C82;
+
+  --font-inter: "Inter", sans-serif;
+  --font-inika: "Inika", serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+
+.navbar.bg-color {
+  background-color:var(--L_brown) ; /* Cvambiar a tu color deseado */
+  font-family: var(--font-lato) ;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-weight: 500;
+}
+.link-nav{
+  display: grid;
+  grid-row: 1;
+}
+.nav-img{
+  max-width: 60%;
+  width: 200px;
+  max-height: 100%;
+  height: 25px;
+  margin-right: 20px;
+}
+.bar{
+    font-family: var(--font-lato);
+    font-size: 12px;
+    background-color: var(--H_yellow);
+    height: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.bar-text{
+    margin-left: 30px;
+}
+.master{
+    background-color: var(--C_brown);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+}
+.img-mster{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px 30px 25px 30px;
+}
+.img-master{
+    
+    max-width: 100%;
+    width: 480px;
+
+}
+.mcg{
+    font-family: var(--font-inter);
+    font-size: 32px;
+    font-weight: 400;
+  font-style: normal;
+    color: white;
+}
+.star-here{
+    width: 100%;
+    height: 100%;
+}
+.starhere{
+    width: 40%;  
+    background-color: var(--H_yellow); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.starhere-text{
+    font-family: var(--font-inter);
+    font-weight: 700;
+  font-style: normal;
+    color: black;
+    text-decoration: none;
+    font-size: 28px;
+
+}
+.learn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--b-cyan);
+    margin-top: 10vh;
+}
+.learn-text{
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-family: var(--font-inter);
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+}
+.basic-a{
+    display: flex;
+    justify-content: space-evenly;
+}
+.attain-txt{
+    height: 300px;
+    width: 300px;
+    font-family: var(--font-lato);
+    font-size: 700;
+    text-align: center;
+    background-color: var(--Sb_yellow);
+
+    margin: 25px 30px 25px 30px;
+    padding: 25px 30px 25px 30px;
+}
+.img-tain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 30px 25px 30px;
+}
+.img-attain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    width: 480px;
+}
+.searching{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: var(--CMD_brown);
+    border-radius: 15px;
+    margin: 25px 30px 25px 30px
+}
+.searching-text{
+    color: white;
+    text-align: center;
+}
+.btn.btn-basic{
+
+  border-radius: 8px;
+  background-color: white;
+  margin: 5px;
+  width: 100px;
+  font-family: var(--font-lato);
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  background-color: var(--L_brown);
+  height: 80px;
+
+}
+.footer-text{
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.div-center{
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+/* login-register */
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--ML_gray);
+    border-radius: 15px;
+    
+    max-width: 80%;
+    width: 500px;
+    
+    max-height: 50%;
+    height: 600px;
+
+    margin-top: 20px ;
+    margin-bottom: 20px;
+
+    padding-top: 20px ;
+    padding-bottom: 20px;
+}
+.login-text{
+    margin-top: 20px;
+    margin-bottom:10px ;
+}
+.div-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-div{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 35px;
+
+    
+}
+.label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+}
+.form{
+    width: 90%;
+}
+.input{
+    font-family: var(--font-lato);
+    font-weight: 400;
+    background-color:var(--Sb_yellow);
+    border-radius: 8px;
+    color: black;
+    width: 80%;
+    border: none;
+    padding-left: 20px;
+
+}
+.input-log{
+    font-family: var(--font-lato);
+    font-weight: 400;
+    background-color:var(--Sb_yellow);
+    border-radius: 8px;
+    color: black;
+    width: 80%;
+    border: none;
+}
+.form-div-log{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 35px;
+    width: 50%;
+
+    
+}
+/* register*/
+.input-res{
+    font-family: var(--font-lato);
+    font-weight: 400;
+    background-color:white;
+    border-radius: 8px;
+    color: black;
+    width: 80%;
+    border: none;
+    padding-left: 20px;
+}
+
+.log-name{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 15px 10px 15px;
+}
+.log-name-res{
+
+    margin: 10px 15px 10px 15px;
+}
+.label-res{
+    padding-left: 15px;
+    white-space: nowrap;
+}
+.inter-header {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.inika-regular {
+  font-family: "Inika", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inika-bold {
+  font-family: "Inika", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}/*# sourceMappingURL=styles.css.map */
+

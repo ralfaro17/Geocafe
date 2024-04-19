@@ -1,0 +1,144 @@
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+:root {
+  --G_purple: #4f4b6f;
+  --H_purple: #c2b4d2;
+  --L_purple: #8b76a4;
+  --LD_purple: #271e33;
+  --MD_purple: #251633;
+  --D_purple: #1e0d33;
+  --D_brown: #3e250c;
+  --D_background: #222026;
+  --L_gray: #dfdfdf;
+  --H_yellow: #d2d37b;
+  --ML_gray: #d9d9d9;
+  --C_brown:#584626 ;
+  --CD_brown:#3D332A;
+  --CMD_brown:#3E2914;
+  --L_brown:#76502F;
+
+  --font-inter: "Inter", sans-serif;
+  --font-inika: "Inika", serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+
+.navbar.bg-color {
+  background-color:var(--L_brown) ; /* Cvambiar a tu color deseado */
+  font-family: var(--font-lato) ;
+  font-optical-sizing: auto;
+  font-weight: 300;
+}
+
+.btn.btn-basic{
+
+  border-radius: 8px;
+  background-color: white;
+  margin: 5px;
+  width: 100px;
+  font-family: var(--font-lato);
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+.footer{
+
+  position: fixed;
+  bottom: 0;
+  background-color: var(--L_brown);
+  width: 100%;
+  height: 60px;
+}
+.div-center{
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+.btn-footer{
+  display: flex;
+  justify-content: flex-end;
+
+}
+  
+.inter-header {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.inika-regular {
+  font-family: "Inika", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inika-bold {
+  font-family: "Inika", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}/*# sourceMappingURL=styles.css.map */
