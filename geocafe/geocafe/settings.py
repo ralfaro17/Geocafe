@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ! place the following parameters inside the ALLOWED_HOST list when DEBUG is set to false --> '127.0.0.1', 'localhost'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # ! Vite config, don't touch
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True
+        "dev_mode": False
     }
 }
 
