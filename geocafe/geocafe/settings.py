@@ -99,23 +99,23 @@ WSGI_APPLICATION = 'geocafe.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # ! For if  you want to use PostgreSQL
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
     }
-} 
+}  """
 
 
 # ! For if you want to use SQLite
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-} """
+}
 
 
 # Password validation
