@@ -1,8 +1,9 @@
 {% extends "../course/base.html" %}
+{% load static %}
+{% load django_vite %}
 
 {% block title %} Index {% endblock title %}
 {% block head %}
-
 {% endblock head %}
 
 {% block body%}
@@ -19,8 +20,8 @@
         <h1>Computational</h1>
         <h1>Geometry</h1>
     </div>
-    <div class="img-mster">
-        <img class="img-master" src="https://st2.depositphotos.com/3725083/5484/i/450/depositphotos_54844903-stock-photo-3d-cube-on-white-background.jpg" alt="Cubo">
+    <div class="img-master">
+       
     </div>
 </div>
 
@@ -37,19 +38,23 @@
 </div>
 
 <div class="basic-a">
-    <div class=" theme attain-txt">
+    <div class=" theme attain-txt div-center">
         <h1>
             Attain the basics used in different programing languages!
         </h1>
     </div>
     <div class="img-tain">
-        <img class="img-attain" src="https://http2.mlstatic.com/D_NQ_NP_636119-MLA44029952524_112020-O.webp" alt="grano_cafe">
+        
     </div>
 </div>
 
 <div class="theme searching">
     <h1 class=" searching-text">Searching for an specific theme? <a href="">Click here</a> </h1>
 </div>
+
+{% vite_asset 'js/index-figure1.js' %}
+{% vite_asset 'js/index-figure2.js' %}
+
 
 <footer class="theme footer lato-bold">
     <a class="footer-text" href="">Contact us</a>
@@ -58,3 +63,4 @@
     
 
 {% endblock body%}
+
