@@ -35,8 +35,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # ! Vite config, don't touch
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True
-    }
+        "dev_mode": True    }
 }
 
 STATICFILES_DIRS = [
