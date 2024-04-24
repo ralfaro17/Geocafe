@@ -20,28 +20,28 @@
             {% csrf_token %}
             <div class="log-name">
                 <div class="form-div-log">
-                    <input id="first-name-input" class="theme input-res " type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="Enter your first name">
+                    <input id="first-name-input" class="theme input-res lato-bold " type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="First name">
                 </div>
                 <div class="form-div-log">
-                    <input id="last-name-input" class="theme input-res lato-bold" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Enter your last name">
+                    <input id="last-name-input" class="theme input-res lato-bold" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Last name">
                 </div>
                 <div class="form-div-log">
-                    <input id="username-input" class="theme input-res lato-bold" type="text" name="username" placeholder="Enter your nickname" value="{{ previous_data.username }}" required>            
+                    <input id="username-input" class="theme input-res lato-bold" type="text" name="username" placeholder="Nickname" value="{{ previous_data.username }}" required>            
                 </div>
                 
             </div>
             <div class="log-name-res">
                 <div class="theme form-div">
                     <label for="email-input"class="theme label-res lato-bold" >Email</label>
-                    <input id="email-input" class="input lato-bold" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
+                    <input id="email-input" class="theme input lato-bold" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
                 </div>
                 <div class="theme form-div">
                     <label for="password-input"class="theme label-res lato-bold" >Password</label>
-                    <input id="password-input" class="input lato-bold" type="password" name="password" placeholder="Write a password" value="{{ previous_data.password }}" required>
+                    <input id="password-input" class="theme input lato-bold" type="password" name="password" placeholder="Write a password" value="{{ previous_data.password }}" required>
                 </div>
                 <div class="theme form-div">
                     <label for="confirm-password-input" class="theme label-res lato-bold">Confirm password</label>
-                    <input id="confirm-password-input" class="input input-confir lato-bold" type="password" name="confirm_password" placeholder="Rewrite your password" value="{{ previous_data.confirm_password }}" required>
+                    <input id="confirm-password-input" class=" theme input input-confir lato-bold" type="password" name="confirm_password" placeholder="Rewrite your password" value="{{ previous_data.confirm_password }}" required>
                 </div>
 
                 

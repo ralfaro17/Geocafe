@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'course/css/base.css' %}"/>
-    <script src="{% static 'course/js/base.js' %%}"></script>
+    <script src="{% static 'course/js/base.js' %}"></script>
+    
     {% vite_asset 'course/js/styles.js' %}
     {% block head %} {% endblock head %}
   </head>
