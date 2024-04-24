@@ -1,4 +1,26 @@
 {
+  "_three.module-K0GUQBnC.js": {
+    "file": "assets/three.module-K0GUQBnC.js",
+    "name": "three.module"
+  },
+  "course/js/index-figure1.js": {
+    "file": "assets/figure1-D6Y0_uzx.js",
+    "name": "figure1",
+    "src": "course/js/index-figure1.js",
+    "isEntry": true,
+    "imports": [
+      "_three.module-K0GUQBnC.js"
+    ]
+  },
+  "course/js/index-figure2.js": {
+    "file": "assets/figure2-Bq8GNzwD.js",
+    "name": "figure2",
+    "src": "course/js/index-figure2.js",
+    "isEntry": true,
+    "imports": [
+      "_three.module-K0GUQBnC.js"
+    ]
+  },
   "course/js/register.js": {
     "file": "assets/main-jpG6W9xB.js",
     "name": "main",
