@@ -12,8 +12,10 @@
   --D_background_dark:#131313;
   --L_gray: #dfdfdf;
   --H_yellow: #d2d37b;
-  --Sb_yellow: #FEFFD6;
+  --SB-yellow:#FEFFD6;
+  --LW-yellow:#bfc09b;
   --ML_gray: #d9d9d9;
+  --l-gray:#ACACAC;
   --C_brown:#584626 ;
   --MD_brwon:#382614 ;
   --CD_brown:#3D332A;
@@ -64,7 +66,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 10vh;
 }
 .img-mster{
@@ -72,10 +74,18 @@
     justify-content: space-evenly;
     padding: 25px 30px 25px 30px;
 }
+canvas{
+  max-width: 100%;
+  width: 720px;
+  max-height: 100%;
+  height: 480px;
+  padding: 20px 10px 20px 10px;
+}
 .img-master{
     
     max-width: 100%;
     width: 480px;
+    max-height: 90%;
 
 }
 .mcg{
@@ -123,10 +133,12 @@
     font-weight: 700;
     font-style: normal;
     text-align: center;
+    width: 70%;
 }
 .basic-a{
     display: flex;
     justify-content: space-evenly;
+    margin: 10px 10px 0px 15px;
 }
 .attain-txt{
     height: 300px;
@@ -134,10 +146,7 @@
     font-family: var(--font-lato);
     font-size: 700;
     text-align: center;
-    background-color: var(--Sb_yellow);
-
-    margin: 25px 30px 25px 30px;
-    padding: 25px 30px 25px 30px;
+    background-color: var(--H_yellow);
 }
 .img-tain{
     display: flex;
@@ -195,6 +204,11 @@
   justify-content: center;
   align-items: center ;
 }
+/*-----------------*/
+form{
+padding-left: 15px;
+padding-right: 15px;
+}
 /* login-register */
 .login{
     display: flex;
@@ -248,7 +262,7 @@
 .input{
     font-family: var(--font-lato);
     font-weight: 400;
-    background-color:var(--Sb_yellow);
+    background-color:var(--SB-yellow);
     border-radius: 8px;
     color: black;
     width: 80%;
@@ -291,7 +305,8 @@
 .log-name{
     display: flex;
     flex-wrap: wrap;
-    margin: 10px 15px 10px 15px;
+    margin: 0px 0px 0px 15px;
+    width: 100%;
 }
 .log-name-res{
 
@@ -357,7 +372,6 @@ body.darkmode{
 }
 .darkmode.attain-txt{
     font-family: var(--font-lato);
-    background-color: var(--Sb_yellow);
     color: black;
 
 }
@@ -391,7 +405,7 @@ body.darkmode{
 .darkmode.input{
     font-family: var(--font-lato);
     font-weight: 400;
-    background-color:var(--Sb_yellow);
+    background-color:var(--LW-yellow);
     border-radius: 8px;
     color: black;
     width: 80%;
@@ -401,7 +415,7 @@ body.darkmode{
 }
 .darkmode.input-log{
     font-family: var(--font-lato);
-    background-color:var(--Sb_yellow);
+    background-color:var(--LW-yellow);
     color: black;
 }
 .form-div.darkmode{
@@ -413,10 +427,10 @@ body.darkmode{
   color: white;
 }
 .label-res.darkmode{
-  color: white;
+  color: var(--l-gray);
 }
 .label.darkmode{
-  color: white;
+  color: var(--L_gray);
 }
 
 /*/////////////////////////////////////////*/
@@ -500,3 +514,20 @@ body.darkmode{
   font-style: italic;
 }/*# sourceMappingURL=styles.css.map */
 
+/*mediaquery*/
+
+@media (max-width: 992px) {
+div.img-tain{
+  width: 300px;
+  height: 250px;
+
+}
+div.img-master{
+  width: 100%;
+  height: 215px;
+
+}
+.learn-text {
+  width: 100%;
+}
+  }
