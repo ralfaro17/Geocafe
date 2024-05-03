@@ -1,0 +1,27 @@
+{% extends "course/base.html" %}
+{% load static %}
+{% block title %} User account {% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'course/css/user_page.css' %}">
+{% endblock head %}
+{% block body %}
+    <section>
+        <div>
+            <h1> {{ user.username }} </h1>
+            <br>
+            <h3> {{ user.first_name }} {{ user.last_name }} </h3>
+            <br>
+
+            <br>
+            <p> {{ user.email }} </p>
+        </div>
+        <div>
+            <h1>Progress</h1>
+            <ul>
+                <li>foo</li>
+                <li>bar</li>
+                <li>baz</li>
+            </ul>
+        </div>
+    </section>
+{% endblock body %}

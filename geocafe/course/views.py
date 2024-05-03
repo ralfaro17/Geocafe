@@ -68,3 +68,10 @@ def register(request):
         return redirect(reverse("course:index"))
 
     return render(request, "course/register.html")
+
+def user_page(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+    return render(request, "course/user_page.html", {"user": user})
