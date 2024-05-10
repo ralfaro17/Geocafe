@@ -22,8 +22,8 @@ assetLoader.load(modelurl.href, function (gltf) {
     model = gltf.scene; // Almacena el modelo GLTF
     scene.add(model);
 
-    camera.position.z = 4.5;
-    camera.position.y = 2.5;
+    camera.position.z = 3.9;
+    camera.position.y = 2;
     camera.position.x = 0;
 
     // Encuentra la luz "Sun" dentro del modelo por su nombre
