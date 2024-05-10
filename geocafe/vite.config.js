@@ -12,6 +12,8 @@ export default defineConfig({
             input: {
                 "main": './src/course/js/register.js',
                 "styles": './src/course/js/styles.js',
+                "figure1": './src/course/js/index-figure1.js',
+                "figure2": './src/course/js/index-figure2.js',
             }
         }
     }

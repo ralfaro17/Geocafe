@@ -1,0 +1,52 @@
+:root {
+    --G_purple: #4f4b6f;
+    --H_purple: #c2b4d2;
+    --L_purple: #8b76a4;
+    --LD_purple: #271e33;
+    --MD_purple: #251633;
+    --D_purple: #1e0d33;
+    --D_brown: #3e250c;
+    --D_background: #1C1B20;
+    --D_background_dark:#131313;
+    --L_gray: #dfdfdf;
+    --H_yellow: #d2d37b;
+    --SB-yellow:#FEFFD6;
+    --LW-yellow:#bfc09b;
+    --ML_gray: #d9d9d9;
+    --l-gray:#ACACAC;
+    --C_brown:#584626 ;
+    --MD_brwon:#382614 ;
+    --CD_brown:#3D332A;
+    --CMD_brown:#3E2914;
+    --L_brown:#76502F;
+    --b-cyan: #4F6C82;
+    --font-inter: "Inter", sans-serif;
+    --font-inika: "Inika", serif;
+    --font-lato: "Lato", sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+section{
+    display: flex;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+section>div:first-child{
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    background-color: #CBBEA7;
+}
+
+section>div:last-child{
+    padding: 10px;
+    width: 70%;
+    height: 100%;
+    background-color: var(--SB-yellow);
+}
