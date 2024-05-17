@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'course/css/base.css' %}"/>
+    <link rel="stylesheet" href="{% static 'course/css/base.css' %}?{% now 'U' %}"/>
     <script src="{% static 'course/js/base.js' %}"></script>
     
     {% vite_asset 'course/js/styles.js' %}
@@ -38,6 +38,7 @@
               <a class="btn btn-basic active" href="{% url 'course:logout' %}"
                 >Logout</a
               >
+              <button class="btn btn-basic active" id="mode">Mode</button>
               {% else %}
               <a class="btn btn-basic active" href="{% url 'course:login' %}"
                 >Login</a

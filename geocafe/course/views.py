@@ -4,6 +4,7 @@ from django.http import Http404
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .models import Units, Topics, Badges, UserProgress
 
 # Create your views here.
 def index(request):
@@ -75,3 +76,21 @@ def user_page(request, username):
     except User.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, "course/user_page.html", {"user": user})
+
+def units(request):
+    try:
+        units = Units.objects.all()
+        topics = Topics.objects.all()
+    except:
+        raise Http404("Unexpected error")
+    return render(request, "course/units.html", {
+        "units": units,
+        "topics": topics,
+    })
+
+def load_topic(request, id):
+    try:
+        topic = Topics.objects.get(id=id)
+    except:
+        raise Http404("The topic does not exist")
+    return render(request, "course/topic.html", { "topic": topic })

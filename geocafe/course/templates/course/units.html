@@ -1,0 +1,15 @@
+{% extends "course/base.html" %}
+{% block title %} Units {% endblock title %}
+{% block body %}
+    <h1>Units</h1>
+    {% for unit in units %}
+        <div>
+            <h3> {{unit.name}} </h3>
+            {% for topic in topics %}
+                {% if topic.unit.name == unit.name %}
+                <a href="{% url topic 'topic.id' %}"><h5>{{ topic.name }}</h5></a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock body %}
