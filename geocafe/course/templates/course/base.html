@@ -13,6 +13,7 @@
     {% block head %} {% endblock head %}
   </head>
   <body class="theme">
+    {{ request.user.id|json_script:"user_id" }}
     <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
       <div class="container-fluid">
         <a class="navbar-brand lato-bold div-center " href="/"><img class="nav-img" src="{%static 'course/images/geocafe.png'%}" alt="GeoCafe"></a>
