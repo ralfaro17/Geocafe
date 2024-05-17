@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     mode.addEventListener('click', function() {
-        if (+theme.darkmode === 1 && user_id != null) {
+        theme = JSON.parse(localStorage.getItem(`user${user_id}Preferences`));
+        if (theme != null && +theme.darkmode === 1 && user_id != null) {
             localStorage.setItem(`user${user_id}Preferences`, JSON.stringify({'darkmode': 0}))
         } else {
             localStorage.setItem(`user${user_id}Preferences`, JSON.stringify({'darkmode': 1}))
