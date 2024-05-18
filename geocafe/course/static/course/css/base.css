@@ -529,10 +529,33 @@ div.img-master{
 .learn-text {
   width: 100%;
 }
+.content{
+
+  display: flex;
+  flex-direction: column;
+
+}
+.btn-right{
+
+}
   }
  @media (min-width: 991.98px){
   div.img-tain{
     width: 300px;
     height: 250px;
   
-  }}
+  }
+  .content{
+
+    display: flex;
+    flex-direction: row;
+  
+  }
+  .btn-right{
+
+    position: absolute;
+    right: 0;
+    padding-right: 15px;
+  }
+
+}
