@@ -31,22 +31,111 @@ body{
 
 section{
     display: flex;
-    height: 60%;
+    height: 75%;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 5rem;
+}
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-section>div:first-child{
-    text-align: center;
-    width: 30%;
-    height: 100%;
-    background-color: #CBBEA7;
-}
 
-section>div:last-child{
-    padding: 10px;
-    width: 70%;
-    height: 100%;
-    background-color: var(--SB-yellow);
+
+
+@media (max-width: 992px) {
+
+    section{
+        height: 100%;
+    }
+    section > div:first-child,
+    section > div:last-child {
+        box-sizing: border-box;
+        height: 100%;
+    }
+    section>div:first-child{
+        text-align: center;
+        width: 40%;
+        height: 100%;
+        background-color: #CBBEA7;
+        border-radius: 12px 0 0 12px; ;
+    }
+    
+    section>div:last-child{
+        font-size: 24px;
+        padding: 10px;
+        width: 60%;
+        height: 100%;
+        background-color: var(--SB-yellow);
+        border-radius: 0 12px 12px 0 ;
+    }
+    
+.img-users{
+    width: 100%;
+    height: 96%;
+    object-fit: contain;
+    border-radius: 100%;
+    padding: 20px;
 }
+section{
+    display: flex;
+    height: 75%;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.email.info{
+
+    font-size: 12px;
+
+    
+}
+.prog{
+    font-size: 14px;
+    
+    }
+    }
+     @media (min-width: 991.98px){
+        section{
+            height: 100%;
+        }
+        section > div:first-child,
+        section > div:last-child {
+            box-sizing: border-box;
+            height: 100%;
+        }
+        section>div:first-child{
+            text-align: center;
+            width: 30%;
+            height: 100%;
+            background-color: #CBBEA7;
+            border-radius: 12px 0 0 12px; ;
+        }
+        
+        section>div:last-child{
+            font-size: 24px;
+            padding: 30px;
+            width: 70%;
+            height: 100%;
+            background-color: var(--SB-yellow);
+            border-radius: 0 12px 12px 0 ;
+        }
+
+        .img-users{
+            width: 200px;
+            height: 96%;
+            object-fit: contain;
+            border-radius: 100%;
+            margin-top: 10px;
+        }
+        .prog{
+            font-size: 24px;
+            
+            }
+
+    }
