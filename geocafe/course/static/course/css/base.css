@@ -5,6 +5,7 @@
   --H_purple: #c2b4d2;
   --L_purple: #8b76a4;
   --LD_purple: #271e33;
+  --M_gray: #363635;
   --MD_purple: #251633;
   --D_purple: #1e0d33;
   --D_brown: #3e250c;
@@ -27,7 +28,9 @@
   --font-inika: "Inika", serif;
   --font-lato: "Lato", sans-serif;
 }
-
+.navbar-toggler {
+  background-color: white !important; 
+}
 .navbar.bg-color {
   background-color:var(--L_brown) ; /* Cvambiar a tu color deseado */
   font-family: var(--font-lato) ;
@@ -38,6 +41,18 @@
 .link-nav{
   display: grid;
   grid-row: 1;
+}
+.nav-link:hover
+{
+  color: black;
+  background-color: white;
+}
+.nav-link
+{
+  color: black;
+  border-radius: 10px;
+  margin: 5px;
+  
 }
 .nav-img{
   max-width: 60%;
@@ -183,8 +198,12 @@ canvas{
   font-family: var(--font-lato);
   font-weight: 700;
   font-style: normal;
-
 }
+.btn-basic:hover{
+  background-color: white !important;
+  color: black !important;
+}
+
 
 .footer{
     display: flex;
@@ -338,6 +357,7 @@ body.darkmode{
 }
 .nav-link.darkmode{
   color: white;
+  border-radius: 10px;
 }
 .darkmode.bar{
     font-family: var(--font-lato);
@@ -535,8 +555,19 @@ div.img-master{
   flex-direction: column;
 
 }
-.btn-right{
-
+.nav-link:hover
+{
+  color: black;
+  background-color: white;
+}
+.nav-link
+{
+  color: black;
+  border-radius: 10px;
+  margin: 5px;
+  width: 100px;
+  text-align: center;
+  
 }
   }
  @media (min-width: 991.98px){
