@@ -1,0 +1,13 @@
+<!-- templates/course/404.html -->
+{% extends "course/base.html" %}
+
+{% block title %}Página no encontrada{% endblock title %}
+
+{% block body %}
+    <h1>Página no encontrada</h1>
+    <p>Lo sentimos, pero la página que buscas no existe.</p>
+
+    <div class="img-404"></div>
+
+    {% vite_asset '/course/js/figure404.js' %}
+{% endblock body %}
