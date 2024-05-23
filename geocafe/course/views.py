@@ -94,3 +94,6 @@ def load_topic(request, id):
     except:
         raise Http404("The topic does not exist")
     return render(request, "course/topic.html", { "topic": topic })
+
+def error_404(request, exception):
+    return render(request, 'template/404.html', status=404)
