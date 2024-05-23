@@ -6,6 +6,7 @@
     --MD_purple: #251633;
     --D_purple: #1e0d33;
     --D_brown: #3e250c;
+    --M_gray: #363635;
     --D_background: #1C1B20;
     --D_background_dark:#131313;
     --L_gray: #dfdfdf;
@@ -45,6 +46,12 @@ section{
     box-sizing: border-box;
 }
 
+.user.darkmode{
+    background-color: var(--l-gray);
+}
+.prog.darkmode{
+    background-color: var(--LW-yellow);
+}
 
 
 

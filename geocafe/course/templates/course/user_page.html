@@ -5,8 +5,9 @@
     <link rel="stylesheet" href="{% static 'course/css/user_page.css' %}">
 {% endblock head %}
 {% block body %}
+{{ request.user.id|json_script:"user_id" }}
     <section class="theme">
-        <div class="user">
+        <div class="theme user">
             <div class="">
             <img src="{% static 'course/images/img-users.jpg' %}" alt="user" class="img-users">
             </div>
@@ -21,7 +22,7 @@
             <p class="email info"> {{ user.email }} </p>
             </div>
         </div>
-        <div class="prog">
+        <div class=" theme prog">
             <h1>Progress</h1>
             <hr>
             <ul>
