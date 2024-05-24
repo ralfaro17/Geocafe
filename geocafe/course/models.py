@@ -21,7 +21,7 @@ class Units(models.Model):
 class Topics(models.Model):
     unit = models.ForeignKey(Units, related_name='topic_unit', on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
-    content = models.CharField(max_length=2000)
+    content = models.TextField()
     
     def __str__(self):
         return f"{self.unit} {self.name} {self.content}" 
