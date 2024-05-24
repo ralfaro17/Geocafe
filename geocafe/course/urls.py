@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls import handler404
+from course.views import error_404
 from . import views
 
 app_name = "course"
@@ -12,3 +14,5 @@ urlpatterns = [
     path("topic/<int:id>", views.load_topic, name="topic"),
     path("accounts/<str:username>", views.user_page, name="user_page"),
 ]
+
+handler404 = 'course.views.error_404'

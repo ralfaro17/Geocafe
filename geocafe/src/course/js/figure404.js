@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-const modelurl = new URL('./models/cubo.gltf', import.meta.url);
+const modelurl = new URL('./models/404.gltf', import.meta.url);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 720 / 480, 0.1, 1000);
 let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "default" });
@@ -22,12 +22,12 @@ assetLoader.load(modelurl.href, function (gltf) {
     model = gltf.scene; // Almacena el modelo GLTF
     scene.add(model);
 
-    camera.position.z = 2;
-    camera.position.y = 0;
+    camera.position.z = 3.9;
+    camera.position.y = 2;
     camera.position.x = 0;
 
     // Encuentra la luz "Sun" dentro del modelo por su nombre
-    const nombreSun = 'Luzfrontal'; // Nombre de la luz que deseas modificar
+    const nombreSun = 'DirectionalLight'; // Nombre de la luz que deseas modificar
     let sun;
     model.traverse((child) => {
         if (child.isLight && child.name === nombreSun) {
@@ -35,23 +35,9 @@ assetLoader.load(modelurl.href, function (gltf) {
         }
     });
 
-    // Aplicar cambios a la luz si se encontró
+    // Aplicar cambios a la DirectionalLight si se encontró
     if (sun) {
         sun.intensity = 0.5; // Establecer la intensidad de la luz
-    } else {
-        console.warn('No se encontró una luz con el nombre especificado en el modelo GLTF.');
-    }
-
-    const nombreluz = 'Luzfrontal'; // Nombre de la luz que deseas modificar
-    let luz;
-    model.traverse((child) => {
-        if (child.isLight && child.name === nombreluz) {
-            luz = child;
-        }
-    });
-
-    if (luz) {
-        luz.intensity = 0.5; // Establecer la intensidad de la luz
     } else {
         console.warn('No se encontró una luz con el nombre especificado en el modelo GLTF.');
     }
@@ -60,7 +46,7 @@ assetLoader.load(modelurl.href, function (gltf) {
     console.error(error);
 });
 
-const imgMaster = document.querySelector('.img-master');
+const imgMaster = document.querySelector('.img-404');
 
 const renderToCanvas = () => {
     imgMaster.innerHTML = '';
@@ -68,7 +54,7 @@ const renderToCanvas = () => {
     animate();
 };
 const renderToCanvasInline = () => {
-    const imgMaster = document.querySelector('.img-master');
+    const imgMaster = document.querySelector('.img-404');
     const inlineCanvas = document.createElement('canvas');
     inlineCanvas.width = 720;
     inlineCanvas.height = 480;

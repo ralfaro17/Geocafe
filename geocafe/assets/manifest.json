@@ -1,4 +1,33 @@
 {
+  "_three.module-WUM44aPL.js": {
+    "file": "assets/three.module-WUM44aPL.js",
+    "name": "three.module"
+  },
+  "course/js/index-figure1.js": {
+    "file": "assets/figure1-CD6AAdRR.js",
+    "name": "figure1",
+    "src": "course/js/index-figure1.js",
+    "isEntry": true,
+    "imports": [
+      "_three.module-WUM44aPL.js"
+    ]
+  },
+  "course/js/index-figure2.js": {
+    "file": "assets/figure2-CbCNV-CW.js",
+    "name": "figure2",
+    "src": "course/js/index-figure2.js",
+    "isEntry": true,
+    "imports": [
+      "_three.module-WUM44aPL.js"
+    ],
+    "assets": [
+      "assets/grano-CHuzPYad.gltf"
+    ]
+  },
+  "course/js/models/grano.gltf": {
+    "file": "assets/grano-CHuzPYad.gltf",
+    "src": "course/js/models/grano.gltf"
+  },
   "course/js/register.js": {
     "file": "assets/main-jpG6W9xB.js",
     "name": "main",
