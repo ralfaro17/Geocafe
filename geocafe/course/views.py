@@ -60,6 +60,7 @@ def register(request):
         
         try:
             user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+            user_progress = UserProgress.objects.create(user=user, unit=1, topic=1)
         except Exception as e:
             return render(request, "course/register.html", {
                 "error_message": "Username already taken",

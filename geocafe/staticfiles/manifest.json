@@ -1,4 +1,56 @@
 {
+  "_GLTFLoader-sunIBhcO.js": {
+    "file": "assets/GLTFLoader-sunIBhcO.js",
+    "name": "GLTFLoader"
+  },
+  "course/js/figure404.js": {
+    "file": "assets/figure404-B8Jgz2Ol.js",
+    "name": "figure404",
+    "src": "course/js/figure404.js",
+    "isEntry": true,
+    "imports": [
+      "_GLTFLoader-sunIBhcO.js"
+    ],
+    "assets": [
+      "assets/404-H9x5gigk.gltf"
+    ]
+  },
+  "course/js/index-figure1.js": {
+    "file": "assets/figure1-IZ5vyAED.js",
+    "name": "figure1",
+    "src": "course/js/index-figure1.js",
+    "isEntry": true,
+    "imports": [
+      "_GLTFLoader-sunIBhcO.js"
+    ],
+    "assets": [
+      "assets/cubo-5MyQBuYU.gltf"
+    ]
+  },
+  "course/js/index-figure2.js": {
+    "file": "assets/figure2-DnFAWBnm.js",
+    "name": "figure2",
+    "src": "course/js/index-figure2.js",
+    "isEntry": true,
+    "imports": [
+      "_GLTFLoader-sunIBhcO.js"
+    ],
+    "assets": [
+      "assets/grano-CHuzPYad.gltf"
+    ]
+  },
+  "course/js/models/404.gltf": {
+    "file": "assets/404-H9x5gigk.gltf",
+    "src": "course/js/models/404.gltf"
+  },
+  "course/js/models/cubo.gltf": {
+    "file": "assets/cubo-5MyQBuYU.gltf",
+    "src": "course/js/models/cubo.gltf"
+  },
+  "course/js/models/grano.gltf": {
+    "file": "assets/grano-CHuzPYad.gltf",
+    "src": "course/js/models/grano.gltf"
+  },
   "course/js/register.js": {
     "file": "assets/main-jpG6W9xB.js",
     "name": "main",

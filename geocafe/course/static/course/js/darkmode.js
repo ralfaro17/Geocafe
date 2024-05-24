@@ -5,14 +5,14 @@ const user_id = JSON.parse(document.getElementById('user_id').textContent);
 let theme = JSON.parse(localStorage.getItem(`user${user_id}Preferences`));
 document.addEventListener("DOMContentLoaded", () => {
     const updateImage = () => {
-        if (+theme.darkmode === 1) {
-            nav_img.src = nav_img.getAttribute('data-light-src');
-        } else {
+        if (theme != null && +theme.darkmode === 1 && user_id != null) {
             nav_img.src = nav_img.getAttribute('data-dark-src');
+        } else {
+            nav_img.src = nav_img.getAttribute('data-light-src');
         }
     };
 
-    if(+theme.darkmode === 1){
+    if(theme != null && +theme.darkmode === 1 && user_id != null){
         
         dark.forEach(function(elemento) {
                 elemento.classList.toggle('darkmode');

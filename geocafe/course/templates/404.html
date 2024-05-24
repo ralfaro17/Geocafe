@@ -1,5 +1,6 @@
 <!-- templates/course/404.html -->
 {% extends "course/base.html" %}
+{% load django_vite %}
 
 {% block title %}Página no encontrada{% endblock title %}
 
@@ -9,5 +10,5 @@
 
     <div class="img-404"></div>
 
-    {% vite_asset '/course/js/figure404.js' %}
+    {% vite_asset 'course/js/figure404.js' %}
 {% endblock body %}

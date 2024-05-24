@@ -6,8 +6,8 @@
         <div>
             <h3> {{unit.name}} </h3>
             {% for topic in topics %}
-                {% if topic.unit.name == unit.name %}
-                <a href="{% url topic 'topic.id' %}"><h5>{{ topic.name }}</h5></a>
+                {% if topic.unit.id == unit.id %}
+                <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name }}</h5></a>
                 {% endif %}
             {% endfor %}
         </div>
