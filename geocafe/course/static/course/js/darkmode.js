@@ -5,23 +5,13 @@ const user_id = JSON.parse(document.getElementById('user_id').textContent);
 let theme = JSON.parse(localStorage.getItem(`user${user_id}Preferences`));
 document.addEventListener("DOMContentLoaded", () => {
     const updateImage = () => {
+        theme = JSON.parse(localStorage.getItem(`user${user_id}Preferences`));
         if (theme != null && +theme.darkmode === 1 && user_id != null) {
             nav_img.src = nav_img.getAttribute('data-dark-src');
         } else {
             nav_img.src = nav_img.getAttribute('data-light-src');
         }
     };
-
-    if(theme != null && +theme.darkmode === 1 && user_id != null){
-        
-        dark.forEach(function(elemento) {
-                elemento.classList.toggle('darkmode');
-            });
-            updateImage();
-        }else{
-            updateImage();
-        }
-    
 
     mode.addEventListener('click', function() {
         theme = JSON.parse(localStorage.getItem(`user${user_id}Preferences`));
@@ -35,4 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         updateImage();
     });
+
+    if(theme != null && +theme.darkmode === 1 && user_id != null){
+        dark.forEach(function(elemento) {
+                elemento.classList.toggle('darkmode');
+        });
+        updateImage();
+    }
 });
