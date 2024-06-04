@@ -24,7 +24,7 @@ def get_image(username):
     try:
         search = f"user_images/{username}.png"
         
-        # Verifica la existencia del objeto antes de generar la URL firmada
+        # Check the object existence before generating the signed URL
         if object_exist(search):
             url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': search}, ExpiresIn=10000)
             return (True, url)

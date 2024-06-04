@@ -5,10 +5,19 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import Units, Topics, Badges, UserProgress
+from .aws_s3  import get_image, delete_image, upload_image
+from .unit_helpers import Insertions
 
 # Create your views here.
 def index(request):
     return render(request, "course/index.html")
+
+def insertions(request):
+    if request.user.is_superuser:
+        Insertions.insert_unit_1()
+        Insertions.insert_topic_1_unit_1()
+
+    return redirect(reverse("course:index"))
 
 def login_view(request):
     if request.method == "POST":
@@ -74,9 +83,21 @@ def register(request):
 def user_page(request, username):
     try:
         user = User.objects.get(username=username)
+        try:
+            badges = Badges.objects.filter(user=user)
+        except:
+            badges = False
+        progress = UserProgress.objects.get(user=user)
+        units = Units.objects.filter(level__lte=progress.unit.level)
+        profile_picture = get_image(user.username)
     except User.DoesNotExist:
         raise Http404("User does not exist")
-    return render(request, "course/user_page.html", {"user": user})
+    return render(request, "course/user_page.html", {
+        "user": user,
+        "profile_picture": profile_picture[1] if profile_picture[0] else False,
+        "badges": badges,
+        "progress": units,
+        })
 
 def units(request):
     try:
@@ -96,5 +117,24 @@ def load_topic(request, id):
         raise Http404("The topic does not exist")
     return render(request, "course/topic.html", { "topic": topic })
 
-def error_404(request, exception):
-    return render(request, 'template/404.html', status=404)
+@login_required
+def account_settings(request):
+    profile_picture = get_image(request.user.username)
+    if request.method == "POST":
+        user = User.objects.get(id=request.user.id)
+        user.first_name = request.POST["first_name"]
+        user.last_name = request.POST["last_name"]
+        user.email = request.POST["email"]
+        if request.POST["password"]:
+            user.set_password(request.POST["password"])
+        # print(request.FILES) to see the submitted files
+        if "new_profile_picture" in request.FILES:
+            pfp = upload_image(user.username, request.FILES["new_profile_picture"])
+        user.save()
+        return redirect(reverse("course:user_page", args=[user.username]))
+    if profile_picture[0]:
+        return render(request, "course/account_settings.html", {
+            "profile_picture": profile_picture[1]
+        })
+    else:
+        return render(request, "course/account_settings.html")
