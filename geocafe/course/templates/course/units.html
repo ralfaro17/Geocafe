@@ -1,5 +1,11 @@
 {% extends "course/base.html" %}
+{% load static %}
+
 {% block title %} Units {% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'course/css/units.css' %}?{% now 'U' %}">
+{% endblock head %}
+
 {% block body %}
     <h1>Units</h1>
     {% for unit in units %}
@@ -11,5 +17,25 @@
                 {% endif %}
             {% endfor %}
         </div>
+
     {% endfor %}
+    <button type="button" class="collapsible">Units 1</button>
+    <div class="conten">
+        <a href="">topic 1</a>
+        <a href="">topic 2</a>
+        <a href="">topic</a>
+    </div>
+    <button type="button" class="collapsible">Units 2</button>
+    <div class="conten">
+        <a href="">topic 1</a>
+        <a href="">topic 2</a>
+        <a href="">topic</a>
+    </div>
+    <button type="button" class="collapsible">Units 3</button>
+    <div class="conten">
+        <a href="">topic 1</a>
+        <a href="">topic 2</a>
+        <a href="">topic</a>
+    </div>
+    <script src="{% static 'course/js/units.js' %}"></script>
 {% endblock body %}

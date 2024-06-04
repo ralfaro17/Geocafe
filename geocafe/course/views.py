@@ -96,5 +96,9 @@ def load_topic(request, id):
         raise Http404("The topic does not exist")
     return render(request, "course/topic.html", { "topic": topic })
 
+def quiz(request):
+    return render(request,"course/quiz.html")
+
+
 def error_404(request, exception):
     return render(request, 'template/404.html', status=404)
