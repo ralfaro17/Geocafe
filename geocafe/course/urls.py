@@ -13,6 +13,7 @@ urlpatterns = [
     path("units", views.units, name="units"),
     path("topic/<int:id>", views.load_topic, name="topic"),
     path("accounts/<str:username>", views.user_page, name="user_page"),
+    path("quiz", views.quiz, name="quiz"),
 ]
 
 handler404 = 'course.views.error_404'

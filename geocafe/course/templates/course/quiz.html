@@ -1,0 +1,72 @@
+{% extends "course/base.html" %}
+{% load static %}
+
+{% block title %}Quiz Time{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
+{% endblock head %}
+S
+{% block body %}
+
+<div class="topic-head">
+    <h1 class="div-center">Quiz</h1>
+    <h3 class="div-center"> Topic 1</h3>
+</div>
+<div class="quiz">
+    <div class="question">
+        <h4 class="quest">Question 1</h4>
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A: Answer</button>
+            <button class="answer" data-answer="2" data-correct="true">B: Answer</button>
+            <button class="answer" data-answer="3" data-correct="false">C: Answer</button>
+            <button class="answer" data-answer="4" data-correct="false">D: Answer</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question" style="display: none;">
+        <h4>Question 2</h4>
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="true">A: Answer</button>
+            <button class="answer" data-answer="2" data-correct="false">B: Answer</button>
+            <button class="answer" data-answer="3" data-correct="false">C: Answer</button>
+            <button class="answer" data-answer="4" data-correct="false">D: Answer</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question" style="display: none;">
+        <h4>Question 3</h4>
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A: Answer</button>
+            <button class="answer" data-answer="2" data-correct="false">B: Answer</button>
+            <button class="answer" data-answer="3" data-correct="true">C: Answer</button>
+            <button class="answer" data-answer="4" data-correct="false">D: Answer</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question" style="display: none;">
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        <div class="menu-final">
+            <button class="result">View to result</button>
+            <div style="display: flex;">
+                <button class="continue">Continue</button>
+                <button class="restart">restart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'course/js/quiz.js' %}"></script>
+{% endblock body %}
