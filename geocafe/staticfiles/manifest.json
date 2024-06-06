@@ -3,6 +3,26 @@
     "file": "assets/GLTFLoader-sunIBhcO.js",
     "name": "GLTFLoader"
   },
+  "_sweetalert2-!~{007}~.js": {
+    "file": "assets/sweetalert2-DMXr2t6I.css",
+    "src": "_sweetalert2-!~{007}~.js"
+  },
+  "_sweetalert2-D-qDQbiK.js": {
+    "file": "assets/sweetalert2-D-qDQbiK.js",
+    "name": "sweetalert2",
+    "css": [
+      "assets/sweetalert2-DMXr2t6I.css"
+    ]
+  },
+  "course/js/account_settings.js": {
+    "file": "assets/account_settings-mdL6Y0D0.js",
+    "name": "account_settings",
+    "src": "course/js/account_settings.js",
+    "isEntry": true,
+    "imports": [
+      "_sweetalert2-D-qDQbiK.js"
+    ]
+  },
   "course/js/figure404.js": {
     "file": "assets/figure404-B8Jgz2Ol.js",
     "name": "figure404",
@@ -52,12 +72,12 @@
     "src": "course/js/models/grano.gltf"
   },
   "course/js/register.js": {
-    "file": "assets/main-jpG6W9xB.js",
+    "file": "assets/main-CL4DQxMx.js",
     "name": "main",
     "src": "course/js/register.js",
     "isEntry": true,
-    "css": [
-      "assets/main-DMXr2t6I.css"
+    "imports": [
+      "_sweetalert2-D-qDQbiK.js"
     ]
   },
   "course/js/styles.js": {

@@ -18,7 +18,8 @@
   <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
     <div class="container-fluid">
       {% if user.is_authenticated %}
-      <span id="user_id" style="display: none;">{{ user.id }}</span>
+        {{ request.user.id|json_script:"user_id" }}
+        <span id="default-profile-picture-path" style="display: none;">{% static 'course/images/default-profile-picture.png' %}</span>
       {% endif %}
       <a class="navbar-brand lato-bold div-center" href="/">
         <img id="nav-img" class="nav-img" src="{% static 'course/images/geocafe.png' %}" alt="GeoCafe"
@@ -55,6 +56,16 @@
             <a class="theme nav-link" href="">Exercises</a>
             <a class="theme navbar-nav nav-link" href="">Test</a>
             <a class="theme navbar-nav nav-link" href="">Leaderboard</a>
+          </div>
+          <div class="btn-right">
+            {% if user.is_authenticated %}
+            <a class="btn btn-basic active" href="{% url 'course:logout' %}">Logout</a>
+            <button class="btn btn-basic active" id="mode">Mode</button>
+            <a class="btn btn-basic active" href="{% url 'course:account_settings' %}">Settings</a>
+            {% else %}
+            <a class="btn btn-basic active" href="{% url 'course:login' %}">Login</a>
+            <a class="btn btn-basic active" href="{% url 'course:register' %}">Register</a>
+            {% endif %}
           </div>
         </div>
       </div>

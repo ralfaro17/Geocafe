@@ -9,26 +9,35 @@
     <section class="theme">
         <div class="theme user">
             <div class="">
-            <img src="{% static 'course/images/img-users.jpg' %}" alt="user" class="img-users">
+            {% if profile_picture %}
+                <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture" class="img-users">
+            {% else %}
+                <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile-picture" id="profile-picture" class="img-users">
+            {% endif %}
             </div>
             <div class="info">
             <hr>
-            <h2 class="info"> {{ user.username }} </h2>
+            <h2 class="info"> {{ user_requested.username }} </h2>
             <hr>
-            <h3> {{ user.first_name }} {{ user.last_name }} </h3>
+            <h3> {{ user_requested.first_name }} {{ user_requested.last_name }} </h3>
             <hr>
-            <div class="logros">Convo1</div>
+            <div class="logros">
+                {% for badge in badges %}
+                    <img src="{{ badge.image.url }}" alt="{{ badge.name }}" class="badge-icon">
+                {% endfor %}
+                <img src="{% static 'course/images/test-badge.png' %}" alt="test-badge" class="badge-icon">
+            </div>
             <hr>
-            <p class="email info"> {{ user.email }} </p>
+            <p class="email info"> {{ user_requested.email }} </p>
             </div>
         </div>
         <div class=" theme prog">
             <h1>Progress</h1>
             <hr>
             <ul>
-                <li>foo</li>
-                <li>bar</li>
-                <li>baz</li>
+                {% for unit in progress %}
+                    <li>{{unit.name|safe}}</li>
+                {% endfor %}
             </ul>
         </div>
     </section>

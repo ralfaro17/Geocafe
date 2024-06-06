@@ -1,8 +1,9 @@
 {% extends "course/base.html" %}
-
+{% load static %}
 
 {% block title %} Login {% endblock title %}
 {% block head %}
+<script src="{% static 'course/js/login.js' %}"></script>
 {% endblock head %}
 
 {% block body %}
@@ -16,7 +17,7 @@
                 {% csrf_token %}
                 <div class="theme form-div">
                     <label for="username-input" class="theme lato-bold label">Nickname</label>
-                    <input id="username-input" class="theme lato-bold input" type="text" placeholder="Enter your nickname" name="username" value="{{ previous_data.username }}" required>
+                    <input id="username-input" class="theme lato-bold input" type="text" placeholder="Enter your nickname" name="username" value="{{ previous_data.username }}" required autocomplete="username">
                 </div>
                 <div class="theme form-div">
                     <label class="theme lato-bold label" for="password-input">Password</label>

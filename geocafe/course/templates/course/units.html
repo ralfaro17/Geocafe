@@ -1,6 +1,5 @@
 {% extends "course/base.html" %}
 {% load static %}
-
 {% block title %} Units {% endblock title %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'course/css/units.css' %}?{% now 'U' %}">
@@ -10,10 +9,10 @@
     <h1>Units</h1>
     {% for unit in units %}
         <div>
-            <h3> {{unit.name}} </h3>
+            <h3> {{unit.name|safe}} </h3>
             {% for topic in topics %}
                 {% if topic.unit.id == unit.id %}
-                <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name }}</h5></a>
+                <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
                 {% endif %}
             {% endfor %}
         </div>

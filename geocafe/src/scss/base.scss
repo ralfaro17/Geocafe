@@ -46,7 +46,9 @@
   font-style: normal;
 
 }
-
+button:disabled{
+  cursor: not-allowed;
+}
 .footer{
 
   position: fixed;
