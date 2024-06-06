@@ -26,6 +26,24 @@
           data-dark-src="{% static 'course/images/geocafe-darkmode.png' %}">
       </a>
 
+      <div class="btn-right">
+        {% if user.is_authenticated %}
+        
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">
+              <img id="nav-img" class="drop-img-users" src="{% static 'course/images/img-users.jpg' %}" alt="GeoCafe">
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+              <a class="btn btn-basic active lato-bold" href="{% url 'course:logout' %}">Logout</a>
+              <button class="btn btn-basic active" id="mode">Mode</button>
+          </div>
+
+          {% else %}
+          <a class="btn btn-basic active lato-bold" href="{% url 'course:login' %}">Login</a>
+          <a class="btn btn-basic active lato-bold" href="{% url 'course:register' %}">Register</a>
+          {% endif %}
+        </div>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,21 +56,13 @@
             <a class="theme navbar-nav nav-link" href="">Test</a>
             <a class="theme navbar-nav nav-link" href="">Leaderboard</a>
           </div>
-          <div class="btn-right">
-            {% if user.is_authenticated %}
-            <a class="btn btn-basic active lato-bold" href="{% url 'course:logout' %}">Logout</a>
-            <button class="btn btn-basic active" id="mode">Mode</button>
-            {% else %}
-            <a class="btn btn-basic active lato-bold" href="{% url 'course:login' %}">Login</a>
-            <a class="btn btn-basic active lato-bold" href="{% url 'course:register' %}">Register</a>
-            {% endif %}
-          </div>
         </div>
       </div>
     </div>
   </nav>
   {% block body %} {% endblock body %}
   <script src="{% static 'course/js/darkmode.js' %}"></script>
+  <script src="{% static 'course/js/dropdown.js' %}" ></script>
 </body>
 
 </html>
