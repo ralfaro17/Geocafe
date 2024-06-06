@@ -131,6 +131,10 @@ def load_topic(request, id):
         raise Http404("The topic does not exist")
     return render(request, "course/topic.html", { "topic": topic })
 
+def quiz(request):
+    return render(request,"course/quiz.html")
+
+
 @login_required
 def account_settings(request):
     if request.method == "POST":
