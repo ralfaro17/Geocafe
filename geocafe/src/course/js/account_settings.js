@@ -30,9 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.json())
                 .then(result => console.log(result))
             }
-            setTimeout(() => {
-                form.submit();
-            }, 500);
+            document.querySelector("button[type='submit']").disabled = true;
+            form.submit();
         }
     });
 
