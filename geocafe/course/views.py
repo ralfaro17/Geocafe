@@ -1,6 +1,7 @@
+import json
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -14,8 +15,9 @@ def index(request):
 
 def insertions(request):
     if request.user.is_superuser:
-        Insertions.insert_unit_1()
-        Insertions.insert_topic_1_unit_1()
+        Insertions.insert_unit_1_full()
+    else:
+        raise Http404("You are not authorized to view this page")
 
     return redirect(reverse("course:index"))
 
@@ -69,7 +71,9 @@ def register(request):
         
         try:
             user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-            user_progress = UserProgress.objects.create(user=user, unit=1, topic=1)
+            unit = Units.objects.get(level=1)
+            topic = Topics.objects.get(level=1)
+            user_progress = UserProgress.objects.create(user=user, unit=unit, topic=topic)
         except Exception as e:
             return render(request, "course/register.html", {
                 "error_message": "Username already taken",
@@ -93,18 +97,26 @@ def user_page(request, username):
     except User.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, "course/user_page.html", {
-        "user": user,
+        "user_requested": user,
         "profile_picture": profile_picture[1] if profile_picture[0] else False,
         "badges": badges,
         "progress": units,
         })
 
 def units(request):
-    try:
-        units = Units.objects.all()
-        topics = Topics.objects.all()
-    except:
-        raise Http404("Unexpected error")
+    if not request.user.is_authenticated:
+        try:
+            units = Units.objects.filter(level=1)
+            topics = Topics.objects.filter(level__lte=3)
+        except Exception as e:
+            raise Http404(f"Unexpected error: {e}")
+    else:
+        try:
+            progress = UserProgress.objects.get(user=request.user)
+            units = Units.objects.filter(level__lte=progress.unit.level)
+            topics = Topics.objects.filter(level__lte=progress.topic.level)
+        except Exception as e:
+            raise Http404(f"Unexpected error: {e}")
     return render(request, "course/units.html", {
         "units": units,
         "topics": topics,
@@ -127,8 +139,9 @@ def account_settings(request):
         user.email = request.POST["email"]
         if request.POST["password"]:
             user.set_password(request.POST["password"])
-        # print(request.FILES) to see the submitted files
+        print(request.FILES)
         if "new_profile_picture" in request.FILES:
+            print(request.FILES["new_profile_picture"])
             pfp = upload_image(user.username, request.FILES["new_profile_picture"])
         user.save()
         return redirect(reverse("course:user_page", args=[user.username]))
@@ -138,3 +151,14 @@ def account_settings(request):
         })
     else:
         return render(request, "course/account_settings.html")
+
+@login_required
+def delete_profile_picture(request):
+    if request.method == "POST":
+        action = delete_image(request.user.username)
+        if action[0]:
+            return JsonResponse({"message": action[1]}, status = 200)
+        else:
+            return JsonResponse({"message": action[1]}, status = 400)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)

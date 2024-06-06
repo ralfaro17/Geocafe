@@ -18,7 +18,8 @@
   <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
     <div class="container-fluid">
       {% if user.is_authenticated %}
-      <span id="user_id" style="display: none;">{{ user.id }}</span>
+        {{ request.user.id|json_script:"user_id" }}
+        <span id="default-profile-picture-path" style="display: none;">{% static 'course/images/default-profile-picture.png' %}</span>
       {% endif %}
       <a class="navbar-brand lato-bold div-center" href="/">
         <img id="nav-img" class="nav-img" src="{% static 'course/images/geocafe.png' %}" alt="GeoCafe"

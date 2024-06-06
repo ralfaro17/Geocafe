@@ -1,6 +1,10 @@
 {% extends "course/base.html" %}
+{% load static %}
 {% block title %} Topic {% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'course/css/topic.css' %}">
+{% endblock head %}
 {% block body %}
-    <h1>{{topic.name}}</h1>
-    <p>{{topic.content}}</p>
+    <h1>{{topic.name|safe}}</h1>
+    <p>{{topic.content|safe}}</p>
 {% endblock body %}

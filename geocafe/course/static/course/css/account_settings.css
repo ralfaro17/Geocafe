@@ -12,3 +12,15 @@ form > div{
 label, input{
     margin: 12px;
 }
+
+#profile-picture{
+    width: 80%;
+    height: 96%;
+    object-fit: contain;
+    border-radius: 100%;
+
+}
+
+#profile-picture-div{
+    width: 50%;
+}

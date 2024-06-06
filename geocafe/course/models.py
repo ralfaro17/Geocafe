@@ -12,8 +12,8 @@ class Badges(models.Model):
 
 
 class Units(models.Model):
-    name= models.CharField(max_length=64)
-    description = models.CharField(max_length=200)
+    name= models.TextField()
+    description = models.TextField()
     level = models.IntegerField(default=1, unique=True)
     
     def __str__(self):
@@ -21,7 +21,7 @@ class Units(models.Model):
 
 class Topics(models.Model):
     unit = models.ForeignKey(Units, related_name='topic_unit', on_delete=models.CASCADE)
-    name = models.CharField(max_length=64)
+    name = models.TextField()
     content = models.TextField()
     level = models.IntegerField(default=1)
     

@@ -12,7 +12,7 @@
     <h1>Settings</h1>
     <form action="{% url "course:account_settings" %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div>
+        <div id="profile-picture-div">
             {% if profile_picture %}
                 <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture">
             {% else %}
@@ -34,6 +34,7 @@
             <input type="password" name="password2" id="password2">
             <label for="new-profile-picture">Profile picture</label>
             <input type="file" name="new_profile_picture" id="new-profile-picture">
+            <button type="button" id="delete-profile-picture-button">Delete profile picture</button>
             <button type="submit">Save</button>
         </div>
     </form>
