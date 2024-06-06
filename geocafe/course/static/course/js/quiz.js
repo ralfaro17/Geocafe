@@ -1,22 +1,35 @@
-// static/course/js/quiz.js
-
 document.addEventListener("DOMContentLoaded", function() {
     var questions = document.querySelectorAll('.question');
     var currentQuestionIndex = 0;
     var answers = {};
     var delay = 2000; // 2 segundos de retraso antes de pasar a la siguiente pregunta
-    var correct,incorrect;
+    var correct = 0;
+    var incorrect = 0;
+
+    var feedbackContainer = document.createElement('div');
+    feedbackContainer.classList.add('feedback-global');
+    document.body.appendChild(feedbackContainer);
 
     function showQuestion(index) {
         questions.forEach((question, idx) => {
-            question.style.display = (idx === index) ? 'block' : 'none';
+            if (idx === index) {
+                question.classList.remove('hidden');
+                setTimeout(() => {
+                    question.classList.add('visible');
+                }, 10); // Un pequeño retraso para asegurar que la transición ocurra
+            } else {
+                question.classList.remove('visible');
+                question.classList.add('hidden');
+            }
         });
     }
 
     function showNextQuestion() {
         if (currentQuestionIndex < questions.length - 1) {
-            currentQuestionIndex++;
-            showQuestion(currentQuestionIndex);
+            setTimeout(() => {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }, 10); 
         } else {
             // Aquí puedes manejar lo que sucede cuando se completan todas las preguntas
             alert("Quiz completed!");
@@ -29,27 +42,33 @@ document.addEventListener("DOMContentLoaded", function() {
         var isCorrect = button.getAttribute('data-correct') === 'true';
         answers[questionIndex] = button.getAttribute('data-answer');
 
-        var feedback = question.querySelector('.feedback');
         var answerButtons = question.querySelectorAll('.answer');
 
         if (isCorrect) {
-            feedback.textContent = 'Correct!';
-            feedback.style.color = 'green';
+            feedbackContainer.textContent = 'Correct!';
+            feedbackContainer.style.backgroundColor = 'green';
             button.classList.add('correct');
             correct++;
         } else {
-            feedback.textContent = 'Incorrect.';
-            feedback.style.color = 'red';
+            feedbackContainer.textContent = 'Incorrect.';
+            feedbackContainer.style.backgroundColor = 'red';
             button.classList.add('incorrect');
             incorrect++;
         }
 
-        feedback.style.display = 'block';
+        feedbackContainer.classList.add('show');
+        answerButtons.forEach(btn => {
+            btn.disabled = true;
+        });
 
         setTimeout(function() {
-            feedback.style.display = 'none';
+            feedbackContainer.classList.remove('show');
             button.classList.remove('correct', 'incorrect');
-            showNextQuestion();
+            question.classList.remove('visible');
+            question.classList.add('hidden');
+            setTimeout(function() {
+                showNextQuestion();
+            }, 500);
         }, delay);
     }
 

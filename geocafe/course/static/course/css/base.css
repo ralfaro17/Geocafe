@@ -533,6 +533,44 @@ body.darkmode{
   font-weight: 900;
   font-style: italic;
 }/*# sourceMappingURL=styles.css.map */
+/*-----*/
+.dropbtn {
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.drop-img-users{
+  width: 45px;
+
+}
+
+.dropdown-content {
+
+  display: none;
+  background-color: var(--C_brown);
+  position: absolute;
+  right: 0;
+  width: 250px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: var(--H_yellow);
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+/*-----*/
 
 /*mediaquery*/
 
@@ -573,8 +611,14 @@ div.img-master{
   text-align: center;
   
 }
+.dropdown-content {
+
+  position: absolute;
+  right: 0;
+  width: 200px;
+}
   }
- @media (min-width: 991.98px){
+@media (min-width: 991.98px){
   div.img-tain{
     width: 300px;
     height: 250px;

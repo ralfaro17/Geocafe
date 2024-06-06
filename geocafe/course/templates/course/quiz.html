@@ -6,7 +6,7 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
 {% endblock head %}
-S
+
 {% block body %}
 
 <div class="topic-head">
@@ -14,7 +14,7 @@ S
     <h3 class="div-center"> Topic 1</h3>
 </div>
 <div class="quiz">
-    <div class="question">
+    <div class="question visible">
         <h4 class="quest">Question 1</h4>
         <div class="img-question div-center">
             <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
@@ -27,7 +27,7 @@ S
         </div>
         <div class="feedback" style="display: none;"></div>
     </div>
-    <div class="question" style="display: none;">
+    <div class="question hidden">
         <h4>Question 2</h4>
         <div class="img-question div-center">
             <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
@@ -41,7 +41,7 @@ S
         </div>
         <div class="feedback" style="display: none;"></div>
     </div>
-    <div class="question" style="display: none;">
+    <div class="question hidden">
         <h4>Question 3</h4>
         <div class="img-question div-center">
             <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
@@ -55,15 +55,15 @@ S
         </div>
         <div class="feedback" style="display: none;"></div>
     </div>
-    <div class="question" style="display: none;">
+    <div class="question hidden">
         <div class="img-question div-center">
             <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
         </div>
         <div class="menu-final">
-            <button class="result">View to result</button>
+            <button onclick="resultados()" class="quiz-result">View to result</button>
             <div style="display: flex;">
-                <button class="continue">Continue</button>
-                <button class="restart">restart</button>
+                <a class="quiz-continue div-center" href="/#">Continue</a> <!--a la siguiente unidad -->
+                <a class="quiz-restart div-center" href="/quiz">restart</a>
             </div>
         </div>
     </div>
