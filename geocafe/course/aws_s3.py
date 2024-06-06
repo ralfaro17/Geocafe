@@ -35,6 +35,18 @@ def get_image(username):
         return (False, f"An error ocurred while trying to get a URL for the image: {e}")
 
 
+# Obtains the default image URL for a user.
+def get_default_image():
+    try:
+        search = f"user_images/default-profile-picture.png"
+        
+        # Check the object existence before generating the signed URL
+        url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': search}, ExpiresIn=10000)
+        return (True, url)
+    except Exception as e:
+        return (False, f"An error ocurred while trying to get a URL for the image: {e}")
+
+
 # Deletes an image, this function is intended for account deletions.
 def delete_image(username):
     try:

@@ -4,9 +4,8 @@ from django.urls import reverse
 from django.http import Http404, JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from .models import Units, Topics, Badges, UserProgress
-from .aws_s3  import get_image, delete_image, upload_image
+from .models import Units, Topics, Badges, UserProgress, User
+from .aws_s3  import get_image, delete_image, upload_image, get_default_image
 from .unit_helpers import Insertions
 
 # Create your views here.
@@ -93,7 +92,10 @@ def user_page(request, username):
             badges = False
         progress = UserProgress.objects.get(user=user)
         units = Units.objects.filter(level__lte=progress.unit.level)
-        profile_picture = get_image(user.username)
+        if user.has_profile_picture:
+            profile_picture = get_image(user.username)
+        else:
+            profile_picture = False
     except User.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, "course/user_page.html", {
@@ -131,7 +133,6 @@ def load_topic(request, id):
 
 @login_required
 def account_settings(request):
-    profile_picture = get_image(request.user.username)
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)
         user.first_name = request.POST["first_name"]
@@ -139,12 +140,16 @@ def account_settings(request):
         user.email = request.POST["email"]
         if request.POST["password"]:
             user.set_password(request.POST["password"])
-        print(request.FILES)
         if "new_profile_picture" in request.FILES:
-            print(request.FILES["new_profile_picture"])
             pfp = upload_image(user.username, request.FILES["new_profile_picture"])
+            if pfp[0]:
+                user.has_profile_picture = True
         user.save()
         return redirect(reverse("course:user_page", args=[user.username]))
+    if request.user.has_profile_picture:
+        profile_picture = get_image(request.user.username)
+    else:
+        profile_picture = False
     if profile_picture[0]:
         return render(request, "course/account_settings.html", {
             "profile_picture": profile_picture[1]
@@ -155,6 +160,8 @@ def account_settings(request):
 @login_required
 def delete_profile_picture(request):
     if request.method == "POST":
+        user = User.objects.get(id=request.user.id)
+        user.has_profile_picture = False
         action = delete_image(request.user.username)
         if action[0]:
             return JsonResponse({"message": action[1]}, status = 200)

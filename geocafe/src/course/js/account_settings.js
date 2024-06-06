@@ -31,7 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(result => console.log(result))
             }
             document.querySelector("button[type='submit']").disabled = true;
-            form.submit();
+            setTimeout(() => {
+                form.submit();
+            }, 500);
         }
     });
 
