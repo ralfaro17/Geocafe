@@ -15,7 +15,7 @@
     ]
   },
   "course/js/account_settings.js": {
-    "file": "assets/account_settings-CNuKQVLo.js",
+    "file": "assets/account_settings-BdONcQQM.js",
     "name": "account_settings",
     "src": "course/js/account_settings.js",
     "isEntry": true,
@@ -72,7 +72,7 @@
     "src": "course/js/models/grano.gltf"
   },
   "course/js/register.js": {
-    "file": "assets/main-xhw6gqcN.js",
+    "file": "assets/main-CL4DQxMx.js",
     "name": "main",
     "src": "course/js/register.js",
     "isEntry": true,
