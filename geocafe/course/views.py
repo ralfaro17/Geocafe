@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.http import Http404, JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Units, Topics, Badges, UserProgress, User
+from .models import Units, Topics, Badges, User
 from .aws_s3  import get_image, delete_image, upload_image, get_default_image
 from .unit_helpers import Insertions
 
