@@ -68,16 +68,14 @@ def register(request):
                 "previous_data": data
             })
         
-        # try:
-        user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-        unit = Units.objects.get(level=1)
-        topic = Topics.objects.get(level=1)
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
             # user_progress = UserProgress.objects.create(user=user, unit=unit, topic=topic)
-        """ except Exception as e:
+        except Exception as e:
             return render(request, "course/register.html", {
                 "error_message": "Username already taken",
                 "previous_data": data, 
-            }) """
+            })
         login(request, user)
         return redirect(reverse("course:index"))
 
