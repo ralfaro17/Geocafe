@@ -6,31 +6,23 @@
 {% endblock head %}
 
 {% block body %}
-    <h1>Units</h1>
     {% for unit in units %}
-        <div>
-            <h3> {{unit.name|safe}} </h3>
-            {% for topic in topics %}
-                {% if topic.unit.id == unit.id %}
-                <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-    {% endfor %}
-    <button type="button" class="collapsible">Units 1</button>
+    <button type="button" class="collapsible"><h3> {{unit.name|safe}} </h3></button>
+    <div class="conten">
+        {% for topic in topics %}
+            {% if topic.unit.id == unit.id %}
+            <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}
+    <button type="button" class="collapsible"><h3>Units 2</h3></button>
     <div class="conten">
         <a href="">topic 1</a>
         <a href="">topic 2</a>
         <a href="">topic</a>
     </div>
-    <button type="button" class="collapsible">Units 2</button>
-    <div class="conten">
-        <a href="">topic 1</a>
-        <a href="">topic 2</a>
-        <a href="">topic</a>
-    </div>
-    <button type="button" class="collapsible">Units 3</button>
+    <button type="button" class="collapsible"><h3>Units 3</h3></button>
     <div class="conten">
         <a href="">topic 1</a>
         <a href="">topic 2</a>

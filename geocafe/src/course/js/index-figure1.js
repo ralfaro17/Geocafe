@@ -7,7 +7,7 @@ const modelurl = new URL('./models/cubo.gltf', import.meta.url);
 // Crear la escena y la cámara
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 720 / 480, 0.1, 1000);
-camera.position.set(0, 1, 5); // Establecer la posición de la cámara
+camera.position.set(0, 1, 4); // Establecer la posición de la cámara
 
 // Crear el renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "default" });
