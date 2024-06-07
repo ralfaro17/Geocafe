@@ -25,23 +25,10 @@ class Topics(models.Model):
         return f"{self.unit} {self.name} {self.content}" 
 
 
-def get_default_unit():
-    try:
-        return Units.objects.get(level=1)
-    except Exception as e:
-        return None
-
-def get_default_topic():
-    try:
-        return Topics.objects.get(level=1, unit=get_default_unit())
-    except Exception as e:
-        return None
-
-
 class User(AbstractUser):
     has_profile_picture = models.BooleanField(default=False)    
-    unit = models.ForeignKey(Units, related_name='user_unit', on_delete=models.CASCADE, default=get_default_unit())
-    topic = models.ForeignKey(Topics, related_name="user_topic", on_delete=models.CASCADE, default=get_default_topic())
+    unit = models.ForeignKey(Units, related_name='user_unit', on_delete=models.CASCADE, null=True, blank=True)
+    topic = models.ForeignKey(Topics, related_name="user_topic", on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Badges(models.Model):

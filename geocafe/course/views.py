@@ -68,16 +68,16 @@ def register(request):
                 "previous_data": data
             })
         
-        try:
-            user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-            unit = Units.objects.get(level=1)
-            topic = Topics.objects.get(level=1)
-            user_progress = UserProgress.objects.create(user=user, unit=unit, topic=topic)
-        except Exception as e:
+        # try:
+        user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+        unit = Units.objects.get(level=1)
+        topic = Topics.objects.get(level=1)
+            # user_progress = UserProgress.objects.create(user=user, unit=unit, topic=topic)
+        """ except Exception as e:
             return render(request, "course/register.html", {
                 "error_message": "Username already taken",
                 "previous_data": data, 
-            })
+            }) """
         login(request, user)
         return redirect(reverse("course:index"))
 
@@ -90,8 +90,9 @@ def user_page(request, username):
             badges = Badges.objects.filter(user=user)
         except:
             badges = False
-        progress = UserProgress.objects.get(user=user)
-        units = Units.objects.filter(level__lte=progress.unit.level)
+        # progress = UserProgress.objects.get(user=user)
+        user = User.objects.get(username=username)
+        units = Units.objects.filter(level__lte=user.unit.level)
         if user.has_profile_picture:
             profile_picture = get_image(user.username)
         else:
@@ -114,9 +115,10 @@ def units(request):
             raise Http404(f"Unexpected error: {e}")
     else:
         try:
-            progress = UserProgress.objects.get(user=request.user)
-            units = Units.objects.filter(level__lte=progress.unit.level)
-            topics = Topics.objects.filter(level__lte=progress.topic.level)
+            user = User.objects.get(id=request.user.id)
+            # progress = UserProgress.objects.get(user=request.user)
+            units = Units.objects.filter(level__lte=user.unit.level)
+            topics = Topics.objects.filter(level__lte=user.topic.level)
         except Exception as e:
             raise Http404(f"Unexpected error: {e}")
     return render(request, "course/units.html", {
