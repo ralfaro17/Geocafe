@@ -163,15 +163,15 @@ margin: 15px;
 .topic-head{
   background-color: var(--H_yellow);
 }
-.quest{
-  margin: 15px;
-}
 .answer{
   border-radius: 10px;
   border: none;
 }
 .quest{
   text-align: center;
+  font-size: 64px;
+  margin-bottom: 100px;
+  margin-top: 50px;
 }
 .answer{
   background-color: var(--L_gray);
@@ -276,6 +276,11 @@ a{
     .img-question {
       background-color: var(--G_purple);
     height: 270px;
+    }
+    .quest{
+      text-align: center;
+      font-size: 64px;
+      margin-bottom: 70px;
     }
   }
 @media (min-width: 991.98px){

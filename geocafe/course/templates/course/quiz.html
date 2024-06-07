@@ -16,9 +16,6 @@
 <div class="quiz">
     <div class="question visible">
         <h4 class="quest">Question 1</h4>
-        <div class="img-question div-center">
-            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
-        </div>
         <div class="options div-center">
             <button class="answer" data-answer="1" data-correct="false">A: Answer</button>
             <button class="answer" data-answer="2" data-correct="true">B: Answer</button>
@@ -28,11 +25,7 @@
         <div class="feedback" style="display: none;"></div>
     </div>
     <div class="question hidden">
-        <h4>Question 2</h4>
-        <div class="img-question div-center">
-            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
-        </div>
-        
+        <h4 class="quest">Question 2</h4>        
         <div class="options div-center">
             <button class="answer" data-answer="1" data-correct="true">A: Answer</button>
             <button class="answer" data-answer="2" data-correct="false">B: Answer</button>
@@ -42,11 +35,7 @@
         <div class="feedback" style="display: none;"></div>
     </div>
     <div class="question hidden">
-        <h4>Question 3</h4>
-        <div class="img-question div-center">
-            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
-        </div>
-        
+        <h4 class="quest">Question 3</h4>
         <div class="options div-center">
             <button class="answer" data-answer="1" data-correct="false">A: Answer</button>
             <button class="answer" data-answer="2" data-correct="false">B: Answer</button>
@@ -62,7 +51,7 @@
         <div class="menu-final">
             <button onclick="resultados()" class="quiz-result">View to result</button>
             <div style="display: flex;">
-                <a class="quiz-continue div-center" href="/#">Continue</a> <!--a la siguiente unidad -->
+                <a class="quiz-continue div-center" href="">Continue</a> <!--a la siguiente unidad -->
                 <a class="quiz-restart div-center" href="/quiz">restart</a>
             </div>
         </div>
