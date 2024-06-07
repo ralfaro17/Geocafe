@@ -94,7 +94,7 @@ def user_page(request, username):
         if user.has_profile_picture:
             profile_picture = get_image(user.username)
         else:
-            profile_picture = False
+            profile_picture = (False, "the image does not exist")
     except User.DoesNotExist:
         raise Http404("User does not exist")
     return render(request, "course/user_page.html", {
@@ -153,7 +153,7 @@ def account_settings(request):
     if request.user.has_profile_picture:
         profile_picture = get_image(request.user.username)
     else:
-        profile_picture = False
+        profile_picture = (False, "the image does not exist")
     if profile_picture[0]:
         return render(request, "course/account_settings.html", {
             "profile_picture": profile_picture[1]
