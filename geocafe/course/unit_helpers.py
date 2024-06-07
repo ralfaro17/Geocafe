@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from course.models import Units, Topics, Badges, UserProgress
+from course.models import Units, Topics, Badges
 
 # this file is not meant to be executed, it's just a helper file with the functions to insert the units and topics to the database, 
 # the code can be executed into a special view specifically for superusers, the vies is called "insertions" in the views.py file

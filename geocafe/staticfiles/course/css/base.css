@@ -106,10 +106,10 @@ canvas{
     max-height: 90%;
 
 }
-.mcg{
+h1 .mcg{
     font-family: var(--font-inter);
-    font-size: 32px;
-    font-weight: 400;
+    font-size: 50px;
+    font-weight: 600;
   font-style: normal;
     color: white;
 }
@@ -536,8 +536,59 @@ body.darkmode{
   font-weight: 900;
   font-style: italic;
 }/*# sourceMappingURL=styles.css.map */
+/*-----*/
+.dropbtn {
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.drop-img-users{
+  width: 45px;
+
+}
+
+.dropdown-content {
+  display: none;
+  background-color: var(--l-gray);
+  position: absolute;
+  right: 0;
+  width: 250px;
+  max-height: 0;
+  overflow: hidden;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.dropdown-content.show {
+  display: block; /* Asegura que esté visible cuando se aplica la clase */
+  opacity: 1;
+  max-height: 500px; /* Ajusta según el contenido */
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: var(--H_yellow);
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+/*-----*/
 
 /*mediaquery*/
+
+*{
+  font-family: var(--font-lato);
+}
 
 @media (max-width: 992px) {
 div.img-tain{
@@ -572,8 +623,14 @@ div.img-master{
   text-align: center;
   
 }
+.dropdown-content {
+
+  position: absolute;
+  left: 0;
+  width: 200px;
+}
   }
- @media (min-width: 991.98px){
+@media (min-width: 991.98px){
   div.img-tain{
     width: 300px;
     height: 250px;
