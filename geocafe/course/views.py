@@ -192,3 +192,16 @@ def delete_profile_picture(request):
             return JsonResponse({"message": action[1]}, status = 400)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+
+def increment_unit(request):
+    if request.method == "POST":
+        user = User.objects.get(id=request.user.id)
+        try:
+            user.unit = Units.objects.get(level=user.unit.level + 1)
+            user.save()
+            return JsonResponse({"message": "Unit incremented"}, status = 200)
+        except:
+            return JsonResponse({"message": "Unit not incremented"}, status = 400)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)

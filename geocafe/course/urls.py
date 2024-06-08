@@ -13,6 +13,7 @@ urlpatterns = [
     path("delete-profile-picture", views.delete_profile_picture, name="delete_profile_picture"),
     path("insertions", views.insertions, name="insertions"),
     path("quiz", views.quiz, name="quiz"),
+    path("increment-unit", views.increment_unit, name="increment_unit"),
     path("topic/<int:id>", views.load_topic, name="topic"),
     path("accounts/settings", views.account_settings, name="account_settings"),
     path("accounts/<str:username>", views.user_page, name="user_page"),
