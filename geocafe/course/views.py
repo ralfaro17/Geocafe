@@ -149,11 +149,19 @@ def quiz(request):
 def account_settings(request):
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)
-        user.first_name = request.POST["first_name"]
-        user.last_name = request.POST["last_name"]
-        user.email = request.POST["email"]
-        if request.POST["password"]:
-            user.set_password(request.POST["password"])
+        new_first_name = request.POST["first_name"]
+        new_last_name = request.POST["last_name"]
+        new_email = request.POST["email"]
+        new_password = request.POST["password"]
+        
+        if new_first_name and new_first_name != user.first_name:
+            user.first_name = new_first_name
+        if new_last_name and new_last_name != user.last_name:
+            user.last_name = new_last_name
+        if new_email and new_email != user.email:
+            user.email = new_email
+        if new_password:
+            user.set_password(new_password)
         if "new_profile_picture" in request.FILES:
             pfp = upload_image(user.username, request.FILES["new_profile_picture"])
             if pfp[0]:
