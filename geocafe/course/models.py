@@ -19,7 +19,6 @@ class Topics(models.Model):
     unit = models.ForeignKey(Units, related_name='topic_unit', on_delete=models.CASCADE)
     name = models.TextField()
     content = models.TextField()
-    level = models.IntegerField()
     
     def __str__(self):
         return f"{self.unit} {self.name} {self.content}" 
@@ -28,7 +27,6 @@ class Topics(models.Model):
 class User(AbstractUser):
     has_profile_picture = models.BooleanField(default=False)    
     unit = models.ForeignKey(Units, related_name='user_unit', on_delete=models.CASCADE, null=True, blank=True)
-    topic = models.ForeignKey(Topics, related_name="user_topic", on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Badges(models.Model):
@@ -46,9 +44,3 @@ def set_default_unit_and_topic(sender, instance, **kwargs):
             instance.unit = Units.objects.get(level=1)
         except ObjectDoesNotExist:
             instance.unit = None
-    
-    if instance.topic is None:
-        try:
-            instance.topic = Topics.objects.get(level=1, unit=instance.unit)
-        except ObjectDoesNotExist:
-            instance.topic = None

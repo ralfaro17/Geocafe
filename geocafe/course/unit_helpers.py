@@ -20,7 +20,7 @@ class Insertions:
 <p>To address this challenge, computational geometry swoops in, offering a toolbox of fundamental geometric solutions that these applications can leverage to build their programs.</p>
 
 <p><strong><em>Given our specific case of study we will try to center this course in the computer graphics field, looking for a smooth and accessible learning for most people.</em></strong></p>
-""", level=1)
+""")
         if created:
             print("The topic 1 was created successfully.")
         else:
@@ -55,7 +55,7 @@ class Insertions:
 <p>A geographic information system (GIS) can be seen as a system of hardware, software and procedures designed to support the capture, management, analysis, modeling and display of spatially referenced data related to geography.</p>
 
 <p>Computational geometry is used in all stages of a GIS data cycle. Geometric algorithms are used in the process of data correction (after data acquisition and input), data retrieval (through the use of queries), data analysis (map overlays and geostatistics), and data visualization (creation of maps and animations). For instance, line segment intersection by plane sweep solves map overlay (complete implementation of primitive maps), Voronoi diagrams are helpful in neighborhood analysis (analysis of relationships between locations), Delaunay triangulations are widely used for terrain modeling, and geometric data structures help with efficient spatial indexing in large spatial data sets.</p>
-""", level=2)
+""")
         if created:
             print("The topic 2 was created successfully.")
         else:
@@ -84,7 +84,7 @@ class Insertions:
 <p><em>Something to note is that there are some ways to approximate curved objects, something that serves as a hoop to solve a lot of problems without having to resolve numerical issues.</em></p>
 
 <p><strong><em>Emphasis on low-dimensional spaces:</em></strong> Computational geometry has focused mainly on 2D problems, and 3D problems to a limited extent. This makes most of the problems used in computational geometry easy to visualize but limits the solving of hard 3D problems and puts out of the question higher dimensional problems.</p>
-""", level=3)
+""")
         if created:
             print("The topic 3 was created successfully.")
         else:
