@@ -9,10 +9,8 @@
     {% for unit in units %}
     <button type="button" class="collapsible"><h3> {{unit.name|safe}} </h3></button>
     <div class="conten">
-        {% for topic in topics %}
-            {% if topic.unit.id == unit.id %}
+        {% for topic in unit.topic_unit.all %}
             <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
-            {% endif %}
         {% endfor %}
     </div>
 {% endfor %}
