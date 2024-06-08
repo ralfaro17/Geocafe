@@ -16,6 +16,7 @@ export default defineConfig({
                 "figure2": './src/course/js/index-figure2.js',
                 "figure404": './src/course/js/figure404.js',
                 "account_settings": './src/course/js/account_settings.js',
+                "increment_unit": './src/course/js/increment_unit.js',
             }
         }
     }
