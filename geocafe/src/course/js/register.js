@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if(password === confirm_password){
             form.submit()
+            document.querySelector("button[type='submit']").disabled = true;
         }
         else{
             Swal.fire({

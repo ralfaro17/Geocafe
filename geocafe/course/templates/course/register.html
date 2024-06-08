@@ -11,7 +11,6 @@
 
 {% block body %}
 
-<button class="btn btn-basic active" id="mode">Mode</button>
 <div class="theme div-login">
     <div class="theme login">
         <h1>Sign in</h1>
@@ -20,20 +19,20 @@
             {% csrf_token %}
             <div class="log-name">
                 <div class="form-div-log">
-                    <input id="first-name-input" class="theme input-res lato-bold " type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="First name">
+                    <input id="first-name-input" class="theme input-res lato-bold " type="text" name="first_name" value="{{ previous_data.first_name }}" placeholder="First name" autocomplete="given-name">
                 </div>
                 <div class="form-div-log">
                     <input id="last-name-input" class="theme input-res lato-bold" type="text" name="last_name" value="{{ previous_data.last_name }}" placeholder="Last name">
                 </div>
                 <div class="form-div-log">
-                    <input id="username-input" class="theme input-res lato-bold" type="text" name="username" placeholder="Nickname" value="{{ previous_data.username }}" required>            
+                    <input id="username-input" class="theme input-res lato-bold" type="text" name="username" placeholder="Nickname" value="{{ previous_data.username }}" required autocomplete="username">            
                 </div>
                 
             </div>
             <div class="log-name-res">
                 <div class="theme form-div">
                     <label for="email-input"class="theme label-res lato-bold" >Email</label>
-                    <input id="email-input" class="theme input lato-bold" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}">
+                    <input id="email-input" class="theme input lato-bold" type="email" name="email" placeholder="Enter your email" value="{{ previous_data.email }}" autocomplete="email">
                 </div>
                 <div class="theme form-div">
                     <label for="password-input"class="theme label-res lato-bold" >Password</label>
