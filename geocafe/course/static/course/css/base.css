@@ -539,6 +539,7 @@ body.darkmode{
 /*-----*/
 .dropbtn {
   border: none;
+  background-color: transparent;
 }
 
 .dropdown {
@@ -547,10 +548,33 @@ body.darkmode{
 }
 .drop-img-users{
   width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: white;
 
 }
+.btn-drop{
+  background-color: var(--l-gray);
+  color: white;
+  border: none;
+  width: 150px;
+  height: 45px;
+  border-radius: 15px;
 
+}
+.btn-drop:hover{
+  background-color: white;
+  color: black;
+
+}
+.drop-options{
+  display:grid;
+  width: 100%;
+  margin-left: 15px;
+  padding-top: 15px;
+}
 .dropdown-content {
+  border-radius: 15px 0 0 15px;
   display: none;
   background-color: var(--l-gray);
   position: absolute;
@@ -568,15 +592,47 @@ body.darkmode{
   display: block; /* Asegura que esté visible cuando se aplica la clase */
   opacity: 1;
   max-height: 500px; /* Ajusta según el contenido */
+  padding-bottom: 10px;
+}
+.text-drop{
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100px;
+  margin-top: 11px;
+}
+.fname{
+  text-align: left;
+  font-weight: 700;
+  height: 10px;
+}
+.Crreo{
+text-align: left; ;
+font-size: small;
+
+}
+.drop-icon img {
+  margin-right: 8px;
+  max-width: 30px; /* Ajusta según sea necesario */
+  max-height: 30px; /* Ajusta según sea necesario */
+}
+
+.btn-drop span {
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 }
 
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  margin-left: 15px;
+  padding-top: 10px;
+  padding-left: 5px;
+  height: 45px;
   text-decoration: none;
   display: block;
-  background-color: var(--H_yellow);
+  background-color: var(--l-gray);
 }
 
 .dropdown a:hover {background-color: #ddd;}

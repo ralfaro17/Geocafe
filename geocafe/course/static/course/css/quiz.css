@@ -201,21 +201,25 @@ a{
   flex-direction: column;
   margin-top: 10px;
 
+
 }
 .quiz-result{
   border-radius: 10px;
   border: none;
   background-color: var(--L_gray);
-  width: 250px;
+  width: 35%;
   height: 50px;
   margin-top: 15px;
 
+}
+.hola{
+  width: 100%;
 }
 .quiz-continue{
   border-radius: 10px;
   border: none;
   background-color: var(--L_gray);
-  width: 120px;
+  width: 100%;
   height: 50px;
   margin-right: 5px;
   margin-top: 5px;
@@ -228,7 +232,7 @@ a{
   border-radius: 10px;
   border: none;
   background-color: var(--L_gray);
-  width: 120px;
+  width: 100%;
   height: 50px;
   margin-top: 5px;
   margin-left: 5px;
@@ -262,6 +266,47 @@ a{
   transform: translateY(0);
 }
 
+/* Modal styles */
+.modal {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Close button styles */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 
 @media (max-width: 992px) {
   .options {
@@ -274,13 +319,31 @@ a{
     margin: 15px;
     }
     .img-question {
-      background-color: var(--G_purple);
     height: 270px;
     }
     .quest{
       text-align: center;
       font-size: 64px;
       margin-bottom: 70px;
+    }
+    .menu-final{
+      width: 100%;
+    }
+    .quiz-result{
+      height: 50px;
+      width: 70%;
+    }
+    .quiz-restart{
+      height: 50px;
+      width: 100%;
+
+    }
+    .quiz-continue{
+      height: 50px;
+      width: 100%;
+    }
+    .hola{
+      width: 70%;
     }
   }
 @media (min-width: 991.98px){
@@ -296,7 +359,10 @@ a{
     margin: 15px;
     }
     .img-question {
-      background-color: var(--G_purple);
+      color: black;
 
+    }
+    .hola{
+      width: 35%;
     }
   }
