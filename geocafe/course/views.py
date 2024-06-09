@@ -205,3 +205,7 @@ def increment_unit(request):
             return JsonResponse({"message": "Unit not incremented"}, status = 400)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+
+def dos_test(request):
+    return render(request, "course/dos_test.html")
