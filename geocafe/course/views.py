@@ -141,6 +141,7 @@ def load_topic(request, id):
     return render(request, "course/topic.html", { "topic": topic })
 
 
+@login_required
 def quiz(request):
     return render(request,"course/quiz.html")
 
@@ -205,3 +206,7 @@ def increment_unit(request):
             return JsonResponse({"message": "Unit not incremented"}, status = 400)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+
+def dos_test(request):
+    return render(request, "course/dos_test.html")
