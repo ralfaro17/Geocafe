@@ -268,6 +268,7 @@ a{
 
 /* Modal styles */
 .modal {
+    color: black;
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
@@ -278,6 +279,25 @@ a{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     z-index: 1000; /* Asegura que el modal esté encima de otros elementos */
+}
+ul{
+  list-style-type: none;
+
+}
+.modal-result{
+  display: flex;
+}
+.question-modal-text{
+  background-color: darkgray;
+  width: 20%;
+  height: 40px;
+    border-radius: 10px;
+}
+.resut-modal-text{
+  background-color: darkgray;
+  width: 15%;
+  height: 40px;
+
 }
 
 .modal-content {
