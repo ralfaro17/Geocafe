@@ -4,7 +4,7 @@
 {% block title %}Quiz Time{% endblock title %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
+<link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
 {% endblock head %}
 
 {% block body %}
@@ -25,7 +25,7 @@
         <div class="feedback" style="display: none;"></div>
     </div>
     <div class="question hidden">
-        <h4 class="quest">Question 2</h4>        
+        <h4 class="quest">Question 2</h4>
         <div class="options div-center">
             <button class="answer" data-answer="1" data-correct="true">A: Answer</button>
             <button class="answer" data-answer="2" data-correct="false">B: Answer</button>
@@ -49,13 +49,35 @@
             <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
         </div>
         <div class="menu-final">
-            <button onclick="resultados()" class="quiz-result">View to result</button>
-            <div style="display: flex;">
-                <a class="quiz-continue div-center" href="">Continue</a> <!--a la siguiente unidad -->
-                <a class="quiz-restart div-center" href="/quiz">restart</a>
+            <button id="btn-result" class="quiz-result">Result</button>
+            <div class="hola" style="display: flex;">
+                <!-- Buttons to Open the Modals -->
+                <!-- <a href="/units" id="btn-continue" class="quiz-continue div-center">Continue</a> -->
+                <div id="btn-continue" class="quiz-continue div-center"></div>
+                <a href="/quiz" id="btn-restart" class="quiz-restart div-center">Restart</a>
+
+                <!-- The Result Modal -->
+                <div id="result-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">Result of the answer</h5>
+                        <p>This is the result</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
+                <!-- MESSAGE SAD :C -->
+                <div id="continue-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">IM Sorry :C</h5>
+                        <p>hacertaste menos de la mitad de las preguntas</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="{% static 'course/js/quiz.js' %}"></script>
-{% endblock body %}
+
+
+    <script src="{% static 'course/js/quiz.js' %}"></script>
+    {% endblock body %}
