@@ -1,9 +1,9 @@
-var modalResult = document.getElementById("result-modal");
-var btnResult = document.getElementById("btn-result");
-var correct = 0;
+let modalResult = document.getElementById("result-modal");
+let btnResult = document.getElementById("btn-result");
+let correct = 0;
 
-var btnContinueDiv = document.getElementById("btn-continue");
-var span = document.getElementsByClassName("close")[0];
+let btnContinueDiv = document.getElementById("btn-continue");
+let span = document.getElementsByClassName("close")[0];
 
 console.log("Modal Result:", modalResult);
 console.log("Button Result:", btnResult);
@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var currentQuestionIndex = 0;
     var answers = {};
     var delay = 2000; // 2 segundos de retraso antes de pasar a la siguiente pregunta
-    var correct = 0;
     var incorrect = 0;
 
     var feedbackContainer = document.createElement('div');
@@ -44,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 question.classList.add('hidden');
             }
         });
+        submitQuiz();
     }
 
     function showNextQuestion() {
@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modalResult.style.display = "flex";
             displayResults(); // Muestra los resultados en el modal
         }
-
     }
 
     function showSadMessageModal() {
@@ -193,19 +192,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function submitQuiz() {
-        var totalQuestions = questions.length;
-        var correctPercentage = (correct / (totalQuestions - 1)) * 100;
-
         // Limpiar el contenido previo de btnContinueDiv antes de agregar nuevos botones
         btnContinueDiv.innerHTML = "";
 
-        var totalQuestions = questions.length;
-        var correctPercentage = (correct / totalQuestions) * 100;
+        totalQuestions = questions.length - 1;
+        correctPercentage = (correct / totalQuestions) * 100;
+        console.log(`correct value: ${correct}`)
         console.log("El porcentaje de respuestas correctas es: " + correctPercentage);
 
         if (correctPercentage > 50) {
             // Si el porcentaje de respuestas correctas es mayor al 50%, mostrar el botón de continuar
-            var continueLink = document.createElement("a");
+            let continueLink = document.createElement("a");
             continueLink.href = "{% url 'course:account_settings' %}";
             continueLink.textContent = "Continue";
             continueLink.classList.add("quiz-continue", "div-center");
@@ -213,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
             btnContinueDiv.appendChild(continueLink);
         } else {
             // Si el porcentaje de respuestas correctas es menor o igual al 50%, mostrar el botón de mensaje "IM Sorry :C"
-            var sadModalButton = document.createElement("button");
+            let sadModalButton = document.createElement("button");
             sadModalButton.textContent = "No pasa";
             sadModalButton.addEventListener("click", function () {
                 // Cuando se hace clic en el botón "No pasa", mostrar el modal de mensaje "IM Sorry :C"
@@ -226,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Llama a submitQuiz después de haber respondido todas las preguntas
-    submitQuiz();
 
 /* bugs:
     llevo contador que me indica las question correcta y ese valor dentro la funcion submitquiz()
