@@ -29,7 +29,7 @@ def get_image(username):
             url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': search}, ExpiresIn=3600)
             return (True, url)
         else:
-            return (False, "The image does not exist.")
+            return get_default_image()
 
     except Exception as e:
         return (False, f"An error ocurred while trying to get a URL for the image: {e}")
@@ -50,7 +50,6 @@ def get_default_image():
 # Deletes an image, this function is intended for account deletions.
 def delete_image(username):
     try:
-        s3 = boto3.client('s3', aws_access_key_id=os.getenv("AMAZONS3_API"), aws_secret_access_key=os.getenv("AMAZONS3_KEY"), config=Config(signature_version='s3v4', region_name=os.getenv("BUCKET_REGION")))
         object = f"user_images/{username}.png"
         s3.delete_object(Bucket=os.getenv("BUCKET"), Key=object)
         return (True, "The image was deleted successfully.")
@@ -69,3 +68,73 @@ def upload_image(username, imagen):
     
     except Exception as e:
         return (False, f"An error ocurred while uploading the image: {e}")
+
+
+# Obtains a list of files inside a user's folder.
+def get_files(username):
+    try:
+        search = f"user_files/{username}/"
+        
+        result = s3.list_objects_v2(Bucket=os.getenv("BUCKET"), Prefix=search)
+        
+        files = [obj['Key'] for obj in result.get('Contents', [])]
+        
+        return(True, files)
+
+    except Exception as e:
+        return (False, f"An error ocurred while trying to get the files of {username}: {e}")
+
+
+# returns a presigned url of the file
+def get_file(username, filename):
+    try:
+        object = f"user_files/{username}/{filename}.c"
+        if object_exist(object):
+            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': object}, ExpiresIn=3600)
+            return (True, url)
+        return (True, "The image was deleted successfully.")
+    
+    except Exception as e:
+        return (False, f"An error ocurred while deleting the image: {e}")
+
+
+
+# Deletes a file
+def delete_file(username, filename):
+    try:
+        object = f"user_files/{username}/{filename}.c"
+        s3.delete_object(Bucket=os.getenv("BUCKET"), Key=object)
+        return (True, "The image was deleted successfully.")
+    
+    except Exception as e:
+        return (False, f"An error ocurred while deleting the image: {e}")
+
+
+# Deletes all files inside a user's folder.
+def delete_files(username):
+    try:
+        object = f"user_files/{username}/"
+        
+        files = get_files(username)
+        
+        if files[0]:
+            for file in files[1]:
+                print(file)
+                s3.delete_object(Bucket=os.getenv("BUCKET"), Key=file)
+        
+        return (True, "The files were deleted successfully.")
+    
+    except Exception as e:
+        return (False, f"An error ocurred while deleting the files: {e}")
+
+
+# Returns the URL of a file to the client after uploading it.
+def upload_file(username, file, file_name):
+    try:
+        object_key = f"user_files/{username}/{file_name}.c"
+        s3.upload_fileobj(file, os.getenv("BUCKET"), object_key)
+
+        return (True, f"The file was uploaded successfully to {object_key}")
+    
+    except Exception as e:
+        return (False, f"An error ocurred while uploading the file: {e}")

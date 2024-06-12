@@ -542,6 +542,10 @@ body.darkmode{
   background-color: transparent;
 }
 
+#profile-picture{
+  display: none;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -551,6 +555,7 @@ body.darkmode{
   height: 45px;
   border-radius: 50%;
   background-color: white;
+  display:none;
 
 }
 .btn-drop{

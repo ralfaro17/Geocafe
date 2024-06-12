@@ -7,9 +7,11 @@ import { getUserData, isPresignedUrlExpired, getUserId, loadProfilePicture } fro
 document.addEventListener("DOMContentLoaded", () => { 
     // this loads the profile picture of the user into the profile picture element
     const user_id = getUserId();
-    document.querySelector('#profile-picture').src = getUserData(user_id)?.profilePicture;
-    const url = new URL(document.querySelector('#profile-picture').src);
-    loadProfilePicture(url, document.querySelector('#profile-picture'), user_id);
+    const profilePictureImage = document.querySelector('#profile-picture')
+    profilePictureImage.src = getUserData(user_id)?.profilePicture;
+    const url = new URL(profilePictureImage.src);
+    loadProfilePicture(url, profilePictureImage, user_id);
+    profilePictureImage.style.display = "block";
 
 
     // this is the logic for the form
@@ -42,9 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             }
             document.querySelector("button[type='submit']").disabled = true;
-            setTimeout(() => {
-                form.submit();
-            }, 500);
+            form.submit();
         }
     });
 

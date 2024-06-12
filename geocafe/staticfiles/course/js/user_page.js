@@ -7,11 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // this loads the profile picture of the user into the profile picture element
     const user_id = getUserId();
-    const profilePictureImage = document.querySelector('#profile-picture')
-    profilePictureImage.src = getUserData(user_id)?.profilePicture;
-    const url = new URL(profilePictureImage.src);
-    loadProfilePicture(url, profilePictureImage, user_id);
-    profilePictureImage.style.display = "block";
+    document.querySelector('#profile-picture').src = getUserData(user_id)?.profilePicture;
+    const url = new URL(document.querySelector('#profile-picture').src);
+    loadProfilePicture(url, document.querySelector('#profile-picture'), user_id);
 
     setTimeout(() => {
         document.querySelectorAll('.drop-img-users').forEach(element => element.src = getUserData(user_id)?.profilePicture);

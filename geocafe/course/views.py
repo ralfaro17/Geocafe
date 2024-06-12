@@ -5,11 +5,12 @@ from django.http import Http404, JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Units, Topics, Badges, User
-from .aws_s3  import get_image, delete_image, upload_image, get_default_image
+from .aws_s3  import *
 from .unit_helpers import Insertions
 
 # Create your views here.
 def index(request):
+    print(request.user.id)
     return render(request, "course/index.html")
 
 
@@ -206,6 +207,7 @@ def increment_unit(request):
 
 
 def dos_test(request):
+    
     return render(request, "course/dos_test.html")
 
 def generate_new_image_url(request):

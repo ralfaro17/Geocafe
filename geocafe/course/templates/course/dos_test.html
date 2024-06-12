@@ -1,16 +1,24 @@
-{% load static %}
 {% extends "course/base.html" %}
+{% load static %}
 {% block title %} JS-DOS {% endblock title %}
 {% block head %}
     <style>
-        html, body {
-            height: 100%;
+        #container {
+            width: 50%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        #dos {
-            width: 50%;
-            height: 50%;
+        #another{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
+
+
     </style>
 
     <!-- js-dos style sheet -->
@@ -20,11 +28,15 @@
     <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
 {% endblock head %}
 {% block body %}
-    <div id="dos" style="width: 100%; height: 100%"></div>
+    <div id="another">
+        <div id="container">
+            <div id="dos" style="width: 100%; height: 100%"></div>
+        </div>
+    </div>
 
     <script>
         Dos(document.getElementById("dos"), {
-            url: "{% static 'course/css/RBCOMIC.jsdos' %}",
+            url: "",
         });
     </script>
 {% endblock body %}

@@ -67,6 +67,7 @@ export function loadProfilePicture(url, imgElement, user_id){
             userData.profilePicture = data.url;
             localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));
             imgElement.src = data.url;
+            imgElement.style.display = "block";
         });
     }
 }

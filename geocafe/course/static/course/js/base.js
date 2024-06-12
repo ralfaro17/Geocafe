@@ -22,6 +22,7 @@ function loadProfilePicture(url, imgElement, user_id){
             userData.profilePicture = data.url;
             localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));
             imgElement.src = data.url;
+            imgElement.style.display = "block";
         });
     }
 }
@@ -74,11 +75,13 @@ function getUserId(){
 
 document.addEventListener('DOMContentLoaded', function () {
     const user_id = getUserId();
+    console.log(user_id)
 
-    document.querySelector('.drop-img-users').src = getUserData(user_id)?.profilePicture;
 
-    const url = new URL(document.querySelector('.drop-img-users').src);
-    // console.log("URL: " + url);
+    const dropProfilePicture = document.querySelectorAll('.drop-img-users')
+    dropProfilePicture.forEach(element => {
+        element.src = getUserData(user_id)?.profilePicture
+        element.style.display = "block"
+    })
 
-    loadProfilePicture(url, document.querySelector('.drop-img-users'), user_id);
 })
