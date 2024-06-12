@@ -8,20 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %} {% endblock title %}</title>
   <link rel="stylesheet" href="{% static 'course/css/base.css' %}?{% now 'U' %}" />
+
   <script src="{% static 'course/js/base.js' %}"></script>
   <script src="{% static 'course/js/darkmode.js' %}"></script>
   {% vite_asset 'course/js/styles.js' %}
   {% block head %} {% endblock head %}
 </head>
+{{ request.user.id|json_script:"user_id" }}
 
 <body class="theme">
   <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
-    
+
     <div class="container-fluid">
-      {% if user.is_authenticated %}
-        {{ request.user.id|json_script:"user_id" }}
-        <span id="default-profile-picture-path" style="display: none;">{% static 'course/images/default-profile-picture.png' %}</span>
-      {% endif %}
       <a class="navbar-brand lato-bold div-center" href="/">
         <img id="nav-img" class="nav-img" src="{% static 'course/images/geocafe.png' %}" alt="GeoCafe"
           data-light-src="{% static 'course/images/geocafe.png' %}"
@@ -40,22 +38,39 @@
 
       <div class="btn-right">
         {% if user.is_authenticated %}
-        
+        <div id="myDropdown" class="dropdown-content">
+          <div class="div-center" style="width: 250px;">
+            <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture"
+              class="drop-img-users div-center" style="background-color: white;border-radius:50%; margin:5px;">
+            <div class="text-drop">
+              <p class="fname lato-bold">fistname lastname</p>
+              <p class="Crreo lato-regular" >foo@hotdog.com</p>
+            </div>
+          </div>
+          <hr style="margin: 0 auto; width: 70%;opacity: 1;">
+          <div class="drop-options">
+            <a class="btn-drop active drop-icon" href="#"><img src="{% static 'course/images/account-icon.svg' %}" alt="account"><span class="lato-bold">Account</span></a>
+            <a class="btn-drop active drop-icon" href="{% url 'course:account_settings' %}"><img src="{% static 'course/images/setting-icon.svg' %}" alt=""><span class="lato-bold">Settings</span></a>
+            <a class="btn-drop active drop-icon" id="mode"> <img src="{% static 'course/images/night-icon.svg' %}" alt=""><span class="lato-bold">Darkmode</span></a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a class="btn-drop active drop-icon" href="{% url 'course:logout' %}"><img src="{% static 'course/images/exit-icon.svg' %}" alt=""><span class="lato-bold">Logout</span></a>
+          </div>
+        </div>
+
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">
               <img id="nav-img" class="drop-img-users" src="" alt="GeoCafe">
           </button>
-          <div id="myDropdown" class="dropdown-content">
-            <a class="btn btn-basic active" href="{% url 'course:logout' %}">Logout</a>
-            <button class="btn btn-basic active" id="mode">Mode</button>
-            <a class="btn btn-basic active" href="{% url 'course:account_settings' %}">Settings</a>
-          </div>
 
-          {% else %}
-          <a class="btn btn-basic active lato-bold" href="{% url 'course:login' %}">Login</a>
-          <a class="btn btn-basic active lato-bold" href="{% url 'course:register' %}">Register</a>
-          {% endif %}
         </div>
+
+        {% else %}
+        <a class="btn btn-basic active lato-bold" href="{% url 'course:login' %}">Login</a>
+        <a class="btn btn-basic active lato-bold" href="{% url 'course:register' %}">Register</a>
+        {% endif %}
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

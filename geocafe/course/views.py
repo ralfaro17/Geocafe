@@ -144,6 +144,7 @@ def load_topic(request, id):
     return render(request, "course/topic.html", { "topic": topic })
 
 
+@login_required
 def quiz(request):
     return render(request,"course/quiz.html")
 

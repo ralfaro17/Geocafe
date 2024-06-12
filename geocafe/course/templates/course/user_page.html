@@ -20,22 +20,22 @@
             <hr>
             <div class="logros">
                 {% for badge in badges %}
-                    <img src="{{ badge.image.url }}" alt="{{ badge.name }}" class="badge-icon">
+                <img src="{{ badge.image.url }}" alt="{{ badge.name }}" class="badge-icon">
                 {% endfor %}
                 <img src="{% static 'course/images/test-badge.png' %}" alt="test-badge" class="badge-icon">
             </div>
             <hr>
             <p class="email info"> {{ user_requested.email }} </p>
-            </div>
         </div>
-        <div class=" theme prog">
-            <h1>Progress</h1>
-            <hr>
-            <ul>
-                {% for unit in progress %}
-                    <li>{{unit.name|safe}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
+    </div>
+    <div class=" theme prog">
+        <h1>Progress</h1>
+        <hr>
+        <ul>
+            {% for unit in progress %}
+            <li>{{unit.name|safe}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
 {% endblock body %}
