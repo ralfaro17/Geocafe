@@ -3,17 +3,14 @@
 {% block title %} User account {% endblock title %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'course/css/user_page.css' %}">
+    <script src="{% static 'course/js/user_page.js' %}"></script>
 {% endblock head %}
 {% block body %}
-{{ request.user.id|json_script:"user_id" }}
+    {{ profile_picture_update|json_script:"profile_picture_update" }}
     <section class="theme">
         <div class="theme user">
             <div class="">
-            {% if profile_picture %}
-                <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture" class="img-users">
-            {% else %}
-                <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile-picture" id="profile-picture" class="img-users">
-            {% endif %}
+            <img src="" alt="Profile Picture" id="profile-picture" class="img-users">
             </div>
             <div class="info">
             <hr>

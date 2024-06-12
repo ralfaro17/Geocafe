@@ -13,6 +13,7 @@ urlpatterns = [
     path("delete-profile-picture", views.delete_profile_picture, name="delete_profile_picture"),
     path("insertions", views.insertions, name="insertions"),
     path("quiz", views.quiz, name="quiz"),
+    path("generate-new-image-url", views.generate_new_image_url, name="generate_new_image_url"),
     path("increment-unit", views.increment_unit, name="increment_unit"),
     path("dos-test", views.dos_test, name="dos_test"),
     path("topic/<int:id>", views.load_topic, name="topic"),

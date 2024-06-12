@@ -13,11 +13,7 @@
     <form action="{% url "course:account_settings" %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div id="profile-picture-div">
-            {% if profile_picture %}
-                <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture">
-            {% else %}
-                <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture" id="profile-picture">
-            {% endif %}
+            <img src="" alt="Profile Picture" id="profile-picture">
         </div>
         <div>
             <label for="username">Username</label>

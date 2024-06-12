@@ -26,7 +26,7 @@ def get_image(username):
         
         # Check the object existence before generating the signed URL
         if object_exist(search):
-            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': search}, ExpiresIn=10000)
+            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': search}, ExpiresIn=3600)
             return (True, url)
         else:
             return (False, "The image does not exist.")
@@ -53,7 +53,7 @@ def delete_image(username):
         s3 = boto3.client('s3', aws_access_key_id=os.getenv("AMAZONS3_API"), aws_secret_access_key=os.getenv("AMAZONS3_KEY"), config=Config(signature_version='s3v4', region_name=os.getenv("BUCKET_REGION")))
         object = f"user_images/{username}.png"
         s3.delete_object(Bucket=os.getenv("BUCKET"), Key=object)
-        return (True, "The image was uploaded successfully.")
+        return (True, "The image was deleted successfully.")
     
     except Exception as e:
         return (False, f"An error ocurred while deleting the image: {e}")

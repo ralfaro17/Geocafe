@@ -87,6 +87,8 @@ def register(request):
 
 
 def user_page(request, username):
+    profile_picture_update = request.GET.get('profile_picture_update', None)
+    print(profile_picture_update)
     try:
         user = User.objects.get(username=username)
         try:
@@ -107,6 +109,7 @@ def user_page(request, username):
         "profile_picture": profile_picture[1] if profile_picture[0] else False,
         "badges": badges,
         "progress": units,
+        "profile_picture_update": profile_picture_update,
         })
 
 
@@ -167,15 +170,8 @@ def account_settings(request):
             if pfp[0]:
                 user.has_profile_picture = True
         user.save()
-        return redirect(reverse("course:user_page", args=[user.username]))
-    if request.user.has_profile_picture:
-        profile_picture = get_image(request.user.username)
-    else:
-        profile_picture = (False, "the image does not exist")
-    if profile_picture[0]:
-        return render(request, "course/account_settings.html", {
-            "profile_picture": profile_picture[1]
-        })
+        url = reverse("course:user_page", kwargs={"username": user.username}) + f'?profile_picture_update={1}'
+        return redirect(url)
     else:
         return render(request, "course/account_settings.html")
 
@@ -187,6 +183,7 @@ def delete_profile_picture(request):
         user.has_profile_picture = False
         action = delete_image(request.user.username)
         if action[0]:
+            user.save()
             return JsonResponse({"message": action[1]}, status = 200)
         else:
             return JsonResponse({"message": action[1]}, status = 400)
@@ -209,3 +206,14 @@ def increment_unit(request):
 
 def dos_test(request):
     return render(request, "course/dos_test.html")
+
+def generate_new_image_url(request):
+    if request.method == "GET":
+        if request.user.has_profile_picture:
+            profile_picture = get_image(request.user.username)
+        else:
+            profile_picture = get_default_image()
+        print(profile_picture)
+        return JsonResponse({"url": profile_picture[1]}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)

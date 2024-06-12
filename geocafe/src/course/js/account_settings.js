@@ -1,11 +1,20 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
+import { getUserData, isPresignedUrlExpired, getUserId, loadProfilePicture } from './helpers.js'
+
 
 document.addEventListener("DOMContentLoaded", () => { 
+    // this loads the profile picture of the user into the profile picture element
+    const user_id = getUserId();
+    document.querySelector('#profile-picture').src = getUserData(user_id)?.profilePicture;
+    const url = new URL(document.querySelector('#profile-picture').src);
+    loadProfilePicture(url, document.querySelector('#profile-picture'), user_id);
+
+
+    // this is the logic for the form
     const form = document.querySelector('form');
     const default_profile_picture_path = document.getElementById('default-profile-picture-path').textContent;
-    console.log(default_profile_picture_path)
     const delete_profile_picture_button = document.getElementById('delete-profile-picture-button');
     let picture_deleted = false;
 
@@ -28,7 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 })
                 .then(response => response.json())
-                .then(result => console.log(result))
+                .then(result => {
+                    console.log(result)
+                })
             }
             document.querySelector("button[type='submit']").disabled = true;
             setTimeout(() => {

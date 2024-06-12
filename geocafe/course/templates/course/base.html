@@ -9,7 +9,7 @@
   <title>{% block title %} {% endblock title %}</title>
   <link rel="stylesheet" href="{% static 'course/css/base.css' %}?{% now 'U' %}" />
   <script src="{% static 'course/js/base.js' %}"></script>
-
+  <script src="{% static 'course/js/darkmode.js' %}"></script>
   {% vite_asset 'course/js/styles.js' %}
   {% block head %} {% endblock head %}
 </head>
@@ -43,7 +43,7 @@
         
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">
-              <img id="nav-img" class="drop-img-users" src="{% static 'course/images/img-users.jpg' %}" alt="GeoCafe">
+              <img id="nav-img" class="drop-img-users" src="" alt="GeoCafe">
           </button>
           <div id="myDropdown" class="dropdown-content">
             <a class="btn btn-basic active" href="{% url 'course:logout' %}">Logout</a>
@@ -65,7 +65,6 @@
     </div>
   </nav>
   {% block body %} {% endblock body %}
-  <script src="{% static 'course/js/darkmode.js' %}"></script>
   <script src="{% static 'course/js/dropdown.js' %}" ></script>
 </body>
 
