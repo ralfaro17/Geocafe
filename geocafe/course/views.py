@@ -206,9 +206,9 @@ def increment_unit(request):
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
 
-def dos_test(request):
+def code_editor(request):
     
-    return render(request, "course/dos_test.html")
+    return render(request, "course/code_editor.html")
 
 def generate_new_image_url(request):
     if request.method == "GET":
