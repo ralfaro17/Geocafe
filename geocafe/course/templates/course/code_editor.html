@@ -1,5 +1,6 @@
 {% extends "course/base.html" %}
 {% load static %}
+{% load django_vite %}
 {% block title %} Code Editor {% endblock title %}
 {% block head %}
     <!-- js-dos style sheet -->
@@ -7,12 +8,13 @@
     <!-- js-dos -->
     <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
     <link rel="stylesheet" href="{% static 'course/css/code_editor.css' %}">
+    {% vite_asset 'course/js/code_editor.js' %}
 {% endblock head %}
 {% block body %}
     <div id="another">
         <div id="container">
-            <div>
-                <textarea name="" id=""></textarea>
+            <div id="editor">
+                
             </div>
             <div id="dos" style="width: 50%; height: 100%"></div>
         </div>

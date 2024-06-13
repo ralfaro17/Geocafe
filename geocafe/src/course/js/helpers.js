@@ -70,4 +70,8 @@ export function loadProfilePicture(url, imgElement, user_id){
             imgElement.style.display = "block";
         });
     }
+    else{
+        imgElement.src = url;
+        imgElement.style.display = "block";
+    }
 }

@@ -8,10 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // this loads the profile picture of the user into the profile picture element
     const user_id = getUserId();
     const profilePictureImage = document.querySelector('#profile-picture')
-    profilePictureImage.src = getUserData(user_id)?.profilePicture;
-    const url = new URL(profilePictureImage.src);
+    const url = new URL(getUserData(user_id)?.profilePicture);
     loadProfilePicture(url, profilePictureImage, user_id);
-    profilePictureImage.style.display = "block";
 
 
     // this is the logic for the form

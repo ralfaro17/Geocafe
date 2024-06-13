@@ -10,6 +10,18 @@ function getUserData(user_id){
 };
 
 
+// use this to get the profile picture URL of the user
+function getProfilePictureUrl(user_id){
+    const profilePicture = getUserData(user_id).profilePicture;
+    if (profilePicture){
+        return new URL(profilePicture);
+    }
+    else{
+        return new URL("https://no.profile.picture");
+    }
+}
+
+
 // URL has to be a URL object
 function loadProfilePicture(url, imgElement, user_id){
     if (!url.searchParams.get('X-Amz-Date') || isPresignedUrlExpired(url)) {
@@ -24,6 +36,10 @@ function loadProfilePicture(url, imgElement, user_id){
             imgElement.src = data.url;
             imgElement.style.display = "block";
         });
+    }
+    else{
+        imgElement.src = url;
+        imgElement.style.display = "block";
     }
 }
 
@@ -75,13 +91,11 @@ function getUserId(){
 
 document.addEventListener('DOMContentLoaded', function () {
     const user_id = getUserId();
-    console.log(user_id)
-
 
     const dropProfilePicture = document.querySelectorAll('.drop-img-users')
     dropProfilePicture.forEach(element => {
-        element.src = getUserData(user_id)?.profilePicture
-        element.style.display = "block"
+        const url = getProfilePictureUrl(user_id);
+        loadProfilePicture(url, element, user_id);
     })
 
 })
