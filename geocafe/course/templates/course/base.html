@@ -6,6 +6,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{% static 'course/images/Grano-cafe.png' %}" />
   <title>{% block title %} {% endblock title %}</title>
   <link rel="stylesheet" href="{% static 'course/css/base.css' %}?{% now 'U' %}" />
 
@@ -20,11 +21,29 @@
   <nav class="theme navbar navbar-expand-lg navbar-light bg-color">
 
     <div class="container-fluid">
+      <div class="dropdown vista">
+        <button onclick="myFunction()" class="dropbtn">
+          {% csrf_token %}
+          <div id="profile-picture-div">
+            {% if profile_picture %}
+            <img src="{{ profile_picture }}" alt="Profile Picture" class="drop-img-users">
+            {% else %}
+            <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture"
+              class="drop-img-users">
+            {% endif %}
+          </div>
+        </button>
+      </div>
       <a class="navbar-brand lato-bold div-center" href="/">
         <img id="nav-img" class="nav-img" src="{% static 'course/images/geocafe.png' %}" alt="GeoCafe"
           data-light-src="{% static 'course/images/geocafe.png' %}"
           data-dark-src="{% static 'course/images/geocafe-darkmode.png' %}">
       </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="theme navbar-nav">
           <div class="content lato-bold">
@@ -42,26 +61,33 @@
           <div class="div-center" style="width: 250px;">
             <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture"
               class="drop-img-users div-center" style="background-color: white;border-radius:50%; margin:5px;">
+
             <div class="text-drop">
+
+              
               <p class="fname lato-bold">fistname lastname</p>
-              <p class="Crreo lato-regular" >foo@hotdog.com</p>
+              <p class="Crreo lato-regular">foo@hotdog.com</p>
             </div>
           </div>
           <hr style="margin: 0 auto; width: 70%;opacity: 1;">
           <div class="drop-options">
-            <a class="btn-drop active drop-icon" href="#"><img src="{% static 'course/images/account-icon.svg' %}" alt="account"><span class="lato-bold">Account</span></a>
-            <a class="btn-drop active drop-icon" href="{% url 'course:account_settings' %}"><img src="{% static 'course/images/setting-icon.svg' %}" alt=""><span class="lato-bold">Settings</span></a>
-            <a class="btn-drop active drop-icon" id="mode"> <img src="{% static 'course/images/night-icon.svg' %}" alt=""><span class="lato-bold">Darkmode</span></a>
+            <a class="btn-drop active drop-icon" href="#"><img src="{% static 'course/images/account-icon.svg' %}"
+                alt="account"><span class="lato-bold">Account</span></a>
+            <a class="btn-drop active drop-icon" href="{% url 'course:account_settings' %}"><img
+                src="{% static 'course/images/setting-icon.svg' %}" alt=""><span class="lato-bold">Settings</span></a>
+            <a class="btn-drop active drop-icon" id="mode"> <img src="{% static 'course/images/night-icon.svg' %}"
+                alt=""><span class="lato-bold">Darkmode</span></a>
             <br>
             <br>
             <br>
             <br>
-            <a class="btn-drop active drop-icon" href="{% url 'course:logout' %}"><img src="{% static 'course/images/exit-icon.svg' %}" alt=""><span class="lato-bold">Logout</span></a>
+            <a class="btn-drop active drop-icon" href="{% url 'course:logout' %}"><img
+                src="{% static 'course/images/exit-icon.svg' %}" alt=""><span class="lato-bold">Logout</span></a>
           </div>
         </div>
 
         <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">
+          <button onclick="myFunction()" class="dropbtn respons">
             {% csrf_token %}
             <div id="profile-picture-div">
               {% if profile_picture %}
@@ -72,7 +98,6 @@
               {% endif %}
             </div>
           </button>
-
         </div>
 
         {% else %}
@@ -80,10 +105,6 @@
         <a class="btn btn-basic active lato-bold" href="{% url 'course:register' %}">Register</a>
         {% endif %}
       </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
     </div>
   </nav>

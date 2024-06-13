@@ -4,39 +4,104 @@
 
 {% block title %} Settings {% endblock title %}
 {% block head %}
-    {% vite_asset 'course/js/account_settings.js' %}
-    <link rel="stylesheet" href="{% static 'course/css/account_settings.css' %}">
+{% vite_asset 'course/js/account_settings.js' %}
+<link rel="stylesheet" href="{% static 'course/css/account_settings.css' %}">
 {% endblock head %}
 
 {% block body %}
-    <h1>Settings</h1>
+<h1>Settings</h1>
+<div class="body-form">
+
     <form action="{% url 'course:account_settings' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div id="profile-picture-div">
-            {% if profile_picture %}
-                <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture">
-            {% else %}
-                <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture" id="profile-picture">
-            {% endif %}
+        <div class="profile-picture-div">
+            <div class="accountinfo div-center">
+
+                <div class="img-profil">
+                    {% if profile_picture %}
+                    <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture">
+                    {% else %}
+                    <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture"
+                        id="profile-picture">
+                    {% endif %}
+                </div>
+                <div class="name-profil">
+                    <p class="lato-bold">{{ user.first_name }} {{ user.last_name }}</p>
+                    <p class="lato-regular">{{ user.username }}</p>
+
+                </div>
+            </div>
+
+            <div class="viewsetting visible">
+                <hr>
+                <button class="opcion">Account Settings</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+            </div>
         </div>
-        <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" value="{{ user.username }}" disabled>
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" id="first_name" value="{{ user.first_name }}">
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" id="last_name" value="{{ user.last_name }}">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="{{ user.email }}">
-            <label for="password">New Password</label>
-            <input type="password" name="password" id="password">
-            <label for="password2">Confirm New Password</label>
-            <input type="password" name="password2" id="password2">
-            <label for="new-profile-picture">Profile picture</label>
-            <input type="file" name="new_profile_picture" id="new-profile-picture">
-            <button type="button" id="delete-profile-picture-button">Delete profile picture</button>
-            <button type="submit">Save</button>
+        <div class="configuration">
+            <div class="configure-profile div-center lato-bold">
+
+                <div class="cuadro">
+
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="input input-log" name="first_name" id="first_name"
+                        value="{{ user.first_name }}">
+                </div>
+
+                <div class="cuadro">
+
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="input input-log" name="last_name" id="last_name"
+                        value="{{ user.last_name }}">
+                </div>
+
+                <div class="cuadro">
+
+                    <label for="username">Username</label>
+                    <input type="text" class="input input-log" name="username" id="username" value="{{ user.username }}"
+                        disabled>
+                </div>
+                <div class="cuadro">
+
+                    <label for="email">Email</label>
+                    <input type="email" class="input input-log" name="email" id="email" value="{{ user.email }}">
+                </div>
+                <div class="cuadro">
+
+                    <label for="password">New Password</label>
+                    <input type="password" class="input input-log" name="password" id="password">
+                </div>
+
+                <div class="cuadro">
+
+                    <label for="password2">Confirm New Password</label>
+                    <input type="password" class="input input-log" name="password2" id="password2">
+                </div>
+
+                <div class="selec-img">
+
+                    <label for="new-profile-picture">Profile picture</label>
+                    <input type="file" name="new_profile_picture" id="new-profile-picture" style="font-size: 12px; border: solid 1px; border-radius: 15px;background-color: whitesmoke;">
+                </div>
+
+                <button class="btn btn-basic" type="button" id="delete-profile-picture-button"
+                    style="font-size: 12px;">Delete profile
+                    picture</button>
+
+            </div>
+            <div class="img-edit">
+                <button class="btn btn-basic" type="submit">Save</button>
+            </div>
         </div>
     </form>
-    
+</div>
+
 {% endblock body %}
