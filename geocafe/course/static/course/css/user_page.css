@@ -67,6 +67,10 @@ section{
     object-fit: contain;
 }
 
+.user-text{
+    font-size: 35px;
+}
+
 
 @media (max-width: 992px) {
 
@@ -96,10 +100,10 @@ section{
     }
     
 .img-users{
-    width: 100%;
-    height: 96%;
-    object-fit: contain;
-    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
     padding: 20px;
 }
 section{
@@ -112,9 +116,9 @@ section{
 .email.info{
 
     font-size: 12px;
-
     
 }
+
 .prog{
     font-size: 14px;
     
@@ -148,8 +152,8 @@ section{
 
         .img-users{
             width: 200px;
-            height: 96%;
-            object-fit: contain;
+            height: 200px;
+            object-fit: cover;
             border-radius: 100%;
             margin-top: 10px;
         }

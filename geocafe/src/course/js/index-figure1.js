@@ -16,11 +16,7 @@ renderer.setClearColor(0xffffff); // Establecer el color de fondo a blanco
 const canvas = renderer.domElement;
 
 // Estilo del canvas
-canvas.style.maxWidth = '100%';
-canvas.style.width = '720px';
-canvas.style.maxHeight = '100%';
-canvas.style.height = '480px';
-canvas.style.padding = '20px 10px';
+canvas.classList.add("propiedades-canvas");
 
 // Crear y agregar luces manualmente
 const createLights = () => {
