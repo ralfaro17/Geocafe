@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>no trunca el 404</h1>
-</body>
-</html>
+{% extends "course/base.html" %}
+{% load django_vite %}
+
+{% block title %}Página no encontrada{% endblock title %}
+
+{% block body %}
+    <h1>Página no encontrada</h1>
+    <p>Lo sentimos, pero la página que buscas no existe.</p>
+
+    <div class="img-500"></div>
+    {% vite_asset 'course/js/figure404.js' %}
+{% endblock body %}
