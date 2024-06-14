@@ -12,7 +12,6 @@
     "@codemirror/autocomplete": "^6.16.2",
     "@codemirror/basic-setup": "^0.20.0",
     "@codemirror/commands": "^6.6.0",
-    "@codemirror/highlight": "^0.19.8",
     "@codemirror/lang-cpp": "^6.0.2",
     "@codemirror/language": "^6.10.2",
     "@codemirror/language-data": "^6.5.1",

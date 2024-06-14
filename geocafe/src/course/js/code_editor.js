@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /*     Dos(document.getElementById("dos"), {
         url: "",
     }); */
+    
     let currentFile = null;
     const loadButton = document.querySelector("#load-button");
     const saveButton = document.querySelector("#save-button");
@@ -34,9 +35,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const select = document.createElement("select");
         select.id = "swal-select";
         select.classList.add("swal2-select");
+        Swal.fire({
+            title: 'Loading...',
+            text: 'Please wait while the operation is in progress.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
         fetch('/get-user-files')
         .then(response => response.json())
         .then(data => {
+            Swal.close();
             if (data.files[0]){
                 data.files[1].forEach(file => {
                     const filename = file.replace(`user_files/${username}/`, "");
@@ -45,6 +55,64 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.value = filename.slice(0, filename.length - 2);
                     select.add(option);
                 })
+                // this fires a sweet alert with all the files of the user
+                Swal.fire({
+                    title: 'Select a file to load',
+                    html: select,
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Load file",
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const selectedOption = document.getElementById('swal-select').value;
+                        if(selectedOption === "" || selectedOption === null){
+                            Swal.showValidationMessage("You need to select a file");
+                        }
+                        else{
+                            return selectedOption;
+                        }
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Loading...',
+                            text: 'Please wait while the operation is in progress.',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                        const selectedOption = result.value;
+                        currentFile = selectedOption;
+                        const csrftoken = Cookies.get('csrftoken'); 
+                        fetch("/get-user-file", {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRFToken': csrftoken,
+                            },
+                            body: JSON.stringify({filename: selectedOption, option: "text"})
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close();
+                            if(data.file[0]){
+                                view.dispatch({
+                                    changes: {from: 0, to: view.state.doc.length, insert: data.file[1]}
+                                });
+                                Swal.fire("File loaded successfully");
+                            }
+                            else{
+                                currentFile = null;
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Error",
+                                    text: "An error ocurred while getting your file",
+                                });
+                            }
+                        })
+                    }
+                });
             }
             else{
                 Swal.fire({
@@ -55,55 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
 
-        // this fires a sweet alert with all the files of the user
-        Swal.fire({
-            title: 'Select a file to load',
-            html: select,
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Load file",
-            focusConfirm: false,
-            preConfirm: () => {
-                const selectedOption = document.getElementById('swal-select').value;
-                if(selectedOption === "" || selectedOption === null){
-                    Swal.showValidationMessage("You need to select a file");
-                }
-                else{
-                    return selectedOption;
-                }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const selectedOption = result.value;
-                currentFile = selectedOption;
-                const csrftoken = Cookies.get('csrftoken'); 
-                fetch("/get-user-file", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': csrftoken,
-                    },
-                    body: JSON.stringify({filename: selectedOption, option: "text"})
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.file[0]){
-                        view.dispatch({
-                            changes: {from: 0, to: view.state.doc.length, insert: data.file[1]}
-                        });
-                        Swal.fire("File loaded successfully");
-                    }
-                    else{
-                        currentFile = null;
-                        Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "An error ocurred while getting your file",
-                        });
-                    }
-                })
-            }
-        });
+        
     });
     
     
@@ -119,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         else if(currentFile){
             Swal.fire({
-                title: 'Do you want to overwrite the file?',
+                title: `Do you want to overwrite the file ${currentFile}.C?`,
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
@@ -128,6 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }).then((result) => {
                 if (result.isConfirmed) {
                     const csrftoken = Cookies.get('csrftoken'); 
+                    Swal.fire({
+                        title: 'Loading...',
+                        text: 'Please wait while the operation is in progress.',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
                     fetch("/save-user-file", {
                         method: 'POST',
                         headers: {
@@ -138,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        Swal.close()
                         if(data.message[0]){
                             Swal.fire("File saved successfully");
                         }
@@ -181,6 +210,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     const filename = result.value.toUpperCase();
                     const csrftoken = Cookies.get('csrftoken'); 
                     currentFile = filename;
+                    Swal.fire({
+                        title: 'Loading...',
+                        text: 'Please wait while the operation is in progress.',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
                     fetch("/save-user-file", {
                         method: 'POST',
                         headers: {
@@ -189,8 +226,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         body: JSON.stringify({filename: filename, content: view.state.doc.toString()})
                     })
-            .then(response => response.json())
-            .then(data => {
+                    .then(response => response.json())
+                    .then(data => {
+                    Swal.close();
                     if(data.message[0]){
                         Swal.fire("File saved successfully");
                     }
@@ -341,12 +379,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if(data?.message[0]){
+                        console.log(selectedOption);
+                        console.log(currentFile);
                         if(selectedOption === currentFile){
                             currentFile = null;
+                            view.dispatch({
+                                changes: {from: 0, to: view.state.doc.length, insert: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`}
+                            });
                         }
-                        view.dispatch({
-                            changes: {from: 0, to: view.state.doc.length, insert: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`}
-                        });
                         Swal.fire("File deleted successfully");
                     }
                     else{
