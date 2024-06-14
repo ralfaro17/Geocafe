@@ -10,7 +10,6 @@ from .unit_helpers import Insertions
 
 # Create your views here.
 def index(request):
-    print(request.user.id)
     return render(request, "course/index.html")
 
 

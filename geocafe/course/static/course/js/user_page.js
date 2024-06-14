@@ -1,5 +1,3 @@
-import { getDjangoValue } from "./base";
-
 document.addEventListener("DOMContentLoaded", () => {  
     profilePictureUpdate = JSON.parse(document.getElementById('profile_picture_update').textContent);
     console.log(profilePictureUpdate);

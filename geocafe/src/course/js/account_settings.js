@@ -6,7 +6,7 @@ import { getUserData, getDjangoValue, loadProfilePicture, getProfilePictureUrl }
 
 document.addEventListener("DOMContentLoaded", () => { 
     // this loads the profile picture of the user into the profile picture element
-    const user_id = getDjangoValue();
+    const user_id = getDjangoValue('user_id');
     const profilePictureImage = document.querySelector('#profile-picture')
     const url = getProfilePictureUrl(user_id);
     loadProfilePicture(url, profilePictureImage, user_id);

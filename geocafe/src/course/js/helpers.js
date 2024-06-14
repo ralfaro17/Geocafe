@@ -1,6 +1,7 @@
 // use this to get the user data from the local storage, if it doesn't exist, return an empty object to which you can add values
 export function getUserData(user_id){
     const userData = localStorage.getItem(`user${user_id}data`);
+    console.log(userData)
     if(userData != null){
         return JSON.parse(userData);
     }
@@ -17,7 +18,7 @@ export function isValidFilename(str) {
 
 
 // use this to get the profile picture URL of the user
-function getProfilePictureUrl(user_id){
+export function getProfilePictureUrl(user_id){
     const profilePicture = getUserData(user_id).profilePicture;
     if (profilePicture){
         return new URL(profilePicture);
