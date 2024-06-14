@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             text: "An error ocurred while saving your file",
                         });
                     }
-                })
+                })  
                 }
             });
         }
@@ -292,6 +292,14 @@ document.addEventListener('DOMContentLoaded', function () {
         .then((result) => {
             if (result.isConfirmed) {
                 const filename = result.value.toUpperCase();
+                Swal.fire({
+                    title: 'Loading...',
+                    text: 'Please wait while the operation is in progress.',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
                 const csrftoken = Cookies.get('csrftoken'); 
                 currentFile = filename;
                 fetch("/save-user-file", {
@@ -304,6 +312,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
         .then(response => response.json())
         .then(data => {
+            Swal.close();
                 if(data.message[0]){
                     Swal.fire("File saved successfully");
                 }
@@ -326,9 +335,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const select = document.createElement("select");
         select.id = "swal-select";
         select.classList.add("swal2-select");
+        Swal.fire({
+            title: 'Loading...',
+            text: 'Please wait while the operation is in progress.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
         fetch('/get-user-files')
         .then(response => response.json())
         .then(data => {
+            Swal.close()
             if (data.files[0]){
                 data.files[1].forEach(file => {
                     const filename = file.replace(`user_files/${username}/`, "");
@@ -337,6 +355,67 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.value = filename.slice(0, filename.length - 2);
                     select.add(option);
                 })
+                // this fires a sweet alert with all the files of the user
+                Swal.fire({
+                    title: 'Select a file to delete',
+                    html: select,
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Delete file",
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const selectedOption = document.getElementById('swal-select').value;
+                        if(selectedOption === "" || selectedOption === null){
+                            Swal.showValidationMessage("You need to select a file");
+                        }
+                        else{
+                            return selectedOption;
+                        }
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const selectedOption = result.value;
+                        const csrftoken = Cookies.get('csrftoken'); 
+                        Swal.fire({
+                            title: 'Loading...',
+                            text: 'Please wait while the operation is in progress.',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                        fetch("/delete-user-file", {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRFToken': csrftoken,
+                            },
+                            body: JSON.stringify({filename: selectedOption})
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            Swal.close()
+                            if(data?.message[0]){
+                                console.log(selectedOption);
+                                console.log(currentFile);
+                                if(selectedOption === currentFile){
+                                    currentFile = null;
+                                    view.dispatch({
+                                        changes: {from: 0, to: view.state.doc.length, insert: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`}
+                                    });
+                                }
+                                Swal.fire("File deleted successfully");
+                            }
+                            else{
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Error",
+                                    text: "An error ocurred while deleting your file",
+                                });
+                            }
+                        })
+                    }
+                });
             }
             else{
                 Swal.fire({
@@ -347,58 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
 
-        // this fires a sweet alert with all the files of the user
-        Swal.fire({
-            title: 'Select a file to delete',
-            html: select,
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Delete file",
-            focusConfirm: false,
-            preConfirm: () => {
-                const selectedOption = document.getElementById('swal-select').value;
-                if(selectedOption === "" || selectedOption === null){
-                    Swal.showValidationMessage("You need to select a file");
-                }
-                else{
-                    return selectedOption;
-                }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const selectedOption = result.value;
-                const csrftoken = Cookies.get('csrftoken'); 
-                fetch("/delete-user-file", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': csrftoken,
-                    },
-                    body: JSON.stringify({filename: selectedOption})
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data?.message[0]){
-                        console.log(selectedOption);
-                        console.log(currentFile);
-                        if(selectedOption === currentFile){
-                            currentFile = null;
-                            view.dispatch({
-                                changes: {from: 0, to: view.state.doc.length, insert: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`}
-                            });
-                        }
-                        Swal.fire("File deleted successfully");
-                    }
-                    else{
-                        Swal.fire({
-                            icon: "error",
-                            title: "Error",
-                            text: "An error ocurred while deleting your file",
-                        });
-                    }
-                })
-            }
-        });
+        
     })
 
 
