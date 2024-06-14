@@ -57,9 +57,9 @@ export function isPresignedUrlExpired(url) {
 }
 
 
-export function getUserId(){
+export function getDjangoValue(elementId){
     try{
-        return JSON.parse(document.getElementById('user_id').textContent);
+        return JSON.parse(document.getElementById(`${elementId}`).textContent);
     }
     catch(err){
         return null;
@@ -86,4 +86,14 @@ export function loadProfilePicture(url, imgElement, user_id){
         imgElement.src = url;
         imgElement.style.display = "block";
     }
+}
+
+
+export function getUserFiles(){
+    fetch('/get-user-files')
+    .then(response => response.json())
+    .then(data => {
+        return data.files[1];
+    })
+
 }

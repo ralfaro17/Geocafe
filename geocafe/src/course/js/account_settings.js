@@ -1,12 +1,12 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
-import { getUserData, getUserId, loadProfilePicture, getProfilePictureUrl } from './helpers.js'
+import { getUserData, getDjangoValue, loadProfilePicture, getProfilePictureUrl } from './helpers.js'
 
 
 document.addEventListener("DOMContentLoaded", () => { 
     // this loads the profile picture of the user into the profile picture element
-    const user_id = getUserId();
+    const user_id = getDjangoValue();
     const profilePictureImage = document.querySelector('#profile-picture')
     const url = getProfilePictureUrl(user_id);
     loadProfilePicture(url, profilePictureImage, user_id);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else{
             if (picture_deleted){
-                const csrftoken = Cookies.get('csrftoken'); // Assuming you're using the `js-cookie` library
+                const csrftoken = Cookies.get('csrftoken'); 
                 fetch("/delete-profile-picture", {
                     method: 'POST',
                     headers: {

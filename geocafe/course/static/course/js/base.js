@@ -79,9 +79,9 @@ function isPresignedUrlExpired(url) {
 }
 
 
-function getUserId(){
+function getDjangoValue(elementId){
     try{
-        return JSON.parse(document.getElementById('user_id').textContent);
+        return JSON.parse(document.getElementById(`${elementId}`).textContent);
     }
     catch(err){
         return null;
@@ -90,7 +90,7 @@ function getUserId(){
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const user_id = getUserId();
+    const user_id = getDjangoValue('user_id');
 
     const dropProfilePicture = document.querySelectorAll('.drop-img-users')
     dropProfilePicture.forEach(element => {

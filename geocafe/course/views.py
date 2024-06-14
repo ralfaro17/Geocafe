@@ -220,3 +220,20 @@ def generate_new_image_url(request):
         return JsonResponse({"url": profile_picture[1]}, status = 200)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def get_user_files(request):
+    if request.method == "GET":
+        files = get_files(request.user.username)
+        print(files)
+        return JsonResponse({"files": files}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def get_user_file(request):
+    if request.method == "POST":
+        filename = json.loads(request.body)["filename"]
+        file = get_file(request.user.username, filename)
+        print(file)
+        return JsonResponse({"file": file}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)

@@ -11,9 +11,16 @@
     {% vite_asset 'course/js/code_editor.js' %}
 {% endblock head %}
 {% block body %}
+    {{ user.username|json_script:"user_username" }}
     <div id="another">
         <div id="container">
-            <div id="editor"></div>
+            <div id="code-window">
+                <div >
+                    <button id="load-button" class="btn btn-primary">Load file</button>
+                    <button id="save-button" class="btn btn-success">Save File</button>
+                </div>
+                <div id="editor"></div>
+            </div>
             <div id="dos" style="width: 50%; height: 100%"></div>
         </div>
     </div>

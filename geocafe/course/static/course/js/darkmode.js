@@ -13,7 +13,7 @@ function updateImage() {
 document.addEventListener("DOMContentLoaded", () => {
     const mode = document.getElementById('mode');
     const dark = document.querySelectorAll('.theme');
-    const user_id = getUserId();
+    const user_id = getDjangoValue("user_id");
 
     let theme = null;
 

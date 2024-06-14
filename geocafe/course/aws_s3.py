@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from botocore.config import Config
 import os
 import boto3
+import requests
 
 load_dotenv()
 
@@ -88,21 +89,22 @@ def get_files(username):
 # returns a presigned url of the file
 def get_file(username, filename):
     try:
-        object = f"user_files/{username}/{filename}.c"
+        object = f"user_files/{username}/{filename}.C"
         if object_exist(object):
             url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': object}, ExpiresIn=3600)
-            return (True, url)
-        return (True, "The image was deleted successfully.")
+            return (True, requests.get(url).text)
+        else:
+            return (False, "The file does not exist.")
     
     except Exception as e:
-        return (False, f"An error ocurred while deleting the image: {e}")
+        return (False, f"An error ocurred while getting the file: {e}")
 
 
 
 # Deletes a file
 def delete_file(username, filename):
     try:
-        object = f"user_files/{username}/{filename}.c"
+        object = f"user_files/{username}/{filename}.C"
         s3.delete_object(Bucket=os.getenv("BUCKET"), Key=object)
         return (True, "The image was deleted successfully.")
     
@@ -131,7 +133,7 @@ def delete_files(username):
 # Returns the URL of a file to the client after uploading it.
 def upload_file(username, file, file_name):
     try:
-        object_key = f"user_files/{username}/{file_name}.c"
+        object_key = f"user_files/{username}/{file_name}.C"
         s3.upload_fileobj(file, os.getenv("BUCKET"), object_key)
 
         return (True, f"The file was uploaded successfully to {object_key}")
