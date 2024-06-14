@@ -10,6 +10,18 @@ export function getUserData(user_id){
 };
 
 
+// use this to get the profile picture URL of the user
+function getProfilePictureUrl(user_id){
+    const profilePicture = getUserData(user_id).profilePicture;
+    if (profilePicture){
+        return new URL(profilePicture);
+    }
+    else{
+        return new URL("https://no.profile.picture");
+    }
+}
+
+
 export function isPresignedUrlExpired(url) {
     const urlObj = new URL(url);
 

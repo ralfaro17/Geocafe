@@ -10,5 +10,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 89vh;
+    height: 90vh;
+}
+
+#editor {
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid #ccc;
 }

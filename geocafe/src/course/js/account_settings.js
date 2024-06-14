@@ -1,14 +1,14 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
-import { getUserData, isPresignedUrlExpired, getUserId, loadProfilePicture } from './helpers.js'
+import { getUserData, getUserId, loadProfilePicture, getProfilePictureUrl } from './helpers.js'
 
 
 document.addEventListener("DOMContentLoaded", () => { 
     // this loads the profile picture of the user into the profile picture element
     const user_id = getUserId();
     const profilePictureImage = document.querySelector('#profile-picture')
-    const url = new URL(getUserData(user_id)?.profilePicture);
+    const url = getProfilePictureUrl(user_id);
     loadProfilePicture(url, profilePictureImage, user_id);
 
 
