@@ -10,6 +10,12 @@ export function getUserData(user_id){
 };
 
 
+export function isValidFilename(str) {
+    const regex = /^[a-zA-Z0-9_-]+$/;
+    return regex.test(str);
+}
+
+
 // use this to get the profile picture URL of the user
 function getProfilePictureUrl(user_id){
     const profilePicture = getUserData(user_id).profilePicture;

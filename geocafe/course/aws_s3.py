@@ -4,6 +4,8 @@ from botocore.config import Config
 import os
 import boto3
 import requests
+import tempfile
+import io
 
 load_dotenv()
 
@@ -86,13 +88,27 @@ def get_files(username):
         return (False, f"An error ocurred while trying to get the files of {username}: {e}")
 
 
-# returns a presigned url of the file
+# returns the text content of a file
 def get_file(username, filename):
     try:
         object = f"user_files/{username}/{filename}.C"
         if object_exist(object):
-            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': object}, ExpiresIn=3600)
+            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': object}, ExpiresIn=30)
             return (True, requests.get(url).text)
+        else:
+            return (False, "The file does not exist.")
+    
+    except Exception as e:
+        return (False, f"An error ocurred while getting the file: {e}")
+
+
+# returns the text content of a file
+def get_file_url(username, filename):
+    try:
+        object = f"user_files/{username}/{filename}.C"
+        if object_exist(object):
+            url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("BUCKET"), 'Key': object}, ExpiresIn=30)
+            return (True, url)
         else:
             return (False, "The file does not exist.")
     
@@ -106,10 +122,10 @@ def delete_file(username, filename):
     try:
         object = f"user_files/{username}/{filename}.C"
         s3.delete_object(Bucket=os.getenv("BUCKET"), Key=object)
-        return (True, "The image was deleted successfully.")
+        return (True, "The file was deleted successfully.")
     
     except Exception as e:
-        return (False, f"An error ocurred while deleting the image: {e}")
+        return (False, f"An error ocurred while deleting the file: {e}")
 
 
 # Deletes all files inside a user's folder.
@@ -131,10 +147,17 @@ def delete_files(username):
 
 
 # Returns the URL of a file to the client after uploading it.
-def upload_file(username, file, file_name):
+def upload_file(username, file_content, file_name):
     try:
         object_key = f"user_files/{username}/{file_name}.C"
-        s3.upload_fileobj(file, os.getenv("BUCKET"), object_key)
+        # Convert file_content to bytes if necessary
+        if isinstance(file_content, str):
+            file_content = file_content.encode()
+
+        # Create a BytesIO object
+        file_obj = io.BytesIO(file_content)
+        
+        s3.upload_fileobj(file_obj, os.getenv("BUCKET"), object_key)
 
         return (True, f"The file was uploaded successfully to {object_key}")
     

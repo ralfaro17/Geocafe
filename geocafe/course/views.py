@@ -232,8 +232,31 @@ def get_user_files(request):
 def get_user_file(request):
     if request.method == "POST":
         filename = json.loads(request.body)["filename"]
-        file = get_file(request.user.username, filename)
-        print(file)
+        option = json.loads(request.body)["option"]
+        if option == "text":
+            file = get_file(request.user.username, filename)
+        elif option == "url":
+            file = get_file_url(request.user.username, filename)
+        else:
+            file = (False, "Invalid option")
         return JsonResponse({"file": file}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def save_user_file(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        filename = data["filename"]
+        content = data["content"]
+        action = upload_file(request.user.username, content, filename)
+        return JsonResponse({"message": action}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def delete_user_file(request):
+    if request.method == "POST":
+        filename = json.loads(request.body)["filename"]
+        action = delete_file(request.user.username, filename)
+        return JsonResponse({"message": action}, status = 200)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
