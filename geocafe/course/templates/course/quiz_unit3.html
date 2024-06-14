@@ -1,0 +1,96 @@
+{% extends "course/base.html" %}
+{% load static %}
+
+{% block title %}Quiz Time{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="topic-head">
+    <h1 class="div-center">Quiz</h1>
+    <h3 class="div-center"> Unit 3</h3>
+</div>
+<div class="quiz">
+    <div class="question visible">
+        <h4 class="quest">What is polygon triangulation?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. Cutting a polygon into squares</button>
+            <button class="answer" data-answer="2" data-correct="true">B. Cutting a polygon into triangles</button>
+            <button class="answer" data-answer="3" data-correct="false">C. Cutting a polygon into circles</button>
+            <button class="answer" data-answer="4" data-correct="false">D. Cutting a polygon into rectangles</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">What kind of polygons does the Art Gallery theorem focus on?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. Polygons with holes</button>
+            <button class="answer" data-answer="2" data-correct="false">B. Self-intersecting polygons </button>
+            <button class="answer" data-answer="3" data-correct="false">C. Complex polygons</button>
+            <button class="answer" data-answer="4" data-correct="true">D. Simple polygons</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">What is a simple polygon?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. A polygon that self-intersects</button>
+            <button class="answer" data-answer="2" data-correct="false">B. A polygon with holes</button>
+            <button class="answer" data-answer="3" data-correct="true">C. A polygon that does not self-intersect</button>
+            <button class="answer" data-answer="4" data-correct="false">D. A polygon with curved sides</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">What must the boundary of a domain be in the theory of triangulation?</h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. An open polygon</button>
+            <button class="answer" data-answer="2" data-correct="true">B. A closed simple polygon</button>
+            <button class="answer" data-answer="3" data-correct="false">C. A self-intersecting polygon</button>
+            <button class="answer" data-answer="4" data-correct="false">D. A curved polygon</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        <div class="menu-final">
+            <button id="btn-result" class="quiz-result">Result</button>
+            <div class="hola" style="display: flex;">
+                <!-- Buttons to Open the Modals -->
+                <!-- <a href="/units" id="btn-continue" class="quiz-continue div-center">Continue</a> -->
+                <div id="btn-continue" class="quiz-continue div-center"></div>
+                <a href="/quiz" id="btn-restart" class="quiz-restart div-center">Restart</a>
+
+                <!-- The Result Modal -->
+                <div id="result-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">Result of the answer</h5>
+                        <p>This is the result</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
+                <!-- MESSAGE SAD :C -->
+                <div id="continue-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">IM Sorry :C</h5>
+                        <p>hacertaste menos de la mitad de las preguntas</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'course/js/quiz.js' %}"></script>
+    {% endblock body %}

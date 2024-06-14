@@ -9,11 +9,7 @@ renderer.setSize(720, 480); // Ajustar el tamaño del renderer
 renderer.setClearColor(0xffffff); // Establecer el color de fondo a blanco
 let canvas = renderer.domElement;
 
-canvas.style.maxWidth = '100%'; // Eliminar '!important'
-canvas.style.width = '720px'; // Eliminar '!important'
-canvas.style.maxHeight = '100%'; // Eliminar '!important'
-canvas.style.height = '480px'; // Eliminar '!important'
-canvas.style.padding = '20px 10px'; // Eliminar '!important'
+canvas.classList.add("propiedades-canvas2");
 
 const assetLoader = new GLTFLoader();
 let model; // Variable para almacenar el modelo GLTF
