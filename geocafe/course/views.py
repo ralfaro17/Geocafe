@@ -5,7 +5,7 @@ from django.http import Http404, JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .models import Units, Topics, Badges, User
-from .aws_s3  import get_image, delete_image, upload_image, get_default_image
+from .aws_s3  import *
 from .unit_helpers import Insertions
 
 # Create your views here.
@@ -87,6 +87,8 @@ def register(request):
 
 
 def user_page(request, username):
+    profile_picture_update = request.GET.get('profile_picture_update', None)
+    print(profile_picture_update)
     try:
         user = User.objects.get(username=username)
         try:
@@ -107,6 +109,7 @@ def user_page(request, username):
         "profile_picture": profile_picture[1] if profile_picture[0] else False,
         "badges": badges,
         "progress": units,
+        "profile_picture_update": profile_picture_update,
         })
 
 
@@ -143,7 +146,7 @@ def load_topic(request, id):
 
 @login_required
 def quiz(request):
-    return render(request,"course/quiz.html")
+    return render(request,"course/quiz_unit1.html")
 
 
 @login_required
@@ -168,15 +171,8 @@ def account_settings(request):
             if pfp[0]:
                 user.has_profile_picture = True
         user.save()
-        return redirect(reverse("course:user_page", args=[user.username]))
-    if request.user.has_profile_picture:
-        profile_picture = get_image(request.user.username)
-    else:
-        profile_picture = (False, "the image does not exist")
-    if profile_picture[0]:
-        return render(request, "course/account_settings.html", {
-            "profile_picture": profile_picture[1]
-        })
+        url = reverse("course:user_page", kwargs={"username": user.username}) + f'?profile_picture_update={1}'
+        return redirect(url)
     else:
         return render(request, "course/account_settings.html")
 
@@ -188,6 +184,7 @@ def delete_profile_picture(request):
         user.has_profile_picture = False
         action = delete_image(request.user.username)
         if action[0]:
+            user.save()
             return JsonResponse({"message": action[1]}, status = 200)
         else:
             return JsonResponse({"message": action[1]}, status = 400)
@@ -208,5 +205,57 @@ def increment_unit(request):
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
 
-def dos_test(request):
-    return render(request, "course/dos_test.html")
+def code_editor(request):
+    
+    return render(request, "course/code_editor.html")
+
+def generate_new_image_url(request):
+    if request.method == "GET":
+        if request.user.has_profile_picture:
+            profile_picture = get_image(request.user.username)
+        else:
+            profile_picture = get_default_image()
+        print(profile_picture)
+        return JsonResponse({"url": profile_picture[1]}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def get_user_files(request):
+    if request.method == "GET":
+        files = get_files(request.user.username)
+        print(files)
+        return JsonResponse({"files": files}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def get_user_file(request):
+    if request.method == "POST":
+        filename = json.loads(request.body)["filename"]
+        option = json.loads(request.body)["option"]
+        if option == "text":
+            file = get_file(request.user.username, filename)
+        elif option == "url":
+            file = get_file_url(request.user.username, filename)
+        else:
+            file = (False, "Invalid option")
+        return JsonResponse({"file": file}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def save_user_file(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        filename = data["filename"]
+        content = data["content"]
+        action = upload_file(request.user.username, content, filename)
+        return JsonResponse({"message": action}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def delete_user_file(request):
+    if request.method == "POST":
+        filename = json.loads(request.body)["filename"]
+        action = delete_file(request.user.username, filename)
+        return JsonResponse({"message": action}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)

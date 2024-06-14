@@ -1,6 +1,7 @@
 // use this to get the user data from the local storage, if it doesn't exist, return an empty object to which you can add values
-function getUserData(user_id){
+export function getUserData(user_id){
     const userData = localStorage.getItem(`user${user_id}data`);
+    console.log(userData)
     if(userData != null){
         return JSON.parse(userData);
     }
@@ -10,8 +11,14 @@ function getUserData(user_id){
 };
 
 
+export function isValidFilename(str) {
+    const regex = /^[a-zA-Z0-9_-]+$/;
+    return regex.test(str);
+}
+
+
 // use this to get the profile picture URL of the user
-function getProfilePictureUrl(user_id){
+export function getProfilePictureUrl(user_id){
     const profilePicture = getUserData(user_id).profilePicture;
     if (profilePicture){
         return new URL(profilePicture);
@@ -22,29 +29,7 @@ function getProfilePictureUrl(user_id){
 }
 
 
-// URL has to be a URL object
-function loadProfilePicture(url, imgElement, user_id){
-    if (!url.searchParams.get('X-Amz-Date') || isPresignedUrlExpired(url)) {
-        // console.log("Presigned URL has expired or doesn't exist.");
-        fetch("/generate-new-image-url")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            userData = getUserData(user_id);
-            userData.profilePicture = data.url;
-            localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));
-            imgElement.src = data.url;
-            imgElement.style.display = "block";
-        });
-    }
-    else{
-        imgElement.src = url;
-        imgElement.style.display = "block";
-    }
-}
-
-
-function isPresignedUrlExpired(url) {
+export function isPresignedUrlExpired(url) {
     const urlObj = new URL(url);
 
     // Extract the X-Amz-Date and X-Amz-Expires parameters
@@ -70,16 +55,16 @@ function isPresignedUrlExpired(url) {
     // Add the X-Amz-Expires value (in seconds) to the expiration date
     const expirationTimeInSeconds = parseInt(amzExpires);
     expirationDate.setSeconds(expirationDate.getSeconds() + expirationTimeInSeconds);
-    console.log("Expiration date: " + expirationDate)
+    // console.log("Expiration date: " + expirationDate)
 
     // Compare the expiration date with the current date
     const currentDate = new Date();
-    console.log("Current date: " + currentDate);
+    // console.log("Current date: " + currentDate);
     return currentDate > expirationDate;
 }
 
 
-function getDjangoValue(elementId){
+export function getDjangoValue(elementId){
     try{
         return JSON.parse(document.getElementById(`${elementId}`).textContent);
     }
@@ -89,13 +74,33 @@ function getDjangoValue(elementId){
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const user_id = getDjangoValue('user_id');
+// URL has to be a URL object
+export function loadProfilePicture(url, imgElement, user_id){
+    if (!url.searchParams.get('X-Amz-Date') || isPresignedUrlExpired(url)) {
+        // console.log("Presigned URL has expired or doesn't exist.");
+        fetch("/generate-new-image-url")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            userData = getUserData(user_id);
+            userData.profilePicture = data.url;
+            localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));
+            imgElement.src = data.url;
+            imgElement.style.display = "block";
+        });
+    }
+    else{
+        imgElement.src = url;
+        imgElement.style.display = "block";
+    }
+}
 
-    const dropProfilePicture = document.querySelectorAll('.drop-img-users')
-    dropProfilePicture.forEach(element => {
-        const url = getProfilePictureUrl(user_id);
-        loadProfilePicture(url, element, user_id);
+
+export function getUserFiles(){
+    fetch('/get-user-files')
+    .then(response => response.json())
+    .then(data => {
+        return data.files[1];
     })
 
-})
+}

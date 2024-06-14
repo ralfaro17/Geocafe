@@ -1,0 +1,40 @@
+#container {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#another{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+#editor {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid #ccc;
+}
+
+#code-window{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#login{
+    display: none;
+}
+
+.pre-run-window > .-mt-4{
+    display: none;
+}
+
+.sidebar-button:last-child{
+    display: none;
+}

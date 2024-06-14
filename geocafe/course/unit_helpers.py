@@ -6,7 +6,7 @@ from course.models import Units, Topics, Badges
 
 class Insertions:
     def insert_unit_1_full():
-        unit1, created = Units.objects.get_or_create(level=1, name="<h1>Unit 1. Introduction to computational geometry.</h1>", description="<p>This is the first unit.</p>")
+        unit1, created = Units.objects.get_or_create(level=1, name="Unit 1. Introduction to computational geometry.", description="This is the first unit.")
         if created:
             print("The unit 1 was created successfully.")
         else:

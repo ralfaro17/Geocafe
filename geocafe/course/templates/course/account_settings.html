@@ -14,37 +14,8 @@
 
     <form action="{% url 'course:account_settings' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="profile-picture-div">
-            <div class="accountinfo div-center">
-
-                <div class="img-profil">
-                    {% if profile_picture %}
-                    <img src="{{ profile_picture }}" alt="Profile Picture" id="profile-picture">
-                    {% else %}
-                    <img src="{% static 'course/images/default-profile-picture.png' %}" alt="Profile Picture"
-                        id="profile-picture">
-                    {% endif %}
-                </div>
-                <div class="name-profil">
-                    <p class="lato-bold">{{ user.first_name }} {{ user.last_name }}</p>
-                    <p class="lato-regular">{{ user.username }}</p>
-
-                </div>
-            </div>
-
-            <div class="viewsetting visible">
-                <hr>
-                <button class="opcion">Account Settings</button>
-                <hr>
-                <button class="opcion"> coming...</button>
-                <hr>
-                <button class="opcion"> coming...</button>
-                <hr>
-                <button class="opcion"> coming...</button>
-                <hr>
-                <button class="opcion"> coming...</button>
-                <hr>
-            </div>
+        <div id="profile-picture-div">
+            <img src="" alt="Profile Picture" id="profile-picture">
         </div>
         <div class="configuration">
             <div class="configure-profile div-center lato-bold">

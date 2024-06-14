@@ -1,11 +1,20 @@
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
+import { getUserData, getDjangoValue, loadProfilePicture, getProfilePictureUrl } from './helpers.js'
+
 
 document.addEventListener("DOMContentLoaded", () => { 
+    // this loads the profile picture of the user into the profile picture element
+    const user_id = getDjangoValue('user_id');
+    const profilePictureImage = document.querySelector('#profile-picture')
+    const url = getProfilePictureUrl(user_id);
+    loadProfilePicture(url, profilePictureImage, user_id);
+
+
+    // this is the logic for the form
     const form = document.querySelector('form');
     const default_profile_picture_path = document.getElementById('default-profile-picture-path').textContent;
-    console.log(default_profile_picture_path)
     const delete_profile_picture_button = document.getElementById('delete-profile-picture-button');
     let picture_deleted = false;
 
@@ -20,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else{
             if (picture_deleted){
-                const csrftoken = Cookies.get('csrftoken'); // Assuming you're using the `js-cookie` library
+                const csrftoken = Cookies.get('csrftoken'); 
                 fetch("/delete-profile-picture", {
                     method: 'POST',
                     headers: {
@@ -28,12 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 })
                 .then(response => response.json())
-                .then(result => console.log(result))
+                .then(result => {
+                    console.log(result)
+                })
             }
             document.querySelector("button[type='submit']").disabled = true;
-            setTimeout(() => {
-                form.submit();
-            }, 500);
+            form.submit();
         }
     });
 

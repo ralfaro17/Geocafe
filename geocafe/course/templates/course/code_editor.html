@@ -1,0 +1,38 @@
+{% extends "course/base.html" %}
+{% load static %}
+{% load django_vite %}
+{% block title %} Code Editor {% endblock title %}
+{% block head %}
+    <!-- js-dos style sheet -->
+    <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+    <!-- js-dos -->
+    <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+    <link rel="stylesheet" href="{% static 'course/css/code_editor.css' %}">
+    {% vite_asset 'course/js/code_editor.js' %}
+{% endblock head %}
+{% block body %}
+    {{ user.username|json_script:"user_username" }}
+    <div id="another">
+        <div id="container">
+            <div id="code-window">
+                <div >
+                    <button id="load-button" class="btn btn-primary">Load file</button>
+                    <button id="save-button" class="btn btn-success">Save File</button>
+                    <button id="download-button" class="btn btn-secondary">Download File</button>
+                    <button id="save-as-button" class="btn btn-outline-success">Save File As</button>
+                    <button id="delete-button" class="btn btn-danger">Delete File</button>
+                    <button id="turboc-button" class="btn btn-outline-secondary">Download And Open Turbo C++</button>
+                    
+                </div>
+                <div id="editor"></div>
+            </div>
+            <div id="dos" style="width: 50%; height: 100%"></div>
+        </div>
+    </div>
+
+    <script>
+        Dos(document.getElementById("dos"), {
+            url: "",
+        });
+    </script>
+{% endblock body %}
