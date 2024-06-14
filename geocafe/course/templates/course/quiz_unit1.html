@@ -1,0 +1,109 @@
+{% extends "course/base.html" %}
+{% load static %}
+
+{% block title %}Quiz Time{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'course/css/quiz.css' %}?{% now 'U' %}">
+{% endblock head %}
+
+{% block body %}
+
+<div class="topic-head">
+    <h1 class="div-center">Quiz</h1>
+    <h3 class="div-center"> Unit 1</h3>
+</div>
+<div class="quiz">
+    <div class="question visible">
+        <h4 class="quest">What is the primary focus of this course?</h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. Robotics</button>
+            <button class="answer" data-answer="2" data-correct="false">B. Geographic Information Systems (GIS)</button>
+            <button class="answer" data-answer="3" data-correct="true">C. Computer Graphics </button>
+            <button class="answer" data-answer="4" data-correct="false">D. Computational Fluid Dynamics</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">What does the Convex Hull algorithm compute?</h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="true">A. Polygonal mesh</button>
+            <button class="answer" data-answer="2" data-correct="false">B. Quality of a robot’s grasp</button>
+            <button class="answer" data-answer="3" data-correct="false">C. Smallest convex polygon containing a set of points</button>
+            <button class="answer" data-answer="4" data-correct="false">D. Regions based on distance to points</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">Why is computational geometry important in the development of geometric tools?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. It simplifies complex systems excessively
+            </button>
+            <button class="answer" data-answer="2" data-correct="true">B. It provides exact and efficient solutions with mathematical rigor</button>
+            <button class="answer" data-answer="3" data-correct="false">C. It primarily deals with continuous objects</button>
+            <button class="answer" data-answer="4" data-correct="false">D. It avoids the use of asymptotic complexity</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">Which area does computational geometry struggle with?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. Flat objects</button>
+            <button class="answer" data-answer="2" data-correct="false">B. Discrete geometry</button>
+            <button class="answer" data-answer="3" data-correct="false">C. Low-dimensional spaces</button>
+            <button class="answer" data-answer="4" data-correct="true">D. Continuous geometry</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <h4 class="quest">What is a key limitation of computational geometry?
+        </h4>
+        <div class="options div-center">
+            <button class="answer" data-answer="1" data-correct="false">A. It only deals with 3D problems</button>
+            <button class="answer" data-answer="2" data-correct="false">B. It cannot handle discrete geometry problems
+            </button>
+            <button class="answer" data-answer="3" data-correct="true">C. It focuses primarily on low-dimensional spaces
+            </button>
+            <button class="answer" data-answer="4" data-correct="false">D. It lacks mathematical rigor</button>
+        </div>
+        <div class="feedback" style="display: none;"></div>
+    </div>
+    <div class="question hidden">
+        <div class="img-question div-center">
+            <img src="{% static 'course/images/duckquiz.png' %}" alt="Question">
+        </div>
+        <div class="menu-final">
+            <button id="btn-result" class="quiz-result">Result</button>
+            <div class="hola" style="display: flex;">
+                <!-- Buttons to Open the Modals -->
+                <!-- <a href="/units" id="btn-continue" class="quiz-continue div-center">Continue</a> -->
+                <div id="btn-continue" class="quiz-continue div-center"></div>
+                <a href="/quiz" id="btn-restart" class="quiz-restart div-center">Restart</a>
+
+                <!-- The Result Modal -->
+                <div id="result-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">Result of the answer</h5>
+                        <p>This is the result</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
+                <!-- MESSAGE SAD :C -->
+                <div id="continue-modal" class="  hola modal div-center">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h5 class="modal-title">IM Sorry :C</h5>
+                        <p>hacertaste menos de la mitad de las preguntas</p>
+                        <div id="resultado"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'course/js/quiz.js' %}"></script>
+    {% endblock body %}
