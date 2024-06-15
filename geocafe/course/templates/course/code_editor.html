@@ -12,21 +12,20 @@
 {% endblock head %}
 {% block body %}
     {{ user.username|json_script:"user_username" }}
+    <div class="code-btn">
+        <button id="load-button" class="btn btn-primary theme">Load file</button>
+        <button id="save-button" class="btn btn-success theme">Save File</button>
+        <button id="download-button" class="btn btn-secondary theme">Download File</button>
+        <button id="save-as-button" class="btn btn-outline-success theme " >Save File As</button>
+        <button id="delete-button" class="btn btn-danger theme">Delete File</button>
+        <button id="turboc-button" class="btn btn-outline-secondary theme">Download And Open Turbo C++</button>
+    </div>
     <div id="another">
-        <div id="container">
+        <div id="container"class="edit-content">
             <div id="code-window">
-                <div >
-                    <button id="load-button" class="btn btn-primary">Load file</button>
-                    <button id="save-button" class="btn btn-success">Save File</button>
-                    <button id="download-button" class="btn btn-secondary">Download File</button>
-                    <button id="save-as-button" class="btn btn-outline-success">Save File As</button>
-                    <button id="delete-button" class="btn btn-danger">Delete File</button>
-                    <button id="turboc-button" class="btn btn-outline-secondary">Download And Open Turbo C++</button>
-                    
-                </div>
                 <div id="editor"></div>
             </div>
-            <div id="dos" style="width: 50%; height: 100%"></div>
+            <div id="dos"></div>
         </div>
     </div>
 

@@ -74,9 +74,9 @@ button:disabled {
 
 .bar {
   font-family: var(--font-lato);
-  font-size: 12px;
+  font-size: 16px;
   background-color: var(--H_yellow);
-  height: 20px;
+  height: 30px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -651,7 +651,7 @@ body.darkmode {
 
 .btn-drop:hover {
   background-color: white;
-  color: black;
+  color: black!important;
 
 }
 
@@ -717,7 +717,7 @@ body.darkmode {
   /* Ajusta según sea necesario */
 }
 
-.btn-drop span {
+.btn-drop {
   white-space: nowrap;
   /* Evita que el texto se divida en varias líneas */
 }
@@ -730,12 +730,13 @@ body.darkmode {
   padding-left: 5px;
   height: 45px;
   text-decoration: none;
-  display: block;
+  display: flex;
   background-color: var(--l-gray);
 }
 
 .dropdown a:hover {
   background-color: #ddd;
+  color: black!important;
 }
 
 .show {
@@ -751,7 +752,7 @@ body.darkmode {
   border-bottom: 50px solid transparent;
 }
 .vista{
-  display: none;
+  display: none !important;
 }
 .mcg-text {
   color: white;
@@ -813,6 +814,8 @@ body.darkmode {
     left: 0;
     top: 0;
     width: 200px;
+    color: black!important;
+    z-index: 1000 !important;
   }
   .dropdown-content {
     border-radius: 0 15px 15px 0;
@@ -867,11 +870,11 @@ body.darkmode {
     font-size: 16px;
   }
   .vista{
-    display: block;
+    display: block!important;
     
   }
   .respons{
-    display: none;
+    display: none!important;
   }
   .attain-txt {
     height: 280px;
@@ -882,6 +885,10 @@ body.darkmode {
   align-items: center;
   justify-content: center;
   padding: 0px;
+}
+.bar {
+  font-size: 12px;
+  height: 30px;
 }
 }
 

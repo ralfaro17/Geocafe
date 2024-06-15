@@ -67,7 +67,7 @@ section{
     object-fit: contain;
 }
 
-.user-text{
+.user-text h1{
     font-size: 35px;
 }
 
@@ -118,6 +118,10 @@ section{
     font-size: 12px;
     
 }
+.user-text h1{
+    font-size: 18px;
+}
+
 
 .prog{
     font-size: 14px;
