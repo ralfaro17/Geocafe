@@ -9,13 +9,39 @@
 {% endblock head %}
 
 {% block body %}
-<h1>Settings</h1>
 <div class="body-form">
-
+    
     <form action="{% url 'course:account_settings' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div id="profile-picture-div">
-            <img src="" alt="Profile Picture" id="profile-picture">
+        <h1 class="lato-bold" style="text-align: center;color: black;">Settings</h1>
+        <div class="profile-picture-div">
+            <div class="accountinfo div-center">
+
+                <div class="img-profil">
+                    {% csrf_token %}
+                    <div id="profile-picture-div">
+                        <img src="" alt="Profile Picture" id="profile-picture">
+                    </div>
+                </div>
+                <div class="name-profil theme">
+                    <p class="lato-bold">{{ user.first_name }} {{ user.last_name }}</p>
+                    <p class="lato-regular">{{ user.username }}</p>
+
+                </div>
+            </div>
+
+            <div class="viewsetting visible">
+                <hr>
+                <button class="opcion">Account Settings</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+                <button class="opcion"> coming...</button>
+                <hr>
+            </div>
         </div>
         <div class="configuration">
             <div class="configure-profile div-center lato-bold">

@@ -243,6 +243,10 @@ hr {
   border-top: var(--bs-border-width) solid;
   opacity: 0.25;
 }
+.name-profil{
+  color: black;
+
+}
 
 #profile-picture-div{
     width: 50%;

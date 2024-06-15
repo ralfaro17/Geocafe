@@ -5,6 +5,6 @@
     <link rel="stylesheet" href="{% static 'course/css/topic.css' %}">
 {% endblock head %}
 {% block body %}
-    <h1>{{topic.name|safe}}</h1>
-    <p>{{topic.content|safe}}</p>
+    <h1 class="div-center lato-bold">{{topic.name|safe}}</h1>
+    <div class="topic-content lato-regular theme">{{topic.content|safe}}</div>
 {% endblock body %}
