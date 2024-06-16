@@ -68,7 +68,7 @@ const animate = () => {
     const time = clock.getElapsedTime(); // Obtener el tiempo transcurrido
 
     if (model) {
-        model.position.y = Math.cos(time) * 0.3; // Movimiento vertical sinusoidal
+        model.position.y = Math.cos(time) * 0.5; // Movimiento vertical sinusoidal
         model.rotation.y += 0.01
     }
 
