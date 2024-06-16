@@ -759,10 +759,6 @@ body.darkmode {
   font-size: 78px;
 }
 
-/*-----*/
-
-/*mediaquery*/
-
 * {
   font-family: var(--font-lato);
 }
@@ -770,6 +766,14 @@ body.darkmode {
 .font-attain {
   font-size: 52px;
 }
+.respons{
+  display: block!;
+}
+
+/*-----*/
+
+/*mediaquery*/
+
 
 @media (max-width: 992px) {
   div.img-tain {
@@ -886,6 +890,13 @@ body.darkmode {
   justify-content: center;
   padding: 0px;
 }
+.img-404{
+  max-width: 100% !important;
+  width: 720px !important;
+  max-height: 100% !important;
+  height: 480px !important;
+  padding: 20px 10px !important;
+}
 .bar {
   font-size: 12px;
   height: 30px;
@@ -915,9 +926,9 @@ body.darkmode {
 
   .propiedades-canvas {
     max-width: 100%;
-    width: 360px !important;
+    width: 460px !important;
     max-height: 100%;
-    height: 280px !important;
+    height: 380px !important;
     padding: 20px 10px;
   }
 
