@@ -1,12 +1,19 @@
 {% extends "course/base.html" %}
 {% load django_vite %}
 
-{% block title %}Página no encontrada{% endblock title %}
+{% block title %}Page not found{% endblock title %}
 
 {% block body %}
-    <h1>Página no encontrada</h1>
-    <p>Lo sentimos, pero la página que buscas no existe.</p>
+<div class="body found div-center">
+<div class="found-content">
+    <div class="img-404"></div>
+    <div class="div-center" style="display: flex;flex-direction: column;">
 
-    <div class="img-500"></div>
-    {% vite_asset 'course/js/figure404.js' %}
+        <h1 style="text-align: center;">Page not found</h1>
+        <a class="btn btn-basic" style="background-color: var(--MD_brwon); color: whitesmoke;" href="/">Return</a>
+    </div>
+</div>
+</div>
+
+    {% vite_asset 'course/js/figure500.js' %}
 {% endblock body %}
