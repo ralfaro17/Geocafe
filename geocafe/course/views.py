@@ -158,11 +158,13 @@ def load_topic(request, id):
     except:
         raise Http404("The topic does not exist")
     
-    user = User.objects.get(id=request.user.id)
-    if user.unit.level < topic.unit.level:
-        raise Http404("You are not authorized to view this page")
-    
-    return render(request, "course/topic.html", { "topic": topic })
+    if not request.user.is_authenticated:
+        return render(request, "course/topic.html", { "topic": topic })
+    else:
+        user = User.objects.get(id=request.user.id)
+        if user.unit.level < topic.unit.level:
+            raise Http404("You are not authorized to view this page")
+        return render(request, "course/topic.html", { "topic": topic })
 
 
 @login_required
@@ -283,5 +285,15 @@ def delete_user_file(request):
         filename = json.loads(request.body)["filename"]
         action = delete_file(request.user.username, filename)
         return JsonResponse({"message": action}, status = 200)
+    else:
+        return JsonResponse({"message": "Method not allowed"}, status = 405)
+
+def delete_account(request):
+    if request.method == "POST":
+        user = User.objects.get(id=request.user.id)
+        delete_image(user.username)
+        delete_files(user.username)
+        user.delete()
+        return redirect(reverse("course:logout"))
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
