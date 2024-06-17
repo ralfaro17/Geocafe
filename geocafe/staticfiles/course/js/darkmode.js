@@ -1,8 +1,7 @@
-function updateImage() {
+function updateImage(theme, user_id) {
     const nav_img = document.getElementById('nav-img');
 
-    theme = getUserData(user_id)?.darkmode;
-    if (theme != null && +theme.darkmode === 1 && user_id != null) {
+    if (theme != null && +theme === 1 && user_id != null) {
         nav_img.src = nav_img.getAttribute('data-dark-src');
     } else {
         nav_img.src = nav_img.getAttribute('data-light-src');
@@ -13,7 +12,7 @@ function updateImage() {
 document.addEventListener("DOMContentLoaded", () => {
     const mode = document.getElementById('mode');
     const dark = document.querySelectorAll('.theme');
-    const user_id = getUserId();
+    const user_id = getDjangoValue("user_id");
 
     let theme = null;
 
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dark.forEach(function(elemento) {
                 elemento.classList.toggle('darkmode');
             });
-            updateImage();
+            updateImage(getUserData(user_id)?.darkmode, user_id);
         });
     };
 
@@ -49,6 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
         dark.forEach(function(elemento) {
             elemento.classList.toggle('darkmode');
         });
-        updateImage();
+        updateImage(getUserData(user_id)?.darkmode, user_id);
     }
 });

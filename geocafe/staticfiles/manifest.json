@@ -3,9 +3,9 @@
     "file": "assets/GLTFLoader-C4yd4ktm.js",
     "name": "GLTFLoader"
   },
-  "_sweetalert2-!~{008}~.js": {
+  "_sweetalert2-!~{009}~.js": {
     "file": "assets/sweetalert2-DMXr2t6I.css",
-    "src": "_sweetalert2-!~{008}~.js"
+    "src": "_sweetalert2-!~{009}~.js"
   },
   "_sweetalert2-D-qDQbiK.js": {
     "file": "assets/sweetalert2-D-qDQbiK.js",
@@ -15,7 +15,7 @@
     ]
   },
   "course/js/account_settings.js": {
-    "file": "assets/account_settings-CF3bYPzE.js",
+    "file": "assets/account_settings-CbneCcro.js",
     "name": "account_settings",
     "src": "course/js/account_settings.js",
     "isEntry": true,
@@ -25,7 +25,7 @@
     ]
   },
   "course/js/figure404.js": {
-    "file": "assets/figure404-DK0RwZeU.js",
+    "file": "assets/figure404-CAmWvwGG.js",
     "name": "figure404",
     "src": "course/js/figure404.js",
     "isEntry": true,
@@ -33,7 +33,19 @@
       "_GLTFLoader-C4yd4ktm.js"
     ],
     "assets": [
-      "assets/404-H9x5gigk.gltf"
+      "assets/404-D1RNTFBe.gltf"
+    ]
+  },
+  "course/js/figure500.js": {
+    "file": "assets/figure500-Lg2M2rur.js",
+    "name": "figure500",
+    "src": "course/js/figure500.js",
+    "isEntry": true,
+    "imports": [
+      "_GLTFLoader-C4yd4ktm.js"
+    ],
+    "assets": [
+      "assets/500-DndU9wv2.gltf"
     ]
   },
   "course/js/increment_unit.js": {
@@ -46,7 +58,7 @@
     ]
   },
   "course/js/index-figure1.js": {
-    "file": "assets/figure1-B6PPDN6s.js",
+    "file": "assets/figure1-Cm-ZMTUg.js",
     "name": "figure1",
     "src": "course/js/index-figure1.js",
     "isEntry": true,
@@ -58,7 +70,7 @@
     ]
   },
   "course/js/index-figure2.js": {
-    "file": "assets/figure2-DguBvoxC.js",
+    "file": "assets/figure2-GCpQcObm.js",
     "name": "figure2",
     "src": "course/js/index-figure2.js",
     "isEntry": true,
@@ -70,8 +82,12 @@
     ]
   },
   "course/js/models/404.gltf": {
-    "file": "assets/404-H9x5gigk.gltf",
+    "file": "assets/404-D1RNTFBe.gltf",
     "src": "course/js/models/404.gltf"
+  },
+  "course/js/models/500.gltf": {
+    "file": "assets/500-DndU9wv2.gltf",
+    "src": "course/js/models/500.gltf"
   },
   "course/js/models/cubo.gltf": {
     "file": "assets/cubo-B8LfAZ9o.gltf",
