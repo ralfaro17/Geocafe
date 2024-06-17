@@ -305,6 +305,6 @@ def delete_account(request):
         delete_image(user.username)
         delete_files(user.username)
         user.delete()
-        return redirect(reverse("course:logout"))
+        return JsonResponse({"message": "user deleted successfully"}, status=200)
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
