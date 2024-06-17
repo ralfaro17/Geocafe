@@ -167,14 +167,16 @@ def load_topic(request, id):
         return render(request, "course/topic.html", { "topic": topic })
 
 
-@login_required
 def quiz(request):
-    try:
-        user = User.objects.get(id=request.user.id)
-        unit = user.unit.level
-    except:
-        raise Http404("An error ocurred")
-    return render(request,f"course/quiz_unit{unit}.html")
+    if not request.user.is_authenticated:
+        return render(request, "course/quiz_unit1.html", { "not_authenticated": True })
+    else:
+        try:
+            user = User.objects.get(id=request.user.id)
+            unit = user.unit.level
+        except:
+            raise Http404("An error ocurred")
+        return render(request,f"course/quiz_unit{unit}.html")
 
 
 @login_required
@@ -219,7 +221,7 @@ def delete_profile_picture(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
-
+@login_required
 def increment_unit(request):
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)
@@ -232,11 +234,11 @@ def increment_unit(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
-
+@login_required
 def code_editor(request):
-    
     return render(request, "course/code_editor.html")
 
+@login_required
 def generate_new_image_url(request):
     if request.method == "GET":
         if request.user.has_profile_picture:
@@ -248,6 +250,7 @@ def generate_new_image_url(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
+@login_required
 def get_user_files(request):
     if request.method == "GET":
         files = get_files(request.user.username)
@@ -256,6 +259,7 @@ def get_user_files(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
+@login_required
 def get_user_file(request):
     if request.method == "POST":
         filename = json.loads(request.body)["filename"]
@@ -270,6 +274,7 @@ def get_user_file(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
+@login_required
 def save_user_file(request):
     if request.method == "POST":
         data = json.loads(request.body)
@@ -280,6 +285,7 @@ def save_user_file(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
+@login_required
 def delete_user_file(request):
     if request.method == "POST":
         filename = json.loads(request.body)["filename"]
@@ -288,6 +294,7 @@ def delete_user_file(request):
     else:
         return JsonResponse({"message": "Method not allowed"}, status = 405)
 
+@login_required
 def delete_account(request):
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)

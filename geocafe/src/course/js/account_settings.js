@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const user_id = getDjangoValue('user_id');
     const profilePictureImage = document.querySelector('#profile-picture')
     const url = getProfilePictureUrl(user_id);
+    const deleteAccountButton = document.getElementById('delete-account-button');
     loadProfilePicture(url, profilePictureImage, user_id);
 
 
@@ -64,4 +65,48 @@ document.addEventListener("DOMContentLoaded", () => {
         profile_picture_input.value = null;
         picture_deleted = true;
     });
+
+    deleteAccountButton.addEventListener('click', function() {
+        Swal.fire({
+            title: 'Are you sure you want to delete your account?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const csrftoken = Cookies.get('csrftoken'); 
+                fetch("/delete-account", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrftoken,
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        Swal.fire({
+                            title: 'Account deleted',
+                            text: 'Your account has been deleted.',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(() => {
+                            window.location.href = '/';
+                        }, 1500);
+                    }
+                    else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'An error occurred while deleting your account.',
+                            icon: 'error',
+                        });
+                    }
+                })
+            }
+        })
+    })
 })

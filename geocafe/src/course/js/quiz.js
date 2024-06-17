@@ -1,8 +1,11 @@
 import increment_unit from "./increment_unit";
+import { getDjangoValue } from "./helpers";
+import { Swal } from "sweetalert2/dist/sweetalert2";
 
 let modalResult = document.getElementById("result-modal");
 let btnResult = document.getElementById("btn-result");
 let correct = 0;
+let notAuthenticated = getDjangoValue("not_authenticated");
 
 let btnContinueDiv = document.getElementById("btn-continue");
 let span = document.getElementsByClassName("close")[0];
@@ -202,7 +205,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // console.log(`correct value: ${correct}`)
         // console.log("El porcentaje de respuestas correctas es: " + correctPercentage);
 
-        if (correctPercentage > 50) {
+        if(notAuthenticated){
+            let continueLink = document.createElement("a");
+            continueLink.textContent = "Continue";
+            continueLink.classList.add("quiz-continue", "div-center");
+            continueLink.addEventListener("click", function () {
+                // Cuando se hace clic en el botón "Continuar", incrementar la unidad actual y redirigir a la página de unidades
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Notification',
+                    text: 'You must have an account to unlock the next units',
+                })
+            })
+
+            btnContinueDiv.appendChild(continueLink);
+        }
+        else if (correctPercentage > 50) {
             // Si el porcentaje de respuestas correctas es mayor al 50%, mostrar el botón de continuar
             let continueLink = document.createElement("a");
             continueLink.href = "/units?unit_incremented=1";
