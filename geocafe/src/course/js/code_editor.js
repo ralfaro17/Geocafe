@@ -15,6 +15,8 @@ import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
 import { oneDark } from "@codemirror/theme-one-dark"; 
 import { dracula } from "@uiw/codemirror-theme-dracula";
+import '../../scss/styles.sass'
+import * as bootstrap from 'bootstrap'
 
 
 document.addEventListener('DOMContentLoaded', function () {

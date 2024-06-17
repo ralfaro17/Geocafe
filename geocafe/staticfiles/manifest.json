@@ -36,7 +36,7 @@
     "isEntry": true
   },
   "course/js/code_editor.js": {
-    "file": "assets/code_editor-D6UpVU19.js",
+    "file": "assets/code_editor-CEmVayhW.js",
     "name": "code_editor",
     "src": "course/js/code_editor.js",
     "isEntry": true,
@@ -44,7 +44,8 @@
       "course/js/auto_complete_list.js",
       "course/js/helpers.js",
       "_sweetalert2-D-qDQbiK.js",
-      "_js.cookie-Cz0CWeBA.js"
+      "_js.cookie-Cz0CWeBA.js",
+      "course/js/styles.js"
     ]
   },
   "course/js/figure404.js": {

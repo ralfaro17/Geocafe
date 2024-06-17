@@ -11,7 +11,7 @@ class Insertions:
             print("The unit 1 was created successfully.")
         else:
             print("The unit 1 already exists.")
-        topic1, created = Topics.objects.get_or_create(unit=unit1, name="""<p><strong><em>Topic 1 - What is computational geometry?</em></strong></p>""", content="""<p>It’s referred to as a field of <strong>computer science and geometry</strong>, having the main function of designing and analyzing computer algorithms related to solving geometric problems.</p>
+        topic1, created = Topics.objects.get_or_create(unit=unit1, name="""<p><em>Topic 1 - What is computational geometry?</em></p>""", content="""<p>It’s referred to as a field of <strong>computer science and geometry</strong>, having the main function of designing and analyzing computer algorithms related to solving geometric problems.</p>
 
 <p>Modern computational geometry can be used as a way to solve two and three dimensional problems, but the term is mostly used in the context of two dimensions, and that's the one we will oblige in this course.</p>
 
@@ -26,7 +26,7 @@ class Insertions:
         else:
             print("The topic 1 already exists.")
             
-        topic2, created = Topics.objects.get_or_create(unit=unit1, name="""<p><strong><em>Topic 2 - Application areas.</em></strong></p>""", content="""<p>As we stated, computational geometry can offer solutions in a variety of areas (fields of computer science), using multiple geometric solutions that can be adapted depending on the problem at hand; In this topic we will briefly talk about computational geometry in these areas.</p>
+        topic2, created = Topics.objects.get_or_create(unit=unit1, name="""<p><em>Topic 2 - Application areas.</em></p>""", content="""<p>As we stated, computational geometry can offer solutions in a variety of areas (fields of computer science), using multiple geometric solutions that can be adapted depending on the problem at hand; In this topic we will briefly talk about computational geometry in these areas.</p>
 
 <p style="text-align:center"><strong>Computer graphics.</strong></p>
 
@@ -61,7 +61,7 @@ class Insertions:
         else:
             print("The topic 2 already exists.")
     
-        topic3, created = Topics.objects.get_or_create(unit=unit1, name="""<p><strong><em>Topic 3 - Strengths and Limitations.</em></strong></p>""", content="""<p>Computational geometry as a complete discipline has its right share of specific characteristics that can be considered Strengths and Limitations, this topic will cover some stipulated ones.</p>
+        topic3, created = Topics.objects.get_or_create(unit=unit1, name="""<p><em>Topic 3 - Strengths and Limitations.</em></p>""", content="""<p>Computational geometry as a complete discipline has its right share of specific characteristics that can be considered Strengths and Limitations, this topic will cover some stipulated ones.</p>
 
 <p style="text-align:center"><strong>Strengths.</strong></p>
 

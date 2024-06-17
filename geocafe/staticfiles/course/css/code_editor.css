@@ -43,7 +43,7 @@
     background-color: darkblue;
   
 }
-.btn.btn-succes.darkmode{
+.btn.btn-success.darkmode{
     background-color: darkgreen;
   
 }
@@ -57,6 +57,10 @@
 }
 .btn.btn-danger.darkmode{
     background-color: darkred;
+  
+}
+.btn.btn-info.darkmode{
+    background-color: darkcyan;
   
 }
 
