@@ -19,7 +19,7 @@
     ]
   },
   "course/js/account_settings.js": {
-    "file": "assets/account_settings-CfrhjYiD.js",
+    "file": "assets/account_settings-CEytHcrB.js",
     "name": "account_settings",
     "src": "course/js/account_settings.js",
     "isEntry": true,
@@ -79,7 +79,7 @@
     "isEntry": true
   },
   "course/js/increment_unit.js": {
-    "file": "assets/increment_unit-DmnaLN-k.js",
+    "file": "assets/increment_unit-GjiEbNrv.js",
     "name": "increment_unit",
     "src": "course/js/increment_unit.js",
     "isEntry": true,
@@ -129,12 +129,13 @@
     "src": "course/js/models/grano.gltf"
   },
   "course/js/quiz.js": {
-    "file": "assets/quiz-B5UeZ3wD.js",
+    "file": "assets/quiz-O_jkNrF1.js",
     "name": "quiz",
     "src": "course/js/quiz.js",
     "isEntry": true,
     "imports": [
       "course/js/increment_unit.js",
+      "course/js/helpers.js",
       "_sweetalert2-D-qDQbiK.js",
       "_js.cookie-Cz0CWeBA.js"
     ]
