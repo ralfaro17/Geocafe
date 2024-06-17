@@ -86,25 +86,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .then(response => response.json())
                 .then(result => {
-                    if (result.success) {
-                        Swal.fire({
-                            title: 'Account deleted',
-                            text: 'Your account has been deleted.',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        setTimeout(() => {
-                            window.location.href = '/';
-                        }, 1500);
-                    }
-                    else {
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'An error occurred while deleting your account.',
-                            icon: 'error',
-                        });
-                    }
+                    Swal.fire({
+                        title: 'Account deleted',
+                        text: 'Your account has been deleted.',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 1600);
                 })
             }
         })
