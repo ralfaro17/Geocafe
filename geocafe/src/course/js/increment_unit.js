@@ -11,11 +11,21 @@ function increment_unit() {
     })
     .then(response => response.json())
     .then(result => {
-        Swal.fire({
-            icon: 'info',
-            title: 'Message',
-            text: result.message,
-        });
+        if(result?.message == "Unit not incremented"){
+            Swal.fire({
+                icon: 'info',
+                title: 'Message',
+                text: result.message,
+            });
+        }
+        else{
+            if(result?.course_completed != null){
+                window.location.href = '/units?course_completed=1';
+            }
+            else{
+                window.location.href = '/units?unit_incremented=1';
+            }
+        }
     })
 }
 

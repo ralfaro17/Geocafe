@@ -128,6 +128,7 @@ def user_page(request, username):
 
 def units(request):
     new_unit = None
+    course_completed = None
     if not request.user.is_authenticated:
         try:
             units = Units.objects.filter(level=1)
@@ -135,16 +136,17 @@ def units(request):
             raise Http404(f"Unexpected error: {e}")
     else:
         new_unit = request.GET.get('unit_incremented', None)
+        course_completed = request.GET.get('course_completed', None)
         try:
             user = User.objects.get(id=request.user.id)
             # progress = UserProgress.objects.get(user=request.user)
             units = Units.objects.filter(level__lte=user.unit.level)
         except Exception as e:
             raise Http404(f"Unexpected error: {e}")
-        if units.count() == Units.objects.all().count() and new_unit is not None:
+        if course_completed is not None:
             return render(request, "course/units.html", {
                 "units": units,
-                "course_completed": new_unit
+                "course_completed": course_completed
             })
     return render(request, "course/units.html", {
         "units": units,
@@ -225,6 +227,8 @@ def delete_profile_picture(request):
 def increment_unit(request):
     if request.method == "POST":
         user = User.objects.get(id=request.user.id)
+        if user.unit.level == 3:
+            return JsonResponse({"course_completed": "course_completed"}, status = 200)
         try:
             user.unit = Units.objects.get(level=user.unit.level + 1)
             user.save()

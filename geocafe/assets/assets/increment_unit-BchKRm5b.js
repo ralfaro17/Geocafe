@@ -1,1 +1,0 @@
-import{S as t}from"./sweetalert2-Dw17hXSt.js";import{a as n}from"./js.cookie-Cz0CWeBA.js";function r(){fetch("/increment-unit",{method:"POST",headers:{"X-CSRFToken":n.get("csrftoken")}}).then(e=>e.json()).then(e=>{t.fire({icon:"info",title:"Message",text:e.message})})}export{r as i};
