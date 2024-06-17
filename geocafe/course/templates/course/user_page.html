@@ -22,7 +22,6 @@
                 {% for badge in badges %}
                 <img src="{{ badge.image.url }}" alt="{{ badge.name }}" class="badge-icon">
                 {% endfor %}
-                <img src="{% static 'course/images/test-badge.png' %}" alt="test-badge" class="badge-icon">
             </div>
             <hr>
             <p class="email info"> {{ user_requested.email }} </p>

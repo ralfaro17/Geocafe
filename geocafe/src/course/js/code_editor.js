@@ -9,10 +9,13 @@ import { autocompletion, completeFromList } from "@codemirror/autocomplete";
 import { indentUnit } from "@codemirror/language";
 import rainbowBrackets from 'rainbowbrackets'
 import autoCompleteList from './auto_complete_list.js'
-import { getDjangoValue, getUserFiles, isValidFilename } from "./helpers.js";
+import { getDjangoValue, getUserFiles, isValidFilename, getUserData } from "./helpers.js";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import Cookies from 'js-cookie'
+import { oneDark } from "@codemirror/theme-one-dark"; 
+import { dracula } from "@uiw/codemirror-theme-dracula";
+
 
 document.addEventListener('DOMContentLoaded', function () {
 /*     Dos(document.getElementById("dos"), {
@@ -26,7 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveAsButton = document.querySelector("#save-as-button");
     const deleteButton = document.querySelector("#delete-button");
     const downloadAndRun = document.querySelector("#turboc-button");
+    const themeButton = document.querySelector("#theme-button");
     let username = getDjangoValue('user_username');
+    const userId = getDjangoValue('user_id');
+
+
 
 
     
@@ -396,8 +403,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         .then(data => {
                             Swal.close()
                             if(data?.message[0]){
-                                console.log(selectedOption);
-                                console.log(currentFile);
+                                // console.log(selectedOption);
+                                // console.log(currentFile);
                                 if(selectedOption === currentFile){
                                     currentFile = null;
                                     view.dispatch({
@@ -443,8 +450,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 if(data.file[0]){
-                    console.log(data.file[1])
-                    console.log(currentFile)
+                    // console.log(data.file[1])
+                    // console.log(currentFile)
                     const url = `https://developerinsider.co/runturbocpp/?run=turbocpp:~developerinsider.co~${data.file[1]}~${currentFile}.C`
 
                     // Open the URL in a new window
@@ -474,32 +481,157 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-
-
     const tabSize = indentUnit.of("    ");
 
     const editorContainer = document.getElementById('editor');
     
+
     // This creates the starting state of the editor
-    let startState = EditorState.create({
-        doc: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`,
-        extensions: [
-            basicSetup, 
-            cpp(),
-            keymap.of([indentWithTab, ...defaultKeymap]),
-            autocompletion({
-                override: [completeFromList(autoCompleteList)], // Use custom completions
+    let startState;
+    let userCodeTheme = getUserData(userId).editorTheme;
+    if(userCodeTheme === "dracula"){
+        startState = EditorState.create({
+            doc: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`,
+            extensions: [
+                basicSetup, 
+                cpp(),
+                keymap.of([indentWithTab, ...defaultKeymap]),
+                autocompletion({
+                    override: [completeFromList(autoCompleteList)], // Use custom completions
+                }),
+                dracula,
+                tabSize,
+                rainbowBrackets(),
+                ]
+        });
+    }
+    else if(userCodeTheme === "oneDark"){
+        startState = EditorState.create({
+            doc: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`,
+            extensions: [
+                basicSetup, 
+                cpp(),
+                keymap.of([indentWithTab, ...defaultKeymap]),
+                autocompletion({
+                    override: [completeFromList(autoCompleteList)], // Use custom completions
+                }),
+                oneDark,
+                tabSize,
+                rainbowBrackets(),
+                ]
+        });
+    }
+    else{
+        startState = EditorState.create({
+            doc: `#include <stdio.h>\n\nint main() {\n    printf("Hello, ${username}!\\n");\n    return 0;\n}`,
+            extensions: [
+                basicSetup, 
+                cpp(),
+                keymap.of([indentWithTab, ...defaultKeymap]),
+                autocompletion({
+                    override: [completeFromList(autoCompleteList)], // Use custom completions
                 }),
                 tabSize,
                 rainbowBrackets(),
                 ]
-                });
-        
+        });
+    }
+
+
     // Create the editor view
     let view = new EditorView({
         state: startState,
         parent: editorContainer
     });
 
+    function switchTheme(theme) {
+        let state = EditorState.create({
+            doc: view.state.doc,
+            extensions: [
+                basicSetup, 
+                cpp(),
+                keymap.of([indentWithTab, ...defaultKeymap]),
+                autocompletion({
+                    override: [completeFromList(autoCompleteList)], // Use custom completions
+                }),
+                tabSize,
+                theme,
+                rainbowBrackets(),
+                ]
+        });
+        view.setState(state);
+    }
+
+
+    themeButton.addEventListener("click", () => {
+        const select = document.createElement("select");
+        select.id = "swal-select";
+        select.classList.add("swal2-select");
+        const option3 = document.createElement("option");
+        option3.text = "Default";
+        option3.value = "default";
+        select.add(option3);
+        const option = document.createElement("option");
+        option.text = "One Dark";
+        option.value = "oneDark";
+        select.add(option);
+        const option2 = document.createElement("option");
+        option2.text = "Dracula";
+        option2.value = "dracula";
+        select.add(option2);
+        Swal.fire({
+            title: 'Choose the theme to use',
+            showCancelButton: true,
+            html: select,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Change theme",
+            focusConfirm: false,
+            preConfirm: () => {
+                const selectedOption = document.getElementById('swal-select').value;
+                if(selectedOption === null){
+                    Swal.showValidationMessage("You need to select a theme");
+                }
+                else{
+                    // console.log(selectedOption);
+                    return selectedOption;
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const userData = getUserData(userId);
+                const selectedOption = result.value;
+                if(selectedOption === "dracula"){
+                    userData.editorTheme = "dracula";
+                    localStorage.setItem(`user${userId}data`, JSON.stringify(userData))
+                    switchTheme(dracula);
+                }
+                else if(selectedOption === "oneDark"){
+                    userData.editorTheme = "oneDark";
+                    localStorage.setItem(`user${userId}data`, JSON.stringify(userData))
+                    switchTheme(oneDark);
+                }
+                else if(selectedOption === "default"){
+                    userData.editorTheme = "default";
+                    localStorage.setItem(`user${userId}data`, JSON.stringify(userData))
+                    let state = EditorState.create({
+                        doc: view.state.doc,
+                        extensions: [
+                            basicSetup, 
+                            cpp(),
+                            keymap.of([indentWithTab, ...defaultKeymap]),
+                            autocompletion({
+                                override: [completeFromList(autoCompleteList)], // Use custom completions
+                            }),
+                            tabSize,
+                            rainbowBrackets(),
+                            ]
+                    });
+                    view.setState(state);
+                }
+            }
+        });
+
+    })
 
 })    

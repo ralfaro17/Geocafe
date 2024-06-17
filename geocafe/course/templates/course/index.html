@@ -8,9 +8,9 @@
 
 {% block body%}
 <div class="theme bar">
-    <a class="bar-text nav-link" href="">Tips</a>
-    <a class="bar-text nav-link" href="">Resources</a>
+    <a class="bar-text nav-link" href="https://www.programmingsimplified.com/c/graphics.h">Tips</a>
     <a class="bar-text " href="{% url 'course:code_editor' %}">Try using our built-in IDE!</a>
+    <a class="bar-text nav-link" href="https://developerinsider.co/graphics-graphics-h-c-programming/">Resources</a>
 </div>
 
 <div class="theme master">
@@ -25,7 +25,7 @@
 </div>
 
 <div class="star-here">
-    <a class="starhere" href="">
+    <a class="starhere" href="{% url 'course:units' %}">
         <h1 class=" theme starhere-text"> Start Here!</h1>
     </a>
     <div class="triangulo"></div>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="theme searching">
-    <h1 class=" searching-text">Searching for an specific theme? <a href="">Click here</a> </h1>
+    <h1 class=" searching-text">Searching for an specific theme? <a href="{% url 'course:units' %}">Click here</a> </h1>
 </div>
 
 {% vite_asset 'course/js/index-figure1.js' %}

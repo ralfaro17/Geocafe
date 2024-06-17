@@ -29,7 +29,6 @@ function loadProfilePicture(url, imgElement, user_id){
         fetch("/generate-new-image-url")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             userData = getUserData(user_id);
             userData.profilePicture = data.url;
             localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));
@@ -70,11 +69,11 @@ function isPresignedUrlExpired(url) {
     // Add the X-Amz-Expires value (in seconds) to the expiration date
     const expirationTimeInSeconds = parseInt(amzExpires);
     expirationDate.setSeconds(expirationDate.getSeconds() + expirationTimeInSeconds);
-    console.log("Expiration date: " + expirationDate)
+    // console.log("Expiration date: " + expirationDate)
 
     // Compare the expiration date with the current date
     const currentDate = new Date();
-    console.log("Current date: " + currentDate);
+    // console.log("Current date: " + currentDate);
     return currentDate > expirationDate;
 }
 

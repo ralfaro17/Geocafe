@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {  
     profilePictureUpdate = JSON.parse(document.getElementById('profile_picture_update').textContent);
-    console.log(profilePictureUpdate);
+    // console.log(profilePictureUpdate);
     if (profilePictureUpdate == 1){
         loadProfilePicture(new URL(document.querySelector('#profile-picture').src), document.querySelector('#profile-picture'), getDjangoValue('user_id'));
     }
