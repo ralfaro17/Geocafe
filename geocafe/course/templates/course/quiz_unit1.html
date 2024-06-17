@@ -9,7 +9,7 @@
 {% endblock head %}
 
 {% block body %}
-
+{{ not_authenticated|json_script:"not_authenticated" }}
 <div class="topic-head">
     <h1 class="div-center">Quiz</h1>
     <h3 class="div-center"> Unit 1</h3>
