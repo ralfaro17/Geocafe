@@ -7,7 +7,8 @@ const modelurl = new URL('./models/cubo.gltf', import.meta.url);
 // Crear la escena y la cámara
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 720 / 480, 0.1, 1000);
-camera.position.set(0, 1, 4); // Establecer la posición de la cámara
+camera.position.set(0, 0, 5.2); // Establecer la posición de la cámara
+camera.rotation.z = 90;
 
 // Crear el renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "default" });
@@ -16,11 +17,7 @@ renderer.setClearColor(0xffffff); // Establecer el color de fondo a blanco
 const canvas = renderer.domElement;
 
 // Estilo del canvas
-canvas.style.maxWidth = '100%';
-canvas.style.width = '720px';
-canvas.style.maxHeight = '100%';
-canvas.style.height = '480px';
-canvas.style.padding = '20px 10px';
+canvas.classList.add("propiedades-canvas");
 
 // Crear y agregar luces manualmente
 const createLights = () => {

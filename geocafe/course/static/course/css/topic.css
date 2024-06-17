@@ -1,3 +1,37 @@
 h1{
     text-align: center;
 }
+.topic-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.topic-content p {
+    margin: 20px;
+    padding: 20px;
+    width: 50%;
+    height: 100%;
+    background-color: var(--L_gray);
+    font-size: 26px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.topic-content.darkmode p{
+    background-color: black;
+    box-shadow: 0px 8px 16px 0px rgb(255, 255, 255);
+}
+
+@media (max-width: 992px) {
+    .topic-content p {
+        width: 100%;
+    }
+    .topic-content{
+        margin: 15px;
+        margin-top: 5px;
+    }
+
+
+    }
+@media (min-width: 991.98px){
+    }

@@ -1,19 +1,47 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+// URL del modelo GLTF
 const modelurl = new URL('./models/grano.gltf', import.meta.url);
+
+// Crear la escena y la cámara
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 720 / 480, 0.1, 1000);
-let renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "default" });
+camera.position.set(0, 3, 6); // Establecer la posición de la cámara
+
+// Crear el renderer
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "default" });
 renderer.setSize(720, 480); // Ajustar el tamaño del renderer
 renderer.setClearColor(0xffffff); // Establecer el color de fondo a blanco
-let canvas = renderer.domElement;
+const canvas = renderer.domElement;
 
-canvas.style.maxWidth = '100%'; // Eliminar '!important'
-canvas.style.width = '720px'; // Eliminar '!important'
-canvas.style.maxHeight = '100%'; // Eliminar '!important'
-canvas.style.height = '480px'; // Eliminar '!important'
-canvas.style.padding = '20px 10px'; // Eliminar '!important'
+// Estilo del canvas
+canvas.classList.add("propiedades-canvas");
+
+// Crear y agregar luces manualmente
+const createLights = () => {
+    // Luz direccional desde el frente
+    const directionalLightFront = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightFront.position.set(0, 0, 10);
+    scene.add(directionalLightFront);
+
+    // Luz direccional desde la derecha
+    const directionalLightRight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightRight.position.set(10, 0, 0);
+    scene.add(directionalLightRight);
+
+    // Luz direccional desde arriba
+    const directionalLightTop = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLightTop.position.set(0, 10, 0);
+    scene.add(directionalLightTop);
+
+    // Luz ambiental
+    const ambientLight = new THREE.AmbientLight(0x404040); // Luz suave para la escena
+    scene.add(ambientLight);
+};
+
+// Llamar a la función para crear y agregar las luces
+createLights();
 
 const assetLoader = new GLTFLoader();
 let model; // Variable para almacenar el modelo GLTF
@@ -21,60 +49,33 @@ let model; // Variable para almacenar el modelo GLTF
 assetLoader.load(modelurl.href, function (gltf) {
     model = gltf.scene; // Almacena el modelo GLTF
     scene.add(model);
-
-    camera.position.z = 3.9;
-    camera.position.y = 2;
-    camera.position.x = 0;
-
-    // Encuentra la luz "Sun" dentro del modelo por su nombre
-    const nombreSun = 'Sun'; // Nombre de la luz que deseas modificar
-    let sun;
-    model.traverse((child) => {
-        if (child.isLight && child.name === nombreSun) {
-            sun = child;
-        }
-    });
-
-    // Aplicar cambios a la luz si se encontró
-    if (sun) {
-        sun.intensity = 0.5; // Establecer la intensidad de la luz
-    } else {
-        console.warn('No se encontró una luz con el nombre especificado en el modelo GLTF.');
-    }
-
 }, undefined, function (error) {
     console.error(error);
 });
 
 const imgMaster = document.querySelector('.img-tain');
 
+// Función para renderizar el canvas
 const renderToCanvas = () => {
     imgMaster.innerHTML = '';
     imgMaster.appendChild(canvas);
     animate();
 };
-const renderToCanvasInline = () => {
-    const imgMaster = document.querySelector('.img-tain');
-    const inlineCanvas = document.createElement('canvas');
-    inlineCanvas.width = 720;
-    inlineCanvas.height = 480;
-    imgMaster.innerHTML = '';
-    imgMaster.appendChild(inlineCanvas);
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "default" });
-    renderer.setSize(720, 480);
-    renderer.setClearColor(0xffffff); // Establecer el color de fondo a blanco
-    canvas = renderer.domElement;
-    renderToCanvas();
-};
 
-
+// Función de animación
 const animate = () => {
     requestAnimationFrame(animate);
+    const time = clock.getElapsedTime(); // Obtener el tiempo transcurrido
+
     if (model) {
-        // Rotar el modelo en su propio eje
-        model.rotation.y += 0.01; // Rotación en el eje x
+        model.position.y = Math.cos(time) * 0.5; // Movimiento vertical sinusoidal
+        model.rotation.y += 0.01
     }
+
     renderer.render(scene, camera);
 };
 
-renderToCanvas(); // Renderizar al iniciar
+const clock = new THREE.Clock(); // Crear un reloj para el tiempo transcurrido
+
+// Renderizar al iniciar
+renderToCanvas();

@@ -8,26 +8,27 @@
 
 {% block body%}
 <div class="theme bar">
-    <a class="bar-text nav-link" href="">Tips</a>
-    <a class="bar-text nav-link" href="">resourse</a>
-    <a class="bar-text " href="">Try using our built-in IDE!</a>
+    <a class="bar-text nav-link" href="https://www.programmingsimplified.com/c/graphics.h">Tips</a>
+    <a class="bar-text " href="{% url 'course:code_editor' %}">Try using our built-in IDE!</a>
+    <a class="bar-text nav-link" href="https://developerinsider.co/graphics-graphics-h-c-programming/">Resources</a>
 </div>
 
 <div class="theme master">
-    <div class="mcg">
-        <h1>Master</h1>
-        <h1>Computational</h1>
-        <h1>Geometry</h1>
+    <div class="mcg lato-black">
+        <h1 class=" mcg-text lato-bold">Master</h1>
+        <h1 class=" mcg-text lato-bold">Computational</h1>
+        <h1 class=" mcg-text lato-bold">Geometry</h1>
     </div>
-    <div class="img-master">
+    <div class="img-master div-center">
        
     </div>
 </div>
 
 <div class="star-here">
-    <a class="starhere" href="">
-        <h1 class=" theme starhere-text"> Start Here!</h1> 
+    <a class="starhere" href="{% url 'course:units' %}">
+        <h1 class=" theme starhere-text"> Start Here!</h1>
     </a>
+    <div class="triangulo"></div>
 </div>
 
 <div class="learn">
@@ -38,7 +39,7 @@
 
 <div class="basic-a">
     <div class=" theme attain-txt div-center">
-        <h1>
+        <h1 class="lato-bold font-attain">
             Attain the basics used in different programing languages!
         </h1>
     </div>
@@ -48,7 +49,7 @@
 </div>
 
 <div class="theme searching">
-    <h1 class=" searching-text">Searching for an specific theme? <a href="">Click here</a> </h1>
+    <h1 class=" searching-text">Searching for an specific theme? <a href="{% url 'course:units' %}">Click here</a> </h1>
 </div>
 
 {% vite_asset 'course/js/index-figure1.js' %}

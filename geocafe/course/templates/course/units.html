@@ -1,34 +1,22 @@
 {% extends "course/base.html" %}
 {% load static %}
+{% load django_vite %}
+
 {% block title %} Units {% endblock title %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'course/css/units.css' %}?{% now 'U' %}">
 {% endblock head %}
 
 {% block body %}
+    {{ new_unit|json_script:"new_unit" }}
+    {{ course_completed|json_script:"course_completed" }}
     {% for unit in units %}
-    <button type="button" class="collapsible"><h3> {{unit.name|safe}} </h3></button>
-    <div class="conten">
-        {% for topic in unit.topic_unit.all %}
-            <a href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
-        {% endfor %}
-    </div>
-{% endfor %}
-    <button type="button" class="collapsible"><h3>Units 2</h3></button>
-    <div class="conten">
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-    </div>
-    <button type="button" class="collapsible"><h3>Units 3</h3></button>
-    <div class="conten">
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-        <a href="">Coming soon</a>
-    </div>
-    <script src="{% static 'course/js/units.js' %}"></script>
+        <button type="button" class="collapsible"><h3> {{unit.name|safe}} </h3></button>
+        <div class="conten">
+            {% for topic in unit.topic_unit.all %}
+                <a class="lato-bold topic-link" href="{% url 'course:topic' topic.id %}"><h5>{{ topic.name|safe }}</h5></a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    {% vite_asset 'course/js/units.js' %}
 {% endblock body %}
