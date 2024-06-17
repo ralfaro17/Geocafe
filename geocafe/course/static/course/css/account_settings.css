@@ -27,6 +27,19 @@
   font-weight: 300;
 }
 
+.selec-img{
+  margin-top: 2rem;
+}
+
+#delete-profile-picture-button{
+  margin-top: 2rem;
+  width: fit-content;
+}
+
+#delete-account-button{
+  width: fit-content;
+}
+
 .btn.btn-basic {
   border-radius: 8px;
   background-color: white;
