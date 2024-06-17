@@ -1,14 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+:root {
+  --G_purple: #4f4b6f;
+  --H_purple: #c2b4d2;
+  --L_purple: #8b76a4;
+  --LD_purple: #271e33;
+  --MD_purple: #251633;
+  --D_purple: #1e0d33;
+  --D_brown: #3e250c;
+  --D_background: #222026;
+  --L_gray: #dfdfdf;
+  --H_yellow: #d2d37b;
+  --ML_gray: #d9d9d9;
+  --C_brown:#584626 ;
+  --CD_brown:#3D332A;
+  --CMD_brown:#3E2914;
+  --L_brown:#76502F;
+  --font-inter: "Inter", sans-serif;
+  --font-inika: "Inika", serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+.navbar.bg-color {
+  background-color: var(--L_brown); /* Cvambiar a tu color deseado */
+  font-family: var(--font-lato);
+  font-optical-sizing: auto;
+  font-weight: 300;
+}
+
+.btn.btn-basic {
+  border-radius: 8px;
+  background-color: white;
+  margin: 5px;
+  width: 100px;
+  font-family: var(--font-lato);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--L_brown);
+  width: 100%;
+  height: 60px;
+}
+
+.div-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inter-header {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.inika-regular {
+  font-family: "Inika", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inika-bold {
+  font-family: "Inika", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.lato-thin-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-light-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-regular-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-bold-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.lato-black-italic {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+} /*# sourceMappingURL=style.css.map */
+
+.profile-picture-div {
+  background-color: whitesmoke;
+  width: 36%;
+  height: 450px;
+  margin: 16px 16px 18px 0;
+  border-radius: 15px;
+}
+.body-form{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+.input{
+  font-family: var(--font-lato);
+  font-weight: 400;
+  background-color:var(--SB-yellow);
+  border-radius: 8px;
+  color: black;
+  width: 80%;
+  border: none;
+  padding-left: 20px;
+
+}
+.input-log{
+  font-family: var(--font-lato);
+  font-weight: 400;
+  background-color:var(--L_gray);
+  border-radius: 8px;
+  color: black;
+  width: 80%;
+  border: none;
+  padding: 5px;
+  text-align: start;
+}
+.configuration{
+    width: 100%;
+    color: black;
+}
+.configure-profile{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 40px 0 39px 3px;
+
+}
+.cuadro {
+  width: 288px;
+  height: 85px;
+
+}
+.accountinfo{
+  display: flex;
+}
+.opcion{
+  border: none;
+  background-color: whitesmoke;
+  text-align: start;
+}
+.opcion:hover{
+  background-color: #76502F;
+  color: white;
+}
+
+.viewsetting{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+}
+.img-edit {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: flex-end;
+}
 form{
     display: flex;
     flex-direction: row;
+    width: 80%;
+    background-color: var(--LW-yellow);
 }
 
 form > div{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
 }
 
 label, input{
     margin: 12px;
+}
+
+#profile-picture{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 6px;
+
+
+}
+hr {
+  margin: 5px 0 !important;
+  color: inherit;
+  border: 0;
+  border-top: var(--bs-border-width) solid;
+  opacity: 0.25;
+}
+.name-profil{
+  color: black;
+
+}
+
+#profile-picture-div{
+    width: 50%;
+}
+@media (max-width: 992px) {
+
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background-color: var(--LW-yellow);
+}
+.visible{
+  display: none;
+}
+.profile-picture-div {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  margin: 16px 16px 18px 0;
+  border-radius: 15px;
+}
+form > div{
+  display: block;
+}
+
+
+}
+
+@media (min-width: 991.98px) {
+
+
 }

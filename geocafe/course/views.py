@@ -15,7 +15,21 @@ def index(request):
 
 def insertions(request):
     if request.user.is_superuser:
-        Insertions.insert_unit_1_full()
+        try:
+            Insertions.insert_unit_1_full()
+        except:
+            print("Unit 1 already exists")
+            pass
+        try:
+            Insertions.insert_unit_2_full()
+        except:
+            print("Unit 2 already exists")
+            pass
+        try:
+            Insertions.insert_unit_3_full()
+        except:
+            print("Unit 2 already exists")
+            pass
     else:
         raise Http404("You are not authorized to view this page")
 
@@ -88,7 +102,6 @@ def register(request):
 
 def user_page(request, username):
     profile_picture_update = request.GET.get('profile_picture_update', None)
-    print(profile_picture_update)
     try:
         user = User.objects.get(username=username)
         try:
@@ -114,20 +127,28 @@ def user_page(request, username):
 
 
 def units(request):
+    new_unit = None
     if not request.user.is_authenticated:
         try:
             units = Units.objects.filter(level=1)
         except Exception as e:
             raise Http404(f"Unexpected error: {e}")
     else:
+        new_unit = request.GET.get('unit_incremented', None)
         try:
             user = User.objects.get(id=request.user.id)
             # progress = UserProgress.objects.get(user=request.user)
             units = Units.objects.filter(level__lte=user.unit.level)
         except Exception as e:
             raise Http404(f"Unexpected error: {e}")
+        if units.count() == Units.objects.all().count() and new_unit is not None:
+            return render(request, "course/units.html", {
+                "units": units,
+                "course_completed": new_unit
+            })
     return render(request, "course/units.html", {
         "units": units,
+        "new_unit": new_unit
     })
 
 
@@ -146,7 +167,12 @@ def load_topic(request, id):
 
 @login_required
 def quiz(request):
-    return render(request,"course/quiz_unit1.html")
+    try:
+        user = User.objects.get(id=request.user.id)
+        unit = user.unit.level
+    except:
+        raise Http404("An error ocurred")
+    return render(request,f"course/quiz_unit{unit}.html")
 
 
 @login_required

@@ -1,7 +1,6 @@
 // use this to get the user data from the local storage, if it doesn't exist, return an empty object to which you can add values
 export function getUserData(user_id){
     const userData = localStorage.getItem(`user${user_id}data`);
-    console.log(userData)
     if(userData != null){
         return JSON.parse(userData);
     }
@@ -81,7 +80,6 @@ export function loadProfilePicture(url, imgElement, user_id){
         fetch("/generate-new-image-url")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             userData = getUserData(user_id);
             userData.profilePicture = data.url;
             localStorage.setItem(`user${user_id}data`, JSON.stringify(userData));

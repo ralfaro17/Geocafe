@@ -1,5 +1,7 @@
 {% extends "course/base.html" %}
 {% load static %}
+{% load django_vite %}
+
 
 {% block title %}Quiz Time{% endblock title %}
 
@@ -82,8 +84,8 @@
                 <div id="continue-modal" class="  hola modal div-center">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <h5 class="modal-title">IM Sorry :C</h5>
-                        <p>hacertaste menos de la mitad de las preguntas</p>
+                        <h5 class="modal-title">Try again</h5>
+                        <p>you answered less than half the questions, good luck next time</p>
                         <div id="resultado"></div>
                     </div>
                 </div>
@@ -92,5 +94,5 @@
     </div>
 
 
-    <script src="{% static 'course/js/quiz.js' %}"></script>
+    {% vite_asset 'course/js/quiz.js' %}
     {% endblock body %}

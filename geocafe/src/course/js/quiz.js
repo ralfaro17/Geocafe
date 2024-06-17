@@ -1,3 +1,5 @@
+import increment_unit from "./increment_unit";
+
 let modalResult = document.getElementById("result-modal");
 let btnResult = document.getElementById("btn-result");
 let correct = 0;
@@ -5,8 +7,8 @@ let correct = 0;
 let btnContinueDiv = document.getElementById("btn-continue");
 let span = document.getElementsByClassName("close")[0];
 
-console.log("Modal Result:", modalResult);
-console.log("Button Result:", btnResult);
+// console.log("Modal Result:", modalResult);
+// console.log("Button Result:", btnResult);
 
 btnResult.onclick = function () {
     modalResult.style.display = "flex";
@@ -141,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var score = document.createElement("p");
         score.classList.add("score-modal-text");
-        console.log(correct);
+        // console.log(correct);
         score.textContent = "Score: " + correct + " / " + (questions.length - 1);
         resultList.appendChild(score);
 
@@ -152,10 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var span = document.getElementsByClassName("close");
     var btnSad = document.getElementById("continue-modal");
     var modalSat = document.getElementById("sad-modal");
-    console.log(correct);
+    // console.log(correct);
 
-    console.log("Modal Result:", modalResult);
-    console.log("Button Result:", btnResult);
+    // console.log("Modal Result:", modalResult);
+    // console.log("Button Result:", btnResult);
 
     // Cuando el usuario hace clic en <span> (x), cierra el modal
     span.onclick = function () {
@@ -186,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showSadMessageModal() {
-        console.log("showSadMessageModal called");
+        // console.log("showSadMessageModal called");
         var sadMessageModal = document.getElementById("continue-modal");
         sadMessageModal.style.display = "flex";
     }
@@ -195,23 +197,27 @@ document.addEventListener("DOMContentLoaded", function () {
         // Limpiar el contenido previo de btnContinueDiv antes de agregar nuevos botones
         btnContinueDiv.innerHTML = "";
 
-        totalQuestions = questions.length - 1;
-        correctPercentage = (correct / totalQuestions) * 100;
-        console.log(`correct value: ${correct}`)
-        console.log("El porcentaje de respuestas correctas es: " + correctPercentage);
+        let totalQuestions = questions.length - 1;
+        let correctPercentage = (correct / totalQuestions) * 100;
+        // console.log(`correct value: ${correct}`)
+        // console.log("El porcentaje de respuestas correctas es: " + correctPercentage);
 
         if (correctPercentage > 50) {
             // Si el porcentaje de respuestas correctas es mayor al 50%, mostrar el botón de continuar
             let continueLink = document.createElement("a");
-            continueLink.href = "{% url 'course:account_settings' %}";
+            continueLink.href = "/units?unit_incremented=1";
             continueLink.textContent = "Continue";
             continueLink.classList.add("quiz-continue", "div-center");
+            continueLink.addEventListener("click", function () {
+                // Cuando se hace clic en el botón "Continuar", incrementar la unidad actual y redirigir a la página de unidades
+                increment_unit();
+            })
 
             btnContinueDiv.appendChild(continueLink);
         } else {
             // Si el porcentaje de respuestas correctas es menor o igual al 50%, mostrar el botón de mensaje "IM Sorry :C"
             let sadModalButton = document.createElement("button");
-            sadModalButton.textContent = "No pasa";
+            sadModalButton.textContent = "Failed";
             sadModalButton.addEventListener("click", function () {
                 // Cuando se hace clic en el botón "No pasa", mostrar el modal de mensaje "IM Sorry :C"
                 showSadMessageModal();

@@ -3,9 +3,13 @@
     "file": "assets/GLTFLoader-C4yd4ktm.js",
     "name": "GLTFLoader"
   },
-  "_sweetalert2-!~{008}~.js": {
+  "_js.cookie-Cz0CWeBA.js": {
+    "file": "assets/js.cookie-Cz0CWeBA.js",
+    "name": "js.cookie"
+  },
+  "_sweetalert2-!~{00e}~.js": {
     "file": "assets/sweetalert2-DMXr2t6I.css",
-    "src": "_sweetalert2-!~{008}~.js"
+    "src": "_sweetalert2-!~{00e}~.js"
   },
   "_sweetalert2-D-qDQbiK.js": {
     "file": "assets/sweetalert2-D-qDQbiK.js",
@@ -15,17 +19,37 @@
     ]
   },
   "course/js/account_settings.js": {
-    "file": "assets/account_settings-CF3bYPzE.js",
+    "file": "assets/account_settings-CfrhjYiD.js",
     "name": "account_settings",
     "src": "course/js/account_settings.js",
     "isEntry": true,
     "imports": [
       "_sweetalert2-D-qDQbiK.js",
-      "course/js/increment_unit.js"
+      "_js.cookie-Cz0CWeBA.js",
+      "course/js/helpers.js"
+    ]
+  },
+  "course/js/auto_complete_list.js": {
+    "file": "assets/auto_complete_list-C1Cm4hwq.js",
+    "name": "auto_complete_list",
+    "src": "course/js/auto_complete_list.js",
+    "isEntry": true
+  },
+  "course/js/code_editor.js": {
+    "file": "assets/code_editor-CEmVayhW.js",
+    "name": "code_editor",
+    "src": "course/js/code_editor.js",
+    "isEntry": true,
+    "imports": [
+      "course/js/auto_complete_list.js",
+      "course/js/helpers.js",
+      "_sweetalert2-D-qDQbiK.js",
+      "_js.cookie-Cz0CWeBA.js",
+      "course/js/styles.js"
     ]
   },
   "course/js/figure404.js": {
-    "file": "assets/figure404-DK0RwZeU.js",
+    "file": "assets/figure404-CAmWvwGG.js",
     "name": "figure404",
     "src": "course/js/figure404.js",
     "isEntry": true,
@@ -33,20 +57,39 @@
       "_GLTFLoader-C4yd4ktm.js"
     ],
     "assets": [
-      "assets/404-H9x5gigk.gltf"
+      "assets/404-D1RNTFBe.gltf"
     ]
   },
+  "course/js/figure500.js": {
+    "file": "assets/figure500-Lg2M2rur.js",
+    "name": "figure500",
+    "src": "course/js/figure500.js",
+    "isEntry": true,
+    "imports": [
+      "_GLTFLoader-C4yd4ktm.js"
+    ],
+    "assets": [
+      "assets/500-DndU9wv2.gltf"
+    ]
+  },
+  "course/js/helpers.js": {
+    "file": "assets/helpers-D-BMyCkT.js",
+    "name": "helpers",
+    "src": "course/js/helpers.js",
+    "isEntry": true
+  },
   "course/js/increment_unit.js": {
-    "file": "assets/increment_unit-D5HzlX6u.js",
+    "file": "assets/increment_unit-DmnaLN-k.js",
     "name": "increment_unit",
     "src": "course/js/increment_unit.js",
     "isEntry": true,
     "imports": [
-      "_sweetalert2-D-qDQbiK.js"
+      "_sweetalert2-D-qDQbiK.js",
+      "_js.cookie-Cz0CWeBA.js"
     ]
   },
   "course/js/index-figure1.js": {
-    "file": "assets/figure1-B6PPDN6s.js",
+    "file": "assets/figure1-Cm-ZMTUg.js",
     "name": "figure1",
     "src": "course/js/index-figure1.js",
     "isEntry": true,
@@ -58,7 +101,7 @@
     ]
   },
   "course/js/index-figure2.js": {
-    "file": "assets/figure2-DguBvoxC.js",
+    "file": "assets/figure2-GCpQcObm.js",
     "name": "figure2",
     "src": "course/js/index-figure2.js",
     "isEntry": true,
@@ -70,8 +113,12 @@
     ]
   },
   "course/js/models/404.gltf": {
-    "file": "assets/404-H9x5gigk.gltf",
+    "file": "assets/404-D1RNTFBe.gltf",
     "src": "course/js/models/404.gltf"
+  },
+  "course/js/models/500.gltf": {
+    "file": "assets/500-DndU9wv2.gltf",
+    "src": "course/js/models/500.gltf"
   },
   "course/js/models/cubo.gltf": {
     "file": "assets/cubo-B8LfAZ9o.gltf",
@@ -80,6 +127,17 @@
   "course/js/models/grano.gltf": {
     "file": "assets/grano-CHuzPYad.gltf",
     "src": "course/js/models/grano.gltf"
+  },
+  "course/js/quiz.js": {
+    "file": "assets/quiz-B5UeZ3wD.js",
+    "name": "quiz",
+    "src": "course/js/quiz.js",
+    "isEntry": true,
+    "imports": [
+      "course/js/increment_unit.js",
+      "_sweetalert2-D-qDQbiK.js",
+      "_js.cookie-Cz0CWeBA.js"
+    ]
   },
   "course/js/register.js": {
     "file": "assets/main-CL4DQxMx.js",
@@ -97,6 +155,16 @@
     "isEntry": true,
     "css": [
       "assets/styles-DVJci_n-.css"
+    ]
+  },
+  "course/js/units.js": {
+    "file": "assets/units-B7UE7w7G.js",
+    "name": "units",
+    "src": "course/js/units.js",
+    "isEntry": true,
+    "imports": [
+      "course/js/helpers.js",
+      "_sweetalert2-D-qDQbiK.js"
     ]
   }
 }
