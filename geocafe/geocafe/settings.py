@@ -29,13 +29,28 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+CSRF_TRUSTED_ORIGINS=[
+    'https://geocafe.onrender.com',
+    'http://localhost'
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://geocafe.onrender.com',
+    'http://localhost'
+]
+
+CORS_TRUSTED_ORIGINS = [
+    'https://geocafe.onrender.com',
+    'http://localhost'
+]
+
 # ! place the following parameters inside the ALLOWED_HOST list when DEBUG is set to false --> '127.0.0.1', 'localhost'
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "geocafe.onrender.com"]
 
 # ! Vite config, don't touch
 DJANGO_VITE = {
     "default": {
-        "dev_mode": False    
+        "dev_mode": False
     }
 }
 
@@ -106,6 +121,8 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 } 
 
