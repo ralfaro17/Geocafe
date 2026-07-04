@@ -2,6 +2,7 @@
 /venv
 /.vscode
 /node_modules
+/staticfiles
 
 # Django #
 *.log
