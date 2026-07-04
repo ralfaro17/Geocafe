@@ -1,4 +1,4 @@
-# Project General data
+# General project data
 
 *Repository for computational geometry project*
 
@@ -20,17 +20,13 @@
 
 *Repository link:* https://github.com/Ralfaro17/Geocafe
 
-*Trello workspace:* https://trello.com/invite/geocafe/ATTIc612a4419b64021c0b090e20b1853784A13253C2
-
 **Wireframe:** Figma
-
-*Figma project:* https://www.figma.com/file/RyBIoI5WYnmwkVVmJQdRic/Geocafe?type=design&node-id=0%3A1&mode=dev&t=MuRLlb0XElNuEwzh-1
 
 **Language to teach:** C++
 
 **Specifications:**
 - Account system for users to save their progress
-- 3D library use for frontend
+- 3D library usage for additional frontend styling
 - Light and dark mode view
 - Level system based learning modules
 - Code practices and examples
